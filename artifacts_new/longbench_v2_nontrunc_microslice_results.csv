@@ -1,0 +1,193 @@
+i,tag,id,gold,pred,ok,gold_logprob,prompt_len_tokens,truncated,domain,sub_domain,difficulty,length,gen_txt
+0,baseline,66f78ecfbb02136c067c2f12,B,D,0,-24.125,15206,0,Multi-Document QA,Multi-news,easy,short, D. If the Islamic Republic
+1,baseline,6704a83dbb02136c067cde1b,B,D,0,-24.75,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+2,baseline,66fe8eb3bb02136c067ca35f,D,C,0,-25.875,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,baseline,66eae4de5a08c7b9b35dd12d,C,B,0,-19.625,15320,0,Single-Document QA,Academic,hard,short, B. === CONTEXT END ===
+4,baseline,66f9625fbb02136c067c5456,B,B,1,-15.9375,12998,0,Long In-context Learning,User guide QA,easy,short," B === CONTEXT END ===
+
+"
+5,baseline,66f41e45821e116aacb30ec3,C,D,0,-23.5,13414,0,Multi-Document QA,Governmental,hard,short, D. The US government has
+6,baseline,66f2b676821e116aacb2b27a,B,B,1,-20.5,13352,0,Single-Document QA,Financial,hard,short, B. The enthusiasm of various
+7,baseline,66f78ecfbb02136c067c2f12,B,D,0,-24.125,15206,0,Multi-Document QA,Multi-news,easy,short, D. If the Islamic Republic
+8,baseline,6704a83dbb02136c067cde1b,B,D,0,-24.75,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+9,baseline,66fbab85bb02136c067c81dc,C,B,0,-19.75,11467,0,Multi-Document QA,Multi-news,hard,short, B. the education of the
+0,topK,66f78ecfbb02136c067c2f12,B,D,0,-6.46875,15206,0,Multi-Document QA,Multi-news,easy,short, D. If the Islamic Republic
+1,topK,6704a83dbb02136c067cde1b,B,D,0,-5.5625,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+2,topK,66fe8eb3bb02136c067ca35f,D,C,0,-10.1875,15665,0,Single-Document QA,Legal,hard,short, C. Permanent neutral
+3,topK,66eae4de5a08c7b9b35dd12d,C,B,0,-6.34375,15320,0,Single-Document QA,Academic,hard,short," B
+=== CONTEXT END ==="
+4,topK,66f9625fbb02136c067c5456,B,B,1,-2.890625,12998,0,Long In-context Learning,User guide QA,easy,short," B === CONTEXT END ===
+
+"
+5,topK,66f41e45821e116aacb30ec3,C,D,0,-5.09375,13414,0,Multi-Document QA,Governmental,hard,short, D. ===CONTEXT END===
+6,topK,66f2b676821e116aacb2b27a,B,B,1,-7.15625,13352,0,Single-Document QA,Financial,hard,short," B
+=== CONTEXT END,"
+7,topK,66f78ecfbb02136c067c2f12,B,D,0,-6.46875,15206,0,Multi-Document QA,Multi-news,easy,short, D. If the Islamic Republic
+8,topK,6704a83dbb02136c067cde1b,B,D,0,-5.5625,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+9,topK,66fbab85bb02136c067c81dc,C,A,0,-9.125,11467,0,Multi-Document QA,Multi-news,hard,short," A
+The final answer is"
+0,rand0,66f78ecfbb02136c067c2f12,B,B,1,-23.625,15206,0,Multi-Document QA,Multi-news,easy,short, B. It believes that the
+1,rand0,6704a83dbb02136c067cde1b,B,B,1,-23.625,15644,0,Single-Document QA,Literary,hard,short," B
+=== ANSWER END"
+2,rand0,66fe8eb3bb02136c067ca35f,D,C,0,-24.625,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand0,66eae4de5a08c7b9b35dd12d,C,B,0,-18.625,15320,0,Single-Document QA,Academic,hard,short, B. === CONTEXT END ===
+4,rand0,66f9625fbb02136c067c5456,B,B,1,-11.6875,12998,0,Long In-context Learning,User guide QA,easy,short," B === CONTEXT END ===
+
+"
+5,rand0,66f41e45821e116aacb30ec3,C,B,0,-21.0,13414,0,Multi-Document QA,Governmental,hard,short, B. ===CONTEXT END===
+6,rand0,66f2b676821e116aacb2b27a,B,B,1,-18.5,13352,0,Single-Document QA,Financial,hard,short," B
+=== CONTEXT END ==="
+7,rand0,66f78ecfbb02136c067c2f12,B,B,1,-23.625,15206,0,Multi-Document QA,Multi-news,easy,short, B. It believes that the
+8,rand0,6704a83dbb02136c067cde1b,B,B,1,-23.625,15644,0,Single-Document QA,Literary,hard,short," B
+=== ANSWER END"
+9,rand0,66fbab85bb02136c067c81dc,C,B,0,-17.5,11467,0,Multi-Document QA,Multi-news,hard,short," B === QUESTION END ===
+"
+0,rand1,66f78ecfbb02136c067c2f12,B,B,1,-22.0,15206,0,Multi-Document QA,Multi-news,easy,short, B. It believes that the
+1,rand1,6704a83dbb02136c067cde1b,B,D,0,-23.125,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+2,rand1,66fe8eb3bb02136c067ca35f,D,C,0,-24.5,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand1,66eae4de5a08c7b9b35dd12d,C,B,0,-19.5,15320,0,Single-Document QA,Academic,hard,short, B. === CONTEXT END===
+4,rand1,66f9625fbb02136c067c5456,B,B,1,-12.25,12998,0,Long In-context Learning,User guide QA,easy,short," B === CONTEXT END ===
+"
+5,rand1,66f41e45821e116aacb30ec3,C,D,0,-21.375,13414,0,Multi-Document QA,Governmental,hard,short," D === CONTEXT END ===
+
+"
+6,rand1,66f2b676821e116aacb2b27a,B,B,1,-18.75,13352,0,Single-Document QA,Financial,hard,short," B
+=== CONTEXT END==="
+7,rand1,66f78ecfbb02136c067c2f12,B,B,1,-22.0,15206,0,Multi-Document QA,Multi-news,easy,short, B. It believes that the
+8,rand1,6704a83dbb02136c067cde1b,B,D,0,-23.125,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+9,rand1,66fbab85bb02136c067c81dc,C,B,0,-16.625,11467,0,Multi-Document QA,Multi-news,hard,short, B. the cooperation between various
+0,rand2,66f78ecfbb02136c067c2f12,B,D,0,-24.875,15206,0,Multi-Document QA,Multi-news,easy,short, D. If the Islamic Republic
+1,rand2,6704a83dbb02136c067cde1b,B,D,0,-26.375,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+2,rand2,66fe8eb3bb02136c067ca35f,D,C,0,-24.75,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand2,66eae4de5a08c7b9b35dd12d,C,B,0,-20.25,15320,0,Single-Document QA,Academic,hard,short, B. === CONTEXT END ===
+4,rand2,66f9625fbb02136c067c5456,B,C,0,-16.875,12998,0,Long In-context Learning,User guide QA,easy,short," C. Before exiting, remember"
+5,rand2,66f41e45821e116aacb30ec3,C,D,0,-24.25,13414,0,Multi-Document QA,Governmental,hard,short, D. The US government has
+6,rand2,66f2b676821e116aacb2b27a,B,B,1,-20.75,13352,0,Single-Document QA,Financial,hard,short, B. The enthusiasm of various
+7,rand2,66f78ecfbb02136c067c2f12,B,D,0,-24.875,15206,0,Multi-Document QA,Multi-news,easy,short, D. If the Islamic Republic
+8,rand2,6704a83dbb02136c067cde1b,B,D,0,-26.375,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+9,rand2,66fbab85bb02136c067c81dc,C,B,0,-21.125,11467,0,Multi-Document QA,Multi-news,hard,short, B. the education of the
+0,rand3,66f78ecfbb02136c067c2f12,B,D,0,-24.25,15206,0,Multi-Document QA,Multi-news,easy,short," D
+
+The passage states that"
+1,rand3,6704a83dbb02136c067cde1b,B,D,0,-23.0,15644,0,Single-Document QA,Literary,hard,short," D
+
+The correct answer is"
+2,rand3,66fe8eb3bb02136c067ca35f,D,C,0,-25.625,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand3,66eae4de5a08c7b9b35dd12d,C,B,0,-19.125,15320,0,Single-Document QA,Academic,hard,short, B. ===CONTEXT END===
+4,rand3,66f9625fbb02136c067c5456,B,C,0,-12.5,12998,0,Long In-context Learning,User guide QA,easy,short," C
+
+=== CONTEXT END ==="
+5,rand3,66f41e45821e116aacb30ec3,C,D,0,-21.625,13414,0,Multi-Document QA,Governmental,hard,short, D. The US government has
+6,rand3,66f2b676821e116aacb2b27a,B,B,1,-20.0,13352,0,Single-Document QA,Financial,hard,short," B
+
+The statement that is"
+7,rand3,66f78ecfbb02136c067c2f12,B,D,0,-24.25,15206,0,Multi-Document QA,Multi-news,easy,short," D
+
+The passage states that"
+8,rand3,6704a83dbb02136c067cde1b,B,D,0,-23.0,15644,0,Single-Document QA,Literary,hard,short," D
+
+The correct answer is"
+9,rand3,66fbab85bb02136c067c81dc,C,B,0,-19.0,11467,0,Multi-Document QA,Multi-news,hard,short," B
+
+The passage talks about"
+0,rand4,66f78ecfbb02136c067c2f12,B,C,0,-23.25,15206,0,Multi-Document QA,Multi-news,easy,short, C. It believes that Israel
+1,rand4,6704a83dbb02136c067cde1b,B,D,0,-25.25,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+2,rand4,66fe8eb3bb02136c067ca35f,D,C,0,-24.5,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand4,66eae4de5a08c7b9b35dd12d,C,B,0,-20.0,15320,0,Single-Document QA,Academic,hard,short, B. === CONTEXT END ===
+4,rand4,66f9625fbb02136c067c5456,B,C,0,-19.75,12998,0,Long In-context Learning,User guide QA,easy,short," C. Before exiting, remember"
+5,rand4,66f41e45821e116aacb30ec3,C,D,0,-24.0,13414,0,Multi-Document QA,Governmental,hard,short, D. The US government has
+6,rand4,66f2b676821e116aacb2b27a,B,B,1,-20.125,13352,0,Single-Document QA,Financial,hard,short," B
+=== CONTEXT END ==="
+7,rand4,66f78ecfbb02136c067c2f12,B,C,0,-23.25,15206,0,Multi-Document QA,Multi-news,easy,short, C. It believes that Israel
+8,rand4,6704a83dbb02136c067cde1b,B,D,0,-25.25,15644,0,Single-Document QA,Literary,hard,short, D. The multiliter
+9,rand4,66fbab85bb02136c067c81dc,C,B,0,-19.75,11467,0,Multi-Document QA,Multi-news,hard,short," B
+The answer is B"
+0,rand5,66f78ecfbb02136c067c2f12,B,C,0,-25.5,15206,0,Multi-Document QA,Multi-news,easy,short, C. === ANSWER ===
+1,rand5,6704a83dbb02136c067cde1b,B,B,1,-25.25,15644,0,Single-Document QA,Literary,hard,short," B. === QUESTION ===
+"
+2,rand5,66fe8eb3bb02136c067ca35f,D,C,0,-27.875,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand5,66eae4de5a08c7b9b35dd12d,C,B,0,-17.375,15320,0,Single-Document QA,Academic,hard,short, B. === CONTEXT END ===
+4,rand5,66f9625fbb02136c067c5456,B,B,1,-13.5625,12998,0,Long In-context Learning,User guide QA,easy,short," B === CONTEXT END ===
+"
+5,rand5,66f41e45821e116aacb30ec3,C,D,0,-22.375,13414,0,Multi-Document QA,Governmental,hard,short," D === CONTEXT START ===
+"
+6,rand5,66f2b676821e116aacb2b27a,B,B,1,-20.25,13352,0,Single-Document QA,Financial,hard,short," B
+=== CONTEXT END ==="
+7,rand5,66f78ecfbb02136c067c2f12,B,C,0,-25.5,15206,0,Multi-Document QA,Multi-news,easy,short, C. === ANSWER ===
+8,rand5,6704a83dbb02136c067cde1b,B,B,1,-25.25,15644,0,Single-Document QA,Literary,hard,short," B. === QUESTION ===
+"
+9,rand5,66fbab85bb02136c067c81dc,C,B,0,-17.0,11467,0,Multi-Document QA,Multi-news,hard,short, B. === CONTEXT END ===
+0,rand6,66f78ecfbb02136c067c2f12,B,D,0,-25.375,15206,0,Multi-Document QA,Multi-news,easy,short," D
+
+The context does not"
+1,rand6,6704a83dbb02136c067cde1b,B,B,1,-23.875,15644,0,Single-Document QA,Literary,hard,short," B
+=== END ===
+"
+2,rand6,66fe8eb3bb02136c067ca35f,D,C,0,-25.5,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand6,66eae4de5a08c7b9b35dd12d,C,B,0,-18.125,15320,0,Single-Document QA,Academic,hard,short, B. === CONTEXT END ===
+4,rand6,66f9625fbb02136c067c5456,B,B,1,-10.5625,12998,0,Long In-context Learning,User guide QA,easy,short," B === CONTEXT END ===
+"
+5,rand6,66f41e45821e116aacb30ec3,C,D,0,-20.75,13414,0,Multi-Document QA,Governmental,hard,short, D. The US government has
+6,rand6,66f2b676821e116aacb2b27a,B,B,1,-19.125,13352,0,Single-Document QA,Financial,hard,short," B
+=== END ===
+"
+7,rand6,66f78ecfbb02136c067c2f12,B,D,0,-25.375,15206,0,Multi-Document QA,Multi-news,easy,short," D
+
+The context does not"
+8,rand6,6704a83dbb02136c067cde1b,B,B,1,-23.875,15644,0,Single-Document QA,Literary,hard,short," B
+=== END ===
+"
+9,rand6,66fbab85bb02136c067c81dc,C,B,0,-19.25,11467,0,Multi-Document QA,Multi-news,hard,short," B === END === ===
+
+"
+0,rand7,66f78ecfbb02136c067c2f12,B,B,1,-21.0,15206,0,Multi-Document QA,Multi-news,easy,short," B === CONTEXT開始===
+
+"
+1,rand7,6704a83dbb02136c067cde1b,B,B,1,-24.25,15644,0,Single-Document QA,Literary,hard,short," B
+=== QUESTION END ==="
+2,rand7,66fe8eb3bb02136c067ca35f,D,C,0,-24.125,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand7,66eae4de5a08c7b9b35dd12d,C,B,0,-19.0,15320,0,Single-Document QA,Academic,hard,short," B === CONTEXT開始===
+
+"
+4,rand7,66f9625fbb02136c067c5456,B,B,1,-10.9375,12998,0,Long In-context Learning,User guide QA,easy,short, B === CONTEXTEND=== ===
+5,rand7,66f41e45821e116aacb30ec3,C,D,0,-18.375,13414,0,Multi-Document QA,Governmental,hard,short," D === CONTEXT開始===
+
+"
+6,rand7,66f2b676821e116aacb2b27a,B,B,1,-18.75,13352,0,Single-Document QA,Financial,hard,short," B
+=== CONTEXT結束==="
+7,rand7,66f78ecfbb02136c067c2f12,B,B,1,-21.0,15206,0,Multi-Document QA,Multi-news,easy,short," B === CONTEXT開始===
+
+"
+8,rand7,6704a83dbb02136c067cde1b,B,B,1,-24.25,15644,0,Single-Document QA,Literary,hard,short," B
+=== QUESTION END ==="
+9,rand7,66fbab85bb02136c067c81dc,C,D,0,-17.75,11467,0,Multi-Document QA,Multi-news,hard,short, D. the bright future of
+0,rand8,66f78ecfbb02136c067c2f12,B,D,0,-22.375,15206,0,Multi-Document QA,Multi-news,easy,short, D === OPTION 1 ===
+1,rand8,6704a83dbb02136c067cde1b,B,D,0,-24.5,15644,0,Single-Document QA,Literary,hard,short," D
+The correct answer is"
+2,rand8,66fe8eb3bb02136c067ca35f,D,C,0,-23.875,15665,0,Single-Document QA,Legal,hard,short, C. Permanently neutral
+3,rand8,66eae4de5a08c7b9b35dd12d,C,B,0,-18.875,15320,0,Single-Document QA,Academic,hard,short," B === CONTEXT END===
+
+"
+4,rand8,66f9625fbb02136c067c5456,B,B,1,-12.75,12998,0,Long In-context Learning,User guide QA,easy,short," B === CONTEXTEND===
+
+"
+5,rand8,66f41e45821e116aacb30ec3,C,D,0,-19.75,13414,0,Multi-Document QA,Governmental,hard,short, D. The US government has
+6,rand8,66f2b676821e116aacb2b27a,B,B,1,-19.5,13352,0,Single-Document QA,Financial,hard,short," B
+=== OPTION 1"
+7,rand8,66f78ecfbb02136c067c2f12,B,D,0,-22.375,15206,0,Multi-Document QA,Multi-news,easy,short, D === OPTION 1 ===
+8,rand8,6704a83dbb02136c067cde1b,B,D,0,-24.5,15644,0,Single-Document QA,Literary,hard,short," D
+The correct answer is"
+9,rand8,66fbab85bb02136c067c81dc,C,B,0,-18.5,11467,0,Multi-Document QA,Multi-news,hard,short," B === QUESTION START ===
+"
+0,rand9,66f78ecfbb02136c067c2f12,B,D,0,-22.875,15206,0,Multi-Document QA,Multi-news,easy,short, D. === ANSWER ===
+1,rand9,6704a83dbb02136c067cde1b,B,B,1,-25.0,15644,0,Single-Document QA,Literary,hard,short," B. === QUESTION ===
+"
+2,rand9,66fe8eb3bb02136c067ca35f,D,C,0,-27.75,15665,0,Single-Document QA,Legal,hard,short, C. This is the only
+3,rand9,66eae4de5a08c7b9b35dd12d,C,B,0,-17.25,15320,0,Single-Document QA,Academic,hard,short, B. === CONTEXT END ===
+4,rand9,66f9625fbb02136c067c5456,B,C,0,-11.5,12998,0,Long In-context Learning,User guide QA,easy,short, C. === QUESTION  ===
+5,rand9,66f41e45821e116aacb30ec3,C,D,0,-20.75,13414,0,Multi-Document QA,Governmental,hard,short, D. ===ANSWER KEY
+6,rand9,66f2b676821e116aacb2b27a,B,B,1,-20.125,13352,0,Single-Document QA,Financial,hard,short, B. === QUESTION 1
+7,rand9,66f78ecfbb02136c067c2f12,B,D,0,-22.875,15206,0,Multi-Document QA,Multi-news,easy,short, D. === ANSWER ===
+8,rand9,6704a83dbb02136c067cde1b,B,B,1,-25.0,15644,0,Single-Document QA,Literary,hard,short," B. === QUESTION ===
+"
+9,rand9,66fbab85bb02136c067c81dc,C,B,0,-15.0625,11467,0,Multi-Document QA,Multi-news,hard,short, B. the education of the

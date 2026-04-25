@@ -1,0 +1,41 @@
+# Jupyter
+.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Secrets / credentials
+.env
+*.pem
+*.key
+.aws/
+credentials
+config
+
+# Data / model artifacts
+data/
+datasets/
+outputs/
+checkpoints/
+models/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.pkl
+*.joblib
+
+# Logs
+logs/
+*.log
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/

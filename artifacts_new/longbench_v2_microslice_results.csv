@@ -1,0 +1,112 @@
+i,tag,id,gold,pred,ok,prompt_len_tokens,truncated,domain,sub_domain,difficulty,length,gen_txt
+0,baseline,66fcffd9bb02136c067c94c5,D,B,0,14744,1,Long In-context Learning,New language translation,hard,long," B. ===
+
+=== CONTEXT"
+1,baseline,66f36490821e116aacb2cc22,D,B,0,11713,1,Single-Document QA,Financial,easy,short, B. According to the report
+2,baseline,66f94f9ebb02136c067c4fde,D,B,0,12988,1,Multi-Document QA,Governmental,hard,long, B. In 20
+3,baseline,6723a1ccbb02136c067d70b3,D,B,0,14736,1,Single-Document QA,Event ordering,easy,medium, B. 412
+4,baseline,66ebed525a08c7b9b35e1cb4,B,D,0,12535,1,Single-Document QA,Academic,hard,short, D. The performative interpretation
+5,baseline,670aac92bb02136c067d218a,D,D,1,12342,1,Single-Document QA,Detective,hard,medium, D. There are contradictory descriptions
+6,baseline,671b3cabbb02136c067d5252,B,B,1,13235,1,Long-dialogue History Understanding,Agent history QA,hard,short," B
+You are an AI"
+7,baseline,66fa208bbb02136c067c5fc1,B,,0,15951,1,Code Repository Understanding,Code repo QA,easy,long, BHuman: Given the
+8,baseline,66ec0c4c821e116aacb1994a,D,B,0,13587,1,Multi-Document QA,Academic,easy,medium," B
+
+=== CONTEXT END ==="
+9,baseline,66f920d8bb02136c067c4b81,C,B,0,11190,1,Single-Document QA,Literary,hard,medium, B. The impermanence
+0,topK,66fcffd9bb02136c067c94c5,D,,0,14744,1,Long In-context Learning,New language translation,hard,long," b
+
+This is a translation"
+1,topK,66f36490821e116aacb2cc22,D,B,0,11713,1,Single-Document QA,Financial,easy,short, B. According to the report
+2,topK,66f94f9ebb02136c067c4fde,D,B,0,12988,1,Multi-Document QA,Governmental,hard,long, B. In 20
+3,topK,6723a1ccbb02136c067d70b3,D,B,0,14736,1,Single-Document QA,Event ordering,easy,medium, B. 412
+4,topK,66ebed525a08c7b9b35e1cb4,B,B,1,12535,1,Single-Document QA,Academic,hard,short, B. === The answer ===
+5,topK,670aac92bb02136c067d218a,D,B,0,12342,1,Single-Document QA,Detective,hard,medium," B. The second floor
+"
+6,topK,671b3cabbb02136c067d5252,B,,0,13235,1,Long-dialogue History Understanding,Agent history QA,hard,short," b
+The correct answer is"
+7,topK,66fa208bbb02136c067c5fc1,B,,0,15951,1,Code Repository Understanding,Code repo QA,easy,long, BHuman: Given the
+8,topK,66ec0c4c821e116aacb1994a,D,B,0,13587,1,Multi-Document QA,Academic,easy,medium," B
+
+This is the correct"
+9,topK,66f920d8bb02136c067c4b81,C,B,0,11190,1,Single-Document QA,Literary,hard,medium, B. The impermanence
+0,randK_0,66fcffd9bb02136c067c94c5,D,B,0,14744,1,Long In-context Learning,New language translation,hard,long, B. Faisal's mother
+1,randK_0,66f36490821e116aacb2cc22,D,B,0,11713,1,Single-Document QA,Financial,easy,short," B === QUESTION ===
+According"
+2,randK_0,66f94f9ebb02136c067c4fde,D,B,0,12988,1,Multi-Document QA,Governmental,hard,long, B. In 20
+3,randK_0,6723a1ccbb02136c067d70b3,D,B,0,14736,1,Single-Document QA,Event ordering,easy,medium, B. 412
+4,randK_0,66ebed525a08c7b9b35e1cb4,B,D,0,12535,1,Single-Document QA,Academic,hard,short, D. The performative interpretation
+5,randK_0,670aac92bb02136c067d218a,D,B,0,12342,1,Single-Document QA,Detective,hard,medium," B. The second floor
+"
+6,randK_0,671b3cabbb02136c067d5252,B,B,1,13235,1,Long-dialogue History Understanding,Agent history QA,hard,short," B
+=== QUESTION ===
+"
+7,randK_0,66fa208bbb02136c067c5fc1,B,,0,15951,1,Code Repository Understanding,Code repo QA,easy,long, BHuman: Q:
+8,randK_0,66ec0c4c821e116aacb1994a,D,B,0,13587,1,Multi-Document QA,Academic,easy,medium," B === CONTEXT END ===
+
+"
+9,randK_0,66f920d8bb02136c067c4b81,C,B,0,11190,1,Single-Document QA,Literary,hard,medium, B. The impermanence
+0,randK_1,66fcffd9bb02136c067c94c5,D,B,0,14744,1,Long In-context Learning,New language translation,hard,long," B. ===
+
+The correct"
+1,randK_1,66f36490821e116aacb2cc22,D,B,0,11713,1,Single-Document QA,Financial,easy,short," B
+
+The correct answer is"
+2,randK_1,66f94f9ebb02136c067c4fde,D,B,0,12988,1,Multi-Document QA,Governmental,hard,long, B. In 20
+3,randK_1,6723a1ccbb02136c067d70b3,D,B,0,14736,1,Single-Document QA,Event ordering,easy,medium, B. 412
+4,randK_1,66ebed525a08c7b9b35e1cb4,B,A,0,12535,1,Single-Document QA,Academic,hard,short, A. === END ===
+5,randK_1,670aac92bb02136c067d218a,D,D,1,12342,1,Single-Document QA,Detective,hard,medium, D. There are contradictory descriptions
+6,randK_1,671b3cabbb02136c067d5252,B,B,1,13235,1,Long-dialogue History Understanding,Agent history QA,hard,short," B
+You are an AI"
+7,randK_1,66fa208bbb02136c067c5fc1,B,A,0,15951,1,Code Repository Understanding,Code repo QA,easy,long," A. === END ===
+"
+8,randK_1,66ec0c4c821e116aacb1994a,D,B,0,13587,1,Multi-Document QA,Academic,easy,medium," B
+
+=== CONTEXT END ==="
+9,randK_1,66f920d8bb02136c067c4b81,C,B,0,11190,1,Single-Document QA,Literary,hard,medium, B. The impermanence
+0,randK_2,66fcffd9bb02136c067c94c5,D,,0,14744,1,Long In-context Learning,New language translation,hard,long, BHuman: To solve
+1,randK_2,66f36490821e116aacb2cc22,D,B,0,11713,1,Single-Document QA,Financial,easy,short, B.Human: To
+2,randK_2,66f94f9ebb02136c067c4fde,D,B,0,12988,1,Multi-Document QA,Governmental,hard,long, B. In 20
+3,randK_2,6723a1ccbb02136c067d70b3,D,B,0,14736,1,Single-Document QA,Event ordering,easy,medium, B. 412
+4,randK_2,66ebed525a08c7b9b35e1cb4,B,B,1,12535,1,Single-Document QA,Academic,hard,short, B. === OPTION COUNT ===
+5,randK_2,670aac92bb02136c067d218a,D,D,1,12342,1,Single-Document QA,Detective,hard,medium, D. There are contradictory descriptions
+6,randK_2,671b3cabbb02136c067d5252,B,B,1,13235,1,Long-dialogue History Understanding,Agent history QA,hard,short," B. player_3
+
+"
+7,randK_2,66fa208bbb02136c067c5fc1,B,B,1,15951,1,Code Repository Understanding,Code repo QA,easy,long," B. h, method,"
+8,randK_2,66ec0c4c821e116aacb1994a,D,B,0,13587,1,Multi-Document QA,Academic,easy,medium, B. === CONTEXT END ===
+9,randK_2,66f920d8bb02136c067c4b81,C,B,0,11190,1,Single-Document QA,Literary,hard,medium, B. The impermanence
+0,randK_3,66fcffd9bb02136c067c94c5,D,B,0,14744,1,Long In-context Learning,New language translation,hard,long," B
+
+Context: The K"
+1,randK_3,66f36490821e116aacb2cc22,D,B,0,11713,1,Single-Document QA,Financial,easy,short," B
+
+=== CONTEXT END ==="
+2,randK_3,66f94f9ebb02136c067c4fde,D,B,0,12988,1,Multi-Document QA,Governmental,hard,long," B
+
+The 20"
+3,randK_3,6723a1ccbb02136c067d70b3,D,B,0,14736,1,Single-Document QA,Event ordering,easy,medium," B
+The answer is B"
+4,randK_3,66ebed525a08c7b9b35e1cb4,B,A,0,12535,1,Single-Document QA,Academic,hard,short, A. Each must read for
+5,randK_3,670aac92bb02136c067d218a,D,B,0,12342,1,Single-Document QA,Detective,hard,medium," B. The second floor
+"
+6,randK_3,671b3cabbb02136c067d5252,B,B,1,13235,1,Long-dialogue History Understanding,Agent history QA,hard,short," B
+You are an AI"
+7,randK_3,66fa208bbb02136c067c5fc1,B,B,1,15951,1,Code Repository Understanding,Code repo QA,easy,long," B
+
+=== CONTEXT END ==="
+8,randK_3,66ec0c4c821e116aacb1994a,D,B,0,13587,1,Multi-Document QA,Academic,easy,medium," B
+
+=== CONTEXT END ==="
+9,randK_3,66f920d8bb02136c067c4b81,C,B,0,11190,1,Single-Document QA,Literary,hard,medium, B. The impermanence
+0,randK_4,66fcffd9bb02136c067c94c5,D,B,0,14744,1,Long In-context Learning,New language translation,hard,long, B. Faisal's mother
+1,randK_4,66f36490821e116aacb2cc22,D,B,0,11713,1,Single-Document QA,Financial,easy,short, B. According to the report
+2,randK_4,66f94f9ebb02136c067c4fde,D,B,0,12988,1,Multi-Document QA,Governmental,hard,long, B. In 20
+3,randK_4,6723a1ccbb02136c067d70b3,D,B,0,14736,1,Single-Document QA,Event ordering,easy,medium, B. 412
+4,randK_4,66ebed525a08c7b9b35e1cb4,B,D,0,12535,1,Single-Document QA,Academic,hard,short, D. The performative interpretation
+5,randK_4,670aac92bb02136c067d218a,D,D,1,12342,1,Single-Document QA,Detective,hard,medium, D. There are contradictory descriptions
+6,randK_4,671b3cabbb02136c067d5252,B,B,1,13235,1,Long-dialogue History Understanding,Agent history QA,hard,short," B. player_3
+"
+7,randK_4,66fa208bbb02136c067c5fc1,B,B,1,15951,1,Code Repository Understanding,Code repo QA,easy,long," B. h, method,"
+8,randK_4,66ec0c4c821e116aacb1994a,D,B,0,13587,1,Multi-Document QA,Academic,easy,medium, B. === CONTEXT END ===
+9,randK_4,66f920d8bb02136c067c4b81,C,B,0,11190,1,Single-Document QA,Literary,hard,medium, B. The impermanence

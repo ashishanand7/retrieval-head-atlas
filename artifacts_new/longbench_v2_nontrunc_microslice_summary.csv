@@ -1,0 +1,2 @@
+dataset_source,n_items,unique_sub_domain,max_encode_tokens_used,topK,n_rand,baseline_acc,topK_acc,drop_topK_acc,randK_mean_acc,randK_std_acc,baseline_mean_gold_logprob,topK_mean_gold_logprob,delta_topK_mean_gold_logprob,randK_mean_gold_logprob,randK_std_gold_logprob
+THUDM/LongBench-v2,10,7,16384,8,10,0.2,0.2,0.0,0.32,0.18330302779823363,-22.29375,-6.4859375,15.807812499999999,-21.240624999999998,0.9385629390855998
