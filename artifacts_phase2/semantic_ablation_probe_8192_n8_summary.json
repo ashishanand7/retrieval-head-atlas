@@ -1,0 +1,112 @@
+{
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "n_examples": 40,
+  "variants": [
+    "literal",
+    "alias",
+    "paraphrase",
+    "relational",
+    "distractor_heavy"
+  ],
+  "top_pairs": [
+    [
+      21,
+      11
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      22,
+      7
+    ],
+    [
+      21,
+      9
+    ],
+    [
+      20,
+      2
+    ],
+    [
+      20,
+      9
+    ],
+    [
+      17,
+      3
+    ],
+    [
+      20,
+      3
+    ]
+  ],
+  "random_pairs": [
+    [
+      0,
+      1
+    ],
+    [
+      17,
+      6
+    ],
+    [
+      20,
+      11
+    ],
+    [
+      20,
+      1
+    ],
+    [
+      20,
+      10
+    ],
+    [
+      21,
+      10
+    ],
+    [
+      21,
+      8
+    ],
+    [
+      22,
+      6
+    ]
+  ],
+  "intervention_scope": "all",
+  "by_variant": {
+    "literal": {
+      "n": 8,
+      "mean_baseline_logprob": -2.038513680299123,
+      "mean_delta_topk": -0.4161626646916071,
+      "mean_delta_randomk": 0.024680773417154966
+    },
+    "alias": {
+      "n": 8,
+      "mean_baseline_logprob": -1.850402146577835,
+      "mean_delta_topk": -0.37639257311820995,
+      "mean_delta_randomk": -0.0782033503055573
+    },
+    "paraphrase": {
+      "n": 8,
+      "mean_baseline_logprob": -2.1712203472852707,
+      "mean_delta_topk": -0.5183822810649872,
+      "mean_delta_randomk": -0.04175745447476714
+    },
+    "relational": {
+      "n": 8,
+      "mean_baseline_logprob": -1.9126594066619873,
+      "mean_delta_topk": -0.31510768334070843,
+      "mean_delta_randomk": -0.03464126586914057
+    },
+    "distractor_heavy": {
+      "n": 8,
+      "mean_baseline_logprob": -2.088412543137868,
+      "mean_delta_topk": -0.38864218195279443,
+      "mean_delta_randomk": -0.020893017450968443
+    }
+  }
+}
