@@ -23,6 +23,7 @@ data/
 datasets/
 outputs/
 checkpoints/
+Previous submission/
 models/
 *.pt
 *.pth
