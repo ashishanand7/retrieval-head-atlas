@@ -21,7 +21,6 @@ config
 # Data / model artifacts
 data/
 datasets/
-artifacts/
 outputs/
 checkpoints/
 models/
