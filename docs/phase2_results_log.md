@@ -197,3 +197,72 @@ python scripts/run_semantic_single_head_sweep.py \
 ```
 
 This is the final selection run before the address-vs-content decomposition. Its job is to identify the real semantic-circuit core and create a cleaner inactive-control pool.
+
+## 2026-05-19: Neighborhood Single-Head Sweep
+
+Pulled artifact commit:
+
+```text
+50834ed50a43d531c8ada868509f4e868e9cd3e2
+```
+
+Run:
+
+- Query-only ablation.
+- `N=40` examples: five variants times eight examples.
+- `61` heads from the semantic neighborhood list.
+- `2440` single-head rows.
+
+Most harmful heads:
+
+| Rank | Head | Mean delta | Negative examples | Variant profile |
+| ---: | --- | ---: | ---: | --- |
+| 1 | `(20,7)` | -0.1478 | 39/40 | broad across all five variants |
+| 2 | `(21,11)` | -0.1096 | 35/40 | strongest on alias and distractor-heavy |
+| 3 | `(22,7)` | -0.1067 | 37/40 | broad; strongest on distractor-heavy |
+| 4 | `(18,3)` | -0.0867 | 40/40 | uniformly harmful |
+| 5 | `(17,10)` | -0.0802 | 40/40 | uniformly harmful |
+| 6 | `(20,8)` | -0.0747 | 37/40 | literal/paraphrase-heavy |
+| 7 | `(22,0)` | -0.0726 | 40/40 | uniformly harmful |
+| 8 | `(22,4)` | -0.0691 | 40/40 | uniformly harmful |
+| 9 | `(21,0)` | -0.0676 | 40/40 | uniformly harmful |
+| 10 | `(20,6)` | -0.0553 | 40/40 | uniformly harmful |
+| 11 | `(20,9)` | -0.0548 | 35/40 | literal/paraphrase/relational |
+| 12 | `(21,3)` | -0.0537 | 40/40 | uniformly harmful |
+| 13 | `(21,1)` | -0.0523 | 40/40 | uniformly harmful |
+
+Selection:
+
+- Strong semantic core: `13` heads with mean delta below `-0.05`.
+- Broader semantic core: `19` heads with mean delta below `-0.03`.
+- Stored broader core at `configs/semantic_core_heads.csv`.
+
+Interpretation:
+
+The earlier TopK heads were a partial view. The stronger result is that semantic retrieval relies on a distributed late-middle circuit, mostly across layers `20-22`, with supporting heads in layers `17`, `18`, and `23`. The strongest newly discovered head, `(20,7)`, came from the RandomK/neighborhood search rather than the original patch-ranked TopK set. This explains why RandomK controls sometimes looked too strong: they were accidentally sampling real members of the circuit.
+
+Sanity check:
+
+- The 20 RandomK draw effects from the previous group-ablation run correlate strongly with the sum of this sweep's single-head effects for the sampled heads: Pearson `r = 0.92`.
+- The worst RandomK draw had actual mean delta `-0.4359`; the single-head sum predicted `-0.3942`.
+- This supports the interpretation that RandomK was not mysterious noise; it was sampling active circuit heads.
+
+This is exactly the direction we wanted: the project is moving from "retrieval heads exist" to "a task-conditioned retrieval circuit has a discoverable necessary core."
+
+## Next Step: Address Trace
+
+The first address-vs-content decomposition run should ask whether the selected core heads attend to the source answer span at the query step.
+
+Run:
+
+```bash
+python scripts/run_semantic_attention_trace.py \
+  --heads-csv configs/semantic_core_heads.csv \
+  --n-heads 19 \
+  --n-per-variant 8 \
+  --target-tokens 8192 \
+  --out artifacts_phase2/semantic_attention_trace_core19_8192_n8.csv \
+  --summary-out artifacts_phase2/semantic_attention_trace_core19_8192_n8_summary.json
+```
+
+If high-necessity heads also put high query-step attention mass on the gold or needle span, the next paper claim becomes address routing. If not, the heads may be downstream content/amplification heads, and the next intervention should focus on head output/value transport.
