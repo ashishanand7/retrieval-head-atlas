@@ -266,3 +266,66 @@ python scripts/run_semantic_attention_trace.py \
 ```
 
 If high-necessity heads also put high query-step attention mass on the gold or needle span, the next paper claim becomes address routing. If not, the heads may be downstream content/amplification heads, and the next intervention should focus on head output/value transport.
+
+## 2026-05-19: Core Attention Trace
+
+Pulled artifact commit:
+
+```text
+457c82a
+```
+
+Run:
+
+- Query-step attention trace.
+- `N=40` examples: five variants times eight examples.
+- `19` heads from the broader semantic core.
+- `760` trace rows.
+
+Address-routing heads:
+
+| Head | Gold mass | Needle mass | Argmax in needle | Interpretation |
+| --- | ---: | ---: | ---: | --- |
+| `(22,7)` | 0.6648 | 0.8483 | 1.000 | direct answer-address head |
+| `(21,11)` | 0.5309 | 0.7160 | 0.925 | direct answer-address head |
+| `(22,10)` | 0.3553 | 0.7024 | 0.700 | direct answer/needle-address head |
+
+Non-address necessary heads:
+
+- `(20,7)` is the strongest necessary head, mean ablation delta `-0.1478`, but has only `0.0015` mean gold attention mass and `0.0083` needle mass.
+- Many necessary heads have argmax attention on either the query tail or the first token rather than the answer span.
+- Examples:
+  - query-tail argmax: `(20,7)`, `(18,3)`, `(20,8)`, `(22,4)`, `(20,9)`, `(17,3)`;
+  - first-token argmax: `(17,10)`, `(21,0)`, `(21,1)`, `(21,3)`, `(21,5)`, `(23,4)`.
+
+Correlation:
+
+- Necessity versus gold attention mass across heads: `r = 0.35`.
+- Necessity versus needle attention mass across heads: `r = 0.23`.
+- So direct attention to the answer explains only part of causal importance.
+
+Interpretation:
+
+The semantic retrieval circuit appears to have at least two functional components:
+
+1. **Address heads** that directly route attention to the answer/needle span.
+2. **Non-address core heads** that are necessary but do not directly attend to the answer; these likely perform downstream transport, residual-state preparation, query-state control, or sink/query-tail stabilization.
+
+This is the first genuinely circuit-shaped result of Phase 2. It moves the story beyond "which heads matter" into "different heads play different roles."
+
+## Next Step: Functional Group Ablation
+
+Run group ablations to test whether address and non-address components are separately necessary:
+
+```bash
+python scripts/run_semantic_group_ablation.py \
+  --groups-csv configs/semantic_functional_groups.csv \
+  --groups answer_address,non_address_core,strong13,core19,first_token_sink,query_tail \
+  --n-per-variant 8 \
+  --target-tokens 8192 \
+  --intervention-scope query \
+  --out artifacts_phase2/semantic_group_ablation_functional_8192_n8_query.csv \
+  --summary-out artifacts_phase2/semantic_group_ablation_functional_8192_n8_query_summary.json
+```
+
+If `answer_address` and `non_address_core` both hurt performance, we can frame the retrieval circuit as a two-component mechanism. The next intervention after that should be activation/output patching by component.
