@@ -329,3 +329,69 @@ python scripts/run_semantic_group_ablation.py \
 ```
 
 If `answer_address` and `non_address_core` both hurt performance, we can frame the retrieval circuit as a two-component mechanism. The next intervention after that should be activation/output patching by component.
+
+## 2026-05-20: Functional Group Ablation
+
+Pulled artifact commit:
+
+```text
+67b65d8fe
+```
+
+Run:
+
+- Query-only ablation.
+- `N=40` examples: five variants times eight examples.
+- Six functional groups over the semantic circuit.
+- `240` group-ablation rows.
+
+Results:
+
+| Group | Heads | Mean delta | Negative examples | Interpretation |
+| --- | ---: | ---: | ---: | --- |
+| `answer_address` | 3 | -0.1625 | 39/40 | direct address heads are necessary but not the whole circuit |
+| `non_address_core` | 16 | -1.2689 | 40/40 | non-address machinery is strongly necessary |
+| `strong13` | 13 | -1.2934 | 40/40 | compact high-necessity core is very damaging |
+| `core19` | 19 | -1.3731 | 40/40 | broader core gives the largest total damage |
+| `first_token_sink` | 6 | -0.3763 | 40/40 | sink/first-token heads are functional, not inert |
+| `query_tail` | 9 | -1.0146 | 40/40 | query-tail heads are a major component |
+
+Variant profile:
+
+- `answer_address` hurts all variants, strongest on alias and distractor-heavy prompts.
+- `non_address_core`, `strong13`, `core19`, `first_token_sink`, and `query_tail` hurt every example in every variant.
+- `query_tail` is especially striking: `9` heads produce `-1.0146` mean delta, much larger than the original patch-ranked TopK group.
+
+Interpretation:
+
+The two-component circuit story is holding:
+
+1. **Address heads** directly attend to the answer/needle and are causally needed.
+2. **Non-address heads** do not directly attend to the answer but are much more damaging as a group, suggesting residual preparation, query-state control, transport, amplification, or sink/tail stabilization.
+
+Caveat:
+
+The non-address groups are larger than the address group. Raw group deltas therefore cannot be interpreted as pure per-head importance. Still, the result is not just a size artifact: the `query_tail` component has a larger per-head group effect than `answer_address`, and the single-head sweep already showed many non-address heads are individually necessary.
+
+## Next Step: Functional Group Controls
+
+Before making this a paper claim, run layer-matched inactive controls for each functional group. The controls are appended to:
+
+```text
+configs/semantic_functional_groups.csv
+```
+
+Run:
+
+```bash
+python scripts/run_semantic_group_ablation.py \
+  --groups-csv configs/semantic_functional_groups.csv \
+  --groups answer_address,answer_address_inactive_control,non_address_core,non_address_inactive_control,strong13,strong13_inactive_control,core19,core19_inactive_control,first_token_sink,first_token_sink_inactive_control,query_tail,query_tail_inactive_control \
+  --n-per-variant 8 \
+  --target-tokens 8192 \
+  --intervention-scope query \
+  --out artifacts_phase2/semantic_group_ablation_functional_controls_8192_n8_query.csv \
+  --summary-out artifacts_phase2/semantic_group_ablation_functional_controls_8192_n8_query_summary.json
+```
+
+If the active functional groups beat their matched inactive controls, the next move is activation/output patching by component.
