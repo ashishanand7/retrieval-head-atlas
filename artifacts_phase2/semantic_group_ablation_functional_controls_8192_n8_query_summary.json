@@ -1,0 +1,1544 @@
+{
+  "n_rows": 480,
+  "variants": [
+    "literal",
+    "alias",
+    "paraphrase",
+    "relational",
+    "distractor_heavy"
+  ],
+  "groups": {
+    "answer_address": [
+      [
+        22,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        10
+      ]
+    ],
+    "non_address_core": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "strong13": [
+      [
+        20,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ]
+    ],
+    "core19": [
+      [
+        20,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        22,
+        10
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "first_token_sink": [
+      [
+        17,
+        10
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        23,
+        4
+      ]
+    ],
+    "query_tail": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        20,
+        3
+      ],
+      [
+        17,
+        3
+      ]
+    ],
+    "answer_address_inactive_control": [
+      [
+        21,
+        2
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ]
+    ],
+    "non_address_inactive_control": [
+      [
+        17,
+        8
+      ],
+      [
+        17,
+        2
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ],
+      [
+        23,
+        8
+      ]
+    ],
+    "strong13_inactive_control": [
+      [
+        17,
+        8
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ],
+      [
+        22,
+        2
+      ]
+    ],
+    "core19_inactive_control": [
+      [
+        17,
+        8
+      ],
+      [
+        17,
+        2
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ],
+      [
+        22,
+        2
+      ],
+      [
+        22,
+        9
+      ],
+      [
+        23,
+        8
+      ]
+    ],
+    "first_token_sink_inactive_control": [
+      [
+        17,
+        8
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        23,
+        8
+      ]
+    ],
+    "query_tail_inactive_control": [
+      [
+        17,
+        8
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ]
+    ]
+  },
+  "by_group": {
+    "answer_address": {
+      "n": 40,
+      "n_heads": 3,
+      "heads": [
+        [
+          22,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          10
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -2.1747592548529306,
+      "mean_delta_logprob": -0.16251763006051384,
+      "negative_examples": 39,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": -0.12398857871691385,
+          "negative_examples": 7
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": -0.21095610658327743,
+          "negative_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": -0.13047769169012707,
+          "negative_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -0.1424477597077687,
+          "negative_examples": 8
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": -0.20471801360448214,
+          "negative_examples": 8
+        }
+      }
+    },
+    "non_address_core": {
+      "n": 40,
+      "n_heads": 16,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -3.2811226000388465,
+      "mean_delta_logprob": -1.2688809752464294,
+      "negative_examples": 40,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": -1.3475422461827595,
+          "negative_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": -1.243213286002477,
+          "negative_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": -1.2278537452220917,
+          "negative_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -1.4243863026301065,
+          "negative_examples": 8
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": -1.1014092961947122,
+          "negative_examples": 8
+        }
+      }
+    },
+    "strong13": {
+      "n": 40,
+      "n_heads": 13,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -3.305689865350723,
+      "mean_delta_logprob": -1.2934482405583065,
+      "negative_examples": 40,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": -1.311322549978892,
+          "negative_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": -1.3780979613463085,
+          "negative_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": -1.0301208049058914,
+          "negative_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -1.4057332972685497,
+          "negative_examples": 8
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": -1.3419665892918906,
+          "negative_examples": 8
+        }
+      }
+    },
+    "core19": {
+      "n": 40,
+      "n_heads": 19,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          22,
+          10
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -3.385380990306537,
+      "mean_delta_logprob": -1.3731393655141193,
+      "negative_examples": 40,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": -1.3944817731777825,
+          "negative_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": -1.421052724123001,
+          "negative_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": -1.2564672182003656,
+          "negative_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -1.4706624348958335,
+          "negative_examples": 8
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": -1.3230326771736145,
+          "negative_examples": 8
+        }
+      }
+    },
+    "first_token_sink": {
+      "n": 40,
+      "n_heads": 6,
+      "heads": [
+        [
+          17,
+          10
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          23,
+          4
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -2.3885438809792205,
+      "mean_delta_logprob": -0.3763022561868032,
+      "negative_examples": 40,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": -0.44529400269190467,
+          "negative_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": -0.33081562320391344,
+          "negative_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": -0.3071404198805492,
+          "negative_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -0.39996022979418433,
+          "negative_examples": 8
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": -0.39830100536346447,
+          "negative_examples": 8
+        }
+      }
+    },
+    "query_tail": {
+      "n": 40,
+      "n_heads": 9,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          20,
+          3
+        ],
+        [
+          17,
+          3
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -3.0268068224191667,
+      "mean_delta_logprob": -1.0145651976267496,
+      "negative_examples": 40,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": -1.011610875527064,
+          "negative_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": -1.026311308145523,
+          "negative_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": -1.0796244442462921,
+          "negative_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -1.019385168949763,
+          "negative_examples": 8
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": -0.9358941912651062,
+          "negative_examples": 8
+        }
+      }
+    },
+    "answer_address_inactive_control": {
+      "n": 40,
+      "n_heads": 3,
+      "heads": [
+        [
+          21,
+          2
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -2.0015491088231405,
+      "mean_delta_logprob": 0.010692515969276412,
+      "negative_examples": 13,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": 0.028652886549631745,
+          "negative_examples": 1
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": 0.005930960178375216,
+          "negative_examples": 4
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": 0.014358356595039368,
+          "negative_examples": 1
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -0.011897285779317174,
+          "negative_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": 0.016417662302652902,
+          "negative_examples": 0
+        }
+      }
+    },
+    "non_address_inactive_control": {
+      "n": 40,
+      "n_heads": 16,
+      "heads": [
+        [
+          17,
+          8
+        ],
+        [
+          17,
+          2
+        ],
+        [
+          18,
+          1
+        ],
+        [
+          20,
+          5
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          20,
+          10
+        ],
+        [
+          21,
+          2
+        ],
+        [
+          21,
+          8
+        ],
+        [
+          21,
+          7
+        ],
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          10
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ],
+        [
+          23,
+          8
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -1.966016274690628,
+      "mean_delta_logprob": 0.04622535010178883,
+      "negative_examples": 11,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": 0.14836149414380395,
+          "negative_examples": 0
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": -0.023030728101730347,
+          "negative_examples": 5
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": 0.08700469632943464,
+          "negative_examples": 0
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": 0.03125203649202987,
+          "negative_examples": 0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": -0.012460748354593959,
+          "negative_examples": 6
+        }
+      }
+    },
+    "strong13_inactive_control": {
+      "n": 40,
+      "n_heads": 13,
+      "heads": [
+        [
+          17,
+          8
+        ],
+        [
+          18,
+          1
+        ],
+        [
+          20,
+          5
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          21,
+          2
+        ],
+        [
+          21,
+          8
+        ],
+        [
+          21,
+          7
+        ],
+        [
+          21,
+          9
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ],
+        [
+          22,
+          2
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -1.9265513092279434,
+      "mean_delta_logprob": 0.08569031556447343,
+      "negative_examples": 0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": 0.1523489058017731,
+          "negative_examples": 0
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": 0.07801335056622821,
+          "negative_examples": 0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": 0.11056777834892259,
+          "negative_examples": 0
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": 0.03919213016827902,
+          "negative_examples": 0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": 0.04832941293716422,
+          "negative_examples": 0
+        }
+      }
+    },
+    "core19_inactive_control": {
+      "n": 40,
+      "n_heads": 19,
+      "heads": [
+        [
+          17,
+          8
+        ],
+        [
+          17,
+          2
+        ],
+        [
+          18,
+          1
+        ],
+        [
+          20,
+          5
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          20,
+          10
+        ],
+        [
+          21,
+          2
+        ],
+        [
+          21,
+          8
+        ],
+        [
+          21,
+          7
+        ],
+        [
+          21,
+          9
+        ],
+        [
+          21,
+          10
+        ],
+        [
+          21,
+          6
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ],
+        [
+          22,
+          2
+        ],
+        [
+          22,
+          9
+        ],
+        [
+          23,
+          8
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -1.955055472254753,
+      "mean_delta_logprob": 0.05718615253766377,
+      "negative_examples": 14,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": 0.1692285438378652,
+          "negative_examples": 0
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": -0.00038024783134463225,
+          "negative_examples": 5
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": 0.08595437804857886,
+          "negative_examples": 1
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -0.005088369051615305,
+          "negative_examples": 5
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": 0.03621645768483475,
+          "negative_examples": 3
+        }
+      }
+    },
+    "first_token_sink_inactive_control": {
+      "n": 40,
+      "n_heads": 6,
+      "heads": [
+        [
+          17,
+          8
+        ],
+        [
+          21,
+          2
+        ],
+        [
+          21,
+          8
+        ],
+        [
+          21,
+          7
+        ],
+        [
+          21,
+          9
+        ],
+        [
+          23,
+          8
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -1.9514620939890546,
+      "mean_delta_logprob": 0.06077953080336253,
+      "negative_examples": 1,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": 0.059881975253423037,
+          "negative_examples": 0
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": 0.06956318020820615,
+          "negative_examples": 0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": 0.09367647270361582,
+          "negative_examples": 0
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": 0.05174345771471667,
+          "negative_examples": 0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": 0.029032568136850956,
+          "negative_examples": 1
+        }
+      }
+    },
+    "query_tail_inactive_control": {
+      "n": 40,
+      "n_heads": 9,
+      "heads": [
+        [
+          17,
+          8
+        ],
+        [
+          18,
+          1
+        ],
+        [
+          20,
+          5
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          20,
+          10
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ]
+      ],
+      "mean_baseline_logprob": -2.0122416247924173,
+      "mean_ablated_logprob": -1.9881572852532066,
+      "mean_delta_logprob": 0.024084339539209985,
+      "negative_examples": 19,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_logprob": 0.1302526891231537,
+          "negative_examples": 0
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_logprob": 0.007102559010187776,
+          "negative_examples": 2
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_logprob": 0.01958069205284113,
+          "negative_examples": 4
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_logprob": -0.031586706638336154,
+          "negative_examples": 8
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_logprob": -0.004927535851796505,
+          "negative_examples": 5
+        }
+      }
+    }
+  },
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "n_examples": 40,
+  "groups_csv": "/home/ec2-user/SageMaker/retrieval-head-atlas/configs/semantic_functional_groups.csv",
+  "intervention_scope": "query",
+  "target_tokens": 8192,
+  "needle_frac": 0.1
+}
