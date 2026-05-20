@@ -456,3 +456,70 @@ Expected readout:
 - If `answer_address` patching helps, address heads carry sufficient source-answer information.
 - If `query_tail` or `first_token_sink` patching helps, non-address components are not merely necessary stabilizers; they carry restorable causal state.
 - If active components ablate strongly but patch weakly, the mechanism may be distributed or require patching multiple stages rather than query-step o-proj input alone.
+
+## 2026-05-20: Component Activation Patching
+
+Pulled artifact commit:
+
+```text
+b01c495
+```
+
+Run:
+
+- Clean-to-corrupt query-step o-proj-input patching.
+- `N=40` paired examples: clean and corrupt prompts differ only in the six-digit secret.
+- `8` groups: six active groups plus two inactive controls.
+- `320` patching rows.
+
+Baseline:
+
+- Clean prompt, clean gold mean logprob: `-2.0122`.
+- Corrupt prompt, clean gold mean logprob: `-5.1059`.
+- Mean available recovery gap: `3.0936`.
+- Corrupt prompt, corrupt gold mean logprob: `-2.0432`, so the corrupt prompt successfully changes the model's expected answer.
+
+Results:
+
+| Group | Patch delta | Recovery | Positive examples | Interpretation |
+| --- | ---: | ---: | ---: | --- |
+| `answer_address` | +0.5075 | 16.9% | 38/40 | direct answer-address heads carry recoverable answer signal |
+| `core19` | +0.5161 | 17.2% | 40/40 | broader core helps only slightly more than address heads alone |
+| `strong13` | +0.4746 | 15.8% | 39/40 | compact core carries recoverable signal mostly through address-containing subset |
+| `non_address_core` | +0.0349 | 1.2% | 34/40 | necessary but not sufficient as clean query-step output patch |
+| `query_tail` | +0.0129 | 0.4% | 20/40 | necessary, but does not itself restore answer identity |
+| `first_token_sink` | +0.0109 | 0.4% | 22/40 | necessary, but not a standalone content carrier |
+| `answer_address_inactive_control` | -0.0049 | -0.1% | 17/40 | inactive control does not patch |
+| `query_tail_inactive_control` | -0.0014 | ~0.0% | 20/40 | inactive control does not patch |
+
+Interpretation:
+
+This cleanly separates **necessity** from **sufficiency**:
+
+- Address heads are both necessary and partially sufficient. They directly attend to the answer span and clean activation patching restores a meaningful fraction of clean-answer logprob.
+- Non-address groups are strongly necessary under ablation but almost not sufficient under clean-to-corrupt query-step patching. They likely provide support, gating, query-state preparation, or stabilization rather than directly carrying the answer identity.
+- `core19` barely improves over `answer_address` alone, which suggests most restorable content in this patching setup lives in the address heads.
+
+Narrative update:
+
+The semantic retrieval circuit looks like a two-role system:
+
+1. **Address/content heads** retrieve and carry answer-specific information.
+2. **Support heads** are required for the model to use retrieval, but their activations are not themselves enough to transplant the answer.
+
+## Next Step: Patch-Then-Ablate Interaction
+
+Test whether non-address support heads are required to use the restored answer-address signal:
+
+```bash
+python scripts/run_semantic_patch_interaction.py \
+  --groups-csv configs/semantic_functional_groups.csv \
+  --patch-group answer_address \
+  --ablate-groups query_tail,first_token_sink,non_address_core,query_tail_inactive_control,answer_address_inactive_control \
+  --n-per-variant 8 \
+  --target-tokens 8192 \
+  --out artifacts_phase2/semantic_patch_interaction_answer_address_8192_n8.csv \
+  --summary-out artifacts_phase2/semantic_patch_interaction_answer_address_8192_n8_summary.json
+```
+
+If ablating `query_tail`, `first_token_sink`, or `non_address_core` suppresses the benefit from answer-address patching, then the circuit is not just parallel components; the non-address support heads are needed downstream of the address heads.
