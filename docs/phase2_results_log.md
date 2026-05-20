@@ -395,3 +395,64 @@ python scripts/run_semantic_group_ablation.py \
 ```
 
 If the active functional groups beat their matched inactive controls, the next move is activation/output patching by component.
+
+## 2026-05-20: Functional Group Inactive Controls
+
+Pulled artifact commit:
+
+```text
+ddb27ab
+```
+
+Run:
+
+- Query-only ablation.
+- `N=40` examples: five variants times eight examples.
+- Active functional groups plus layer-matched inactive controls.
+- `480` group-ablation rows.
+
+Results:
+
+| Active group | Active delta | Control delta | Active-control gap | Worse examples |
+| --- | ---: | ---: | ---: | ---: |
+| `answer_address` | -0.1625 | +0.0107 | -0.1732 | 39/40 |
+| `non_address_core` | -1.2689 | +0.0462 | -1.3151 | 40/40 |
+| `strong13` | -1.2934 | +0.0857 | -1.3791 | 40/40 |
+| `core19` | -1.3731 | +0.0572 | -1.4303 | 40/40 |
+| `first_token_sink` | -0.3763 | +0.0608 | -0.4371 | 40/40 |
+| `query_tail` | -1.0146 | +0.0241 | -1.0386 | 40/40 |
+
+Interpretation:
+
+The active functional groups decisively beat their matched controls. The inactive controls mostly improve or barely change the clean answer logprob, while active groups consistently damage it. This rules out a simple "large late-layer ablation" explanation.
+
+Narrative status:
+
+The Phase 2 story is now coherent:
+
+1. The semantic retrieval circuit has a discoverable necessary core.
+2. The core splits into direct answer-address heads and non-address support heads.
+3. Non-address support heads, especially query-tail and first-token/sink heads, are not inert artifacts; they are causally important.
+4. Matched inactive controls confirm this is not just layer, group size, or ablation volume.
+
+This is a strong enough base to move from ablation to sufficiency.
+
+## Next Step: Component Activation Patching
+
+Run clean-to-corrupt query-step activation patching by component:
+
+```bash
+python scripts/run_semantic_component_patching.py \
+  --groups-csv configs/semantic_functional_groups.csv \
+  --groups answer_address,non_address_core,strong13,core19,first_token_sink,query_tail,answer_address_inactive_control,query_tail_inactive_control \
+  --n-per-variant 8 \
+  --target-tokens 8192 \
+  --out artifacts_phase2/semantic_component_patching_functional_8192_n8.csv \
+  --summary-out artifacts_phase2/semantic_component_patching_functional_8192_n8_summary.json
+```
+
+Expected readout:
+
+- If `answer_address` patching helps, address heads carry sufficient source-answer information.
+- If `query_tail` or `first_token_sink` patching helps, non-address components are not merely necessary stabilizers; they carry restorable causal state.
+- If active components ablate strongly but patch weakly, the mechanism may be distributed or require patching multiple stages rather than query-step o-proj input alone.
