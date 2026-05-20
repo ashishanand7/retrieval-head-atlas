@@ -72,11 +72,12 @@ def mean(values):
     return float(np.mean(values)) if values else float("nan")
 
 
-def summarize(rows, variants):
+def summarize(rows, variants, ablate_groups):
     summary = {
         "n_rows": len(rows),
         "variants": variants,
         "by_condition": {},
+        "interactions": {},
     }
 
     for condition in sorted({row["condition"] for row in rows}):
@@ -102,6 +103,41 @@ def summarize(rows, variants):
                 "positive_patch_examples": int(sum(1 for row in variant_subset if row["delta_patch"] > 0)),
             }
         summary["by_condition"][condition] = item
+
+    by_example = {}
+    for row in rows:
+        key = (row["variant"], row["seed"])
+        by_example.setdefault(key, {})[row["condition"]] = row
+
+    for group in ablate_groups:
+        ablate_condition = f"ablate_only_{group}"
+        patch_ablate_condition = f"patch_plus_ablate_{group}"
+        patch_effect_under_ablation = []
+        interaction_losses = []
+        ablate_main_effects = []
+        for condition_rows in by_example.values():
+            if not all(
+                name in condition_rows
+                for name in ["patch_only", ablate_condition, patch_ablate_condition]
+            ):
+                continue
+            patch_only = condition_rows["patch_only"]
+            ablate_only = condition_rows[ablate_condition]
+            patch_ablate = condition_rows[patch_ablate_condition]
+            patch_effect = patch_only["delta_patch"]
+            patched_when_ablated = patch_ablate["patched_logprob"] - ablate_only["patched_logprob"]
+            patch_effect_under_ablation.append(patched_when_ablated)
+            interaction_losses.append(patched_when_ablated - patch_effect)
+            ablate_main_effects.append(ablate_only["delta_patch"])
+
+        summary["interactions"][group] = {
+            "n": len(patch_effect_under_ablation),
+            "mean_ablate_main_effect": mean(ablate_main_effects),
+            "mean_patch_effect_under_ablation": mean(patch_effect_under_ablation),
+            "mean_interaction_loss": mean(interaction_losses),
+            "patch_effect_under_ablation_positive": int(sum(1 for value in patch_effect_under_ablation if value > 0)),
+            "interaction_loss_negative": int(sum(1 for value in interaction_losses if value < 0)),
+        }
 
     return summary
 
@@ -191,6 +227,18 @@ def main() -> None:
         conditions = [("patch_only", patch_only_lp, args.patch_group, "")]
         for ablate_group in ablate_groups:
             ablate_spec = spec_from_pairs(groups[ablate_group])
+            ablate_only_lp = mean_gold_logprob(
+                model=model,
+                tokenizer=tokenizer,
+                prompt=ex["corrupt_prompt"],
+                gold=ex["clean_gold"],
+                max_len=args.max_len,
+                chunk_size=args.chunk_size,
+                intervention=HeadAblator(layout, ablate_spec),
+                intervention_scope="query",
+            )
+            conditions.append((f"ablate_only_{ablate_group}", ablate_only_lp, "", ablate_group))
+
             intervention = CompositeIntervention(
                 [
                     HeadPatcher(layout, clean_cache, patch_spec),
@@ -246,7 +294,7 @@ def main() -> None:
         writer.writeheader()
         writer.writerows(rows)
 
-    summary = summarize(rows, variants)
+    summary = summarize(rows, variants, ablate_groups)
     summary.update(
         {
             "model_id": cfg.model_id,

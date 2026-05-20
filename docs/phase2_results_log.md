@@ -523,3 +523,62 @@ python scripts/run_semantic_patch_interaction.py \
 ```
 
 If ablating `query_tail`, `first_token_sink`, or `non_address_core` suppresses the benefit from answer-address patching, then the circuit is not just parallel components; the non-address support heads are needed downstream of the address heads.
+
+## 2026-05-20: Patch-Then-Ablate Interaction
+
+Pulled artifact commit:
+
+```text
+52696ee
+```
+
+Run:
+
+- Patch clean `answer_address` activations into corrupt prompts.
+- Then ablate candidate support groups at the same query step.
+- `N=40` paired examples.
+- `240` rows.
+
+Results:
+
+| Condition | Patch delta | Change vs patch-only | Positive patch examples |
+| --- | ---: | ---: | ---: |
+| `patch_only` | +0.5075 | 0.0000 | 38/40 |
+| `patch_plus_ablate_first_token_sink` | +0.2323 | -0.2752 | 34/40 |
+| `patch_plus_ablate_query_tail` | -0.2153 | -0.7228 | 7/40 |
+| `patch_plus_ablate_non_address_core` | -0.3499 | -0.8574 | 3/40 |
+| `patch_plus_ablate_query_tail_inactive_control` | +0.5329 | +0.0254 | 39/40 |
+| `patch_plus_ablate_answer_address_inactive_control` | +0.5298 | +0.0223 | 38/40 |
+
+Interpretation:
+
+The interaction result is consistent with a dependency-chain story:
+
+- Patching address heads helps.
+- Ablating inactive controls does not suppress that help.
+- Ablating `first_token_sink` weakens the patch.
+- Ablating `query_tail` or the full `non_address_core` not only removes the patch benefit, but drives clean-answer logprob below the corrupt baseline.
+
+However, one extra control is needed before making the dependency-chain claim strongly:
+
+The current run measures `patch_plus_ablate`, but not `ablate_only` on the corrupt prompt. Without `ablate_only`, we cannot fully separate "this support group blocks use of the patch" from "this support group independently damages clean-answer logprob under the corrupt prompt."
+
+The script has been updated to include `ablate_only_*` conditions and an explicit interaction summary.
+
+Run:
+
+```bash
+python scripts/run_semantic_patch_interaction.py \
+  --groups-csv configs/semantic_functional_groups.csv \
+  --patch-group answer_address \
+  --ablate-groups query_tail,first_token_sink,non_address_core,query_tail_inactive_control,answer_address_inactive_control \
+  --n-per-variant 8 \
+  --target-tokens 8192 \
+  --out artifacts_phase2/semantic_patch_interaction_answer_address_with_ablate_only_8192_n8.csv \
+  --summary-out artifacts_phase2/semantic_patch_interaction_answer_address_with_ablate_only_8192_n8_summary.json
+```
+
+Key readout:
+
+- `patch_effect_under_ablation = patch_plus_ablate - ablate_only`.
+- If this is much smaller than `patch_only - corrupt_baseline`, then the support group is genuinely required for using the address-head patch.
