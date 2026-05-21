@@ -735,3 +735,108 @@ Expected readout:
 - If `activation_control_L20H5` has high activation delta but near-zero patch delta, it becomes a strong negative control separating activation sensitivity from causal answer transport.
 
 After that, run the same functional suite at `--needle-frac 0.5` and `--needle-frac 0.9` to show the circuit generalizes beyond the current early-needle setting.
+
+## 2026-05-21: Single-Head Patching
+
+Pulled artifact commit:
+
+```text
+51d6198
+```
+
+Run:
+
+- Clean-to-corrupt query-step o-proj-input patching.
+- One head per group.
+- `N=40` paired examples.
+- `13` single-head groups: three answer-address heads, six support heads, one activation-sensitive control, and three inactive controls.
+- `520` rows.
+
+Baseline:
+
+- Clean prompt, clean gold mean logprob: `-2.0122`.
+- Corrupt prompt, clean gold mean logprob: `-5.1059`.
+- Corrupt prompt, corrupt gold mean logprob: `-2.0432`.
+- Mean available recovery gap: `3.0936`.
+
+Results:
+
+| Head group | Head | Patch delta | Recovery | Positive examples | Interpretation |
+| --- | --- | ---: | ---: | ---: | --- |
+| `address_L22H7` | `L22H7` | +0.4571 | 15.2% | 38/40 | dominant answer-content carrier |
+| `address_L22H10` | `L22H10` | +0.0720 | 2.4% | 36/40 | smaller answer-address contributor |
+| `address_L21H11` | `L21H11` | +0.0163 | 0.6% | 25/40 | attends the answer and is necessary, but weak as a standalone donor |
+| `support_L22H0` | `L22H0` | +0.0054 | 0.2% | 25/40 | essentially no standalone content patch |
+| `support_L22H4` | `L22H4` | +0.0015 | 0.1% | 22/40 | essentially no standalone content patch |
+| `activation_control_L20H5` | `L20H5` | +0.0000 | 0.0% | 20/40 | activation-sensitive but not causal/transplantable |
+| `support_L20H8` | `L20H8` | -0.0003 | 0.0% | 19/40 | no standalone content patch |
+| `support_L20H7` | `L20H7` | -0.0027 | -0.1% | 18/40 | strongest single-head ablation, but not a content donor |
+| `support_L18H3` | `L18H3` | -0.0079 | -0.2% | 20/40 | necessary support, not a content donor |
+| `support_L17H10` | `L17H10` | -0.0118 | -0.4% | 11/40 | necessary support, not a content donor |
+
+Address-head decomposition:
+
+- The previous three-head `answer_address` patch delta was `+0.5075`.
+- `L22H7` alone gives `+0.4571`, or about `90%` of the full address-group patch.
+- `L22H10` gives `+0.0720`, useful but much smaller.
+- `L21H11` gives only `+0.0163`, despite direct answer attention and a strong ablation effect.
+- The three single-head deltas sum to `+0.5454`, slightly above the joint group patch, so the address heads are mildly redundant rather than perfectly additive.
+
+Variant detail:
+
+| Variant | Full address group | `L22H7` | `L22H10` | `L21H11` |
+| --- | ---: | ---: | ---: | ---: |
+| `literal` | +0.3534 | +0.2941 | +0.0249 | +0.0339 |
+| `alias` | +0.6717 | +0.6152 | +0.1010 | +0.0288 |
+| `paraphrase` | +0.5869 | +0.5426 | +0.0475 | +0.0296 |
+| `relational` | +0.5190 | +0.4526 | +0.1607 | -0.0097 |
+| `distractor_heavy` | +0.4065 | +0.3808 | +0.0261 | -0.0010 |
+
+Interpretation:
+
+The mechanism is now sharper than the earlier group-level story:
+
+1. **Dominant content head**: `L22H7` is the main answer-transplant head. It has direct answer attention, the largest clean/corrupt activation shift, and nearly all of the address-group patching effect.
+2. **Companion address head**: `L22H10` provides a smaller but consistent patch effect, especially for relational and alias prompts.
+3. **Necessary-but-weak donor address head**: `L21H11` attends strongly to the answer and ablates strongly, but its clean activation patch barely restores the clean answer. It may help route/use the retrieved content rather than carry a cleanly transplantable value at this patch site.
+4. **Support heads are not content donors**: heads such as `L20H7`, `L18H3`, and `L17H10` remain important under ablation but patch near zero as individual clean donors.
+5. **Activation sensitivity is not enough**: `L20H5` has a large clean/corrupt activation delta but neither ablates nor patches meaningfully. This is a strong control separating representational change from causal answer transport.
+
+Updated narrative:
+
+The project can now claim a **role-decomposed retrieval circuit**:
+
+- A dominant answer-address head (`L22H7`) carries most transplantable answer identity.
+- A smaller companion address head (`L22H10`) contributes in some semantic variants.
+- Other necessary heads create or preserve retrieval state but do not directly transplant the answer at the query-step o-proj input.
+- Activation-only evidence is insufficient without causal patching and ablation.
+
+## Next Step: Position Generalization
+
+The current evidence is strong at `needle_frac=0.1`, an early-context needle. For the paper/jury story, the next question is whether the circuit is robust across context position.
+
+Run the core suite at middle and late positions:
+
+```bash
+bash scripts/run_phase2_position_generalization.sh
+```
+
+To run only one position first:
+
+```bash
+NEEDLE_FRACS="0.5" bash scripts/run_phase2_position_generalization.sh
+```
+
+This executes, for each requested `needle_frac`:
+
+- functional group ablation,
+- functional component patching,
+- single-head patching,
+- attention trace,
+- activation-delta analysis.
+
+Expected readout:
+
+- If `L22H7` remains dominant at `0.5` and `0.9`, we have a strong general semantic-retrieval circuit claim.
+- If `L22H7` weakens and other heads take over, we pivot to a position-dependent circuit story.
+- If support-head ablation remains strong while patching stays weak, the role-decomposition story generalizes.
