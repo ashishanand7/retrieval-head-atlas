@@ -648,3 +648,90 @@ python scripts/run_semantic_activation_delta.py \
 ```
 
 If address heads show much larger clean-corrupt activation deltas than support heads, it explains the necessity/sufficiency split cleanly.
+
+## 2026-05-21: Activation-Difference Analysis
+
+Pulled artifact commit:
+
+```text
+fd490d2
+```
+
+Run:
+
+- Clean-vs-corrupt query-step o-proj-input activation deltas.
+- `N=40` paired examples.
+- `8` groups: active functional groups plus two inactive controls.
+- Includes per-head rows for all heads present in the selected groups.
+- `1480` rows.
+
+Group-level results:
+
+| Group | Heads | Diff L2 | Relative diff | Cosine | Interpretation |
+| --- | ---: | ---: | ---: | ---: | --- |
+| `answer_address` | 3 | 13.5503 | 0.8367 | 0.6423 | answer identity strongly changes the address-head activation |
+| `core19` | 19 | 13.7354 | 0.4008 | 0.9151 | large because it includes address heads |
+| `strong13` | 13 | 13.1641 | 0.4266 | 0.9037 | large because it includes address heads |
+| `non_address_core` | 16 | 2.1159 | 0.0706 | 0.9974 | necessary support heads are nearly clean/corrupt invariant |
+| `query_tail` | 9 | 1.9277 | 0.0717 | 0.9973 | necessary support heads are nearly clean/corrupt invariant |
+| `first_token_sink` | 6 | 0.7716 | 0.0641 | 0.9978 | necessary support heads are nearly clean/corrupt invariant |
+| `answer_address_inactive_control` | 3 | 0.5333 | 0.0672 | 0.9976 | matched inactive control is nearly invariant |
+| `query_tail_inactive_control` | 9 | 1.9851 | 0.1641 | 0.9840 | activation-sensitive control, but functionally inert in prior patch/ablation |
+
+Top per-head activation deltas:
+
+| Head | Diff L2 | Relative diff | Cosine | Prior functional read |
+| --- | ---: | ---: | ---: | --- |
+| `L22H7` | 12.5690 | 1.1228 | 0.3607 | direct answer-address head |
+| `L22H10` | 3.3421 | 0.6728 | 0.7460 | direct answer-address head |
+| `L20H5` | 1.8128 | 0.3295 | 0.9410 | activation-sensitive but single-head ablation was null |
+| `L21H11` | 2.8415 | 0.2763 | 0.9597 | direct answer-address head |
+| `L22H0` | 1.0545 | 0.1630 | 0.9864 | necessary non-address/query-tail support |
+| `L22H4` | 1.1247 | 0.1474 | 0.9898 | necessary non-address/query-tail support |
+
+Interpretation:
+
+This result strongly supports the necessity/sufficiency split:
+
+- Address heads are the main place where changing the answer changes the query-step activation geometry.
+- Support heads are causally necessary under ablation, but their query-step activations are mostly stable between clean and corrupt answers. This explains why clean-to-corrupt patching of support heads restores almost no answer probability.
+- `core19` and `strong13` look activation-sensitive mainly because they include `L22H7`, `L22H10`, and `L21H11`.
+- `L20H5` is an important cautionary control: it is activation-sensitive but was functionally inert in the single-head ablation sweep. That lets us say activation deltas are useful for mechanistic diagnosis, but causal intervention is still required.
+
+Updated mechanism:
+
+The semantic retrieval circuit now has three distinct categories:
+
+1. **Answer-address/content heads**: direct needle attention, large clean/corrupt activation shift, partial sufficiency under patching.
+2. **Support/state heads**: strong ablation necessity, low answer-specific activation shift, weak standalone patch sufficiency.
+3. **Activation-sensitive bystanders**: measurable clean/corrupt activation changes without causal importance.
+
+## Next Step: Single-Head Sufficiency Within Address Heads
+
+Before broadening to context-position generalization, decompose the answer-address patch result into individual heads. This tests whether `L22H7` alone carries most of the recoverable answer signal, whether `L21H11` and `L22H10` contribute independently, and whether the activation-sensitive control `L20H5` patches despite being ablation-null.
+
+A config for this has been added:
+
+```text
+configs/semantic_single_head_patch_groups.csv
+```
+
+Run:
+
+```bash
+python scripts/run_semantic_component_patching.py \
+  --groups-csv configs/semantic_single_head_patch_groups.csv \
+  --groups address_L22H7,address_L21H11,address_L22H10,support_L20H7,support_L18H3,support_L17H10,support_L20H8,support_L22H0,support_L22H4,activation_control_L20H5,inactive_control_L21H2,inactive_control_L22H8,inactive_control_L22H3 \
+  --n-per-variant 8 \
+  --target-tokens 8192 \
+  --out artifacts_phase2/semantic_single_head_patching_8192_n8.csv \
+  --summary-out artifacts_phase2/semantic_single_head_patching_8192_n8_summary.json
+```
+
+Expected readout:
+
+- If `address_L22H7` recovers most of the group patch delta, the paper can name a dominant content carrier.
+- If the three address heads each recover non-trivial probability, the story is an ensemble of address heads.
+- If `activation_control_L20H5` has high activation delta but near-zero patch delta, it becomes a strong negative control separating activation sensitivity from causal answer transport.
+
+After that, run the same functional suite at `--needle-frac 0.5` and `--needle-frac 0.9` to show the circuit generalizes beyond the current early-needle setting.

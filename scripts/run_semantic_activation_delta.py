@@ -119,6 +119,8 @@ def summarize(rows, variants):
             "mean_diff_l2": mean([row["diff_l2"] for row in subset]),
             "mean_relative_diff_l2": mean([row["relative_diff_l2"] for row in subset]),
             "mean_cosine_similarity": mean([row["cosine_similarity"] for row in subset]),
+            "mean_mean_abs_diff": mean([row["mean_abs_diff"] for row in subset]),
+            "mean_max_abs_diff": mean([row["max_abs_diff"] for row in subset]),
             "by_variant": {},
         }
         for variant in variants:
@@ -128,6 +130,8 @@ def summarize(rows, variants):
                 "mean_diff_l2": mean([row["diff_l2"] for row in variant_subset]),
                 "mean_relative_diff_l2": mean([row["relative_diff_l2"] for row in variant_subset]),
                 "mean_cosine_similarity": mean([row["cosine_similarity"] for row in variant_subset]),
+                "mean_mean_abs_diff": mean([row["mean_abs_diff"] for row in variant_subset]),
+                "mean_max_abs_diff": mean([row["max_abs_diff"] for row in variant_subset]),
             }
         summary["by_group"][group] = item
 
@@ -138,9 +142,13 @@ def summarize(rows, variants):
             "layer": int(key[0]),
             "head": int(key[1]),
             "n": len(subset),
+            "mean_clean_l2": mean([row["clean_l2"] for row in subset]),
+            "mean_corrupt_l2": mean([row["corrupt_l2"] for row in subset]),
             "mean_diff_l2": mean([row["diff_l2"] for row in subset]),
             "mean_relative_diff_l2": mean([row["relative_diff_l2"] for row in subset]),
             "mean_cosine_similarity": mean([row["cosine_similarity"] for row in subset]),
+            "mean_mean_abs_diff": mean([row["mean_abs_diff"] for row in subset]),
+            "mean_max_abs_diff": mean([row["max_abs_diff"] for row in subset]),
         }
 
     return summary
