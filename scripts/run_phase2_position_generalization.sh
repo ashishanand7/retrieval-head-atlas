@@ -4,6 +4,8 @@ set -euo pipefail
 NEEDLE_FRACS="${NEEDLE_FRACS:-0.5 0.9}"
 N_PER_VARIANT="${N_PER_VARIANT:-8}"
 TARGET_TOKENS="${TARGET_TOKENS:-8192}"
+MAX_LEN="${MAX_LEN:-16384}"
+CHUNK_SIZE="${CHUNK_SIZE:-1024}"
 OUT_DIR="${OUT_DIR:-artifacts_phase2}"
 
 FUNCTIONAL_GROUPS="answer_address,non_address_core,strong13,core19,first_token_sink,query_tail,answer_address_inactive_control,query_tail_inactive_control"
@@ -19,6 +21,8 @@ for NEEDLE_FRAC in ${NEEDLE_FRACS}; do
     --groups "${FUNCTIONAL_GROUPS}" \
     --n-per-variant "${N_PER_VARIANT}" \
     --target-tokens "${TARGET_TOKENS}" \
+    --max-len "${MAX_LEN}" \
+    --chunk-size "${CHUNK_SIZE}" \
     --needle-frac "${NEEDLE_FRAC}" \
     --intervention-scope query \
     --out "${OUT_DIR}/semantic_group_ablation_functional_controls_${SUFFIX}_query.csv" \
@@ -30,6 +34,8 @@ for NEEDLE_FRAC in ${NEEDLE_FRACS}; do
     --groups "${FUNCTIONAL_GROUPS}" \
     --n-per-variant "${N_PER_VARIANT}" \
     --target-tokens "${TARGET_TOKENS}" \
+    --max-len "${MAX_LEN}" \
+    --chunk-size "${CHUNK_SIZE}" \
     --needle-frac "${NEEDLE_FRAC}" \
     --out "${OUT_DIR}/semantic_component_patching_functional_${SUFFIX}.csv" \
     --summary-out "${OUT_DIR}/semantic_component_patching_functional_${SUFFIX}_summary.json"
@@ -40,6 +46,8 @@ for NEEDLE_FRAC in ${NEEDLE_FRACS}; do
     --groups "${SINGLE_HEAD_GROUPS}" \
     --n-per-variant "${N_PER_VARIANT}" \
     --target-tokens "${TARGET_TOKENS}" \
+    --max-len "${MAX_LEN}" \
+    --chunk-size "${CHUNK_SIZE}" \
     --needle-frac "${NEEDLE_FRAC}" \
     --out "${OUT_DIR}/semantic_single_head_patching_${SUFFIX}.csv" \
     --summary-out "${OUT_DIR}/semantic_single_head_patching_${SUFFIX}_summary.json"
@@ -50,6 +58,8 @@ for NEEDLE_FRAC in ${NEEDLE_FRACS}; do
     --n-heads 19 \
     --n-per-variant "${N_PER_VARIANT}" \
     --target-tokens "${TARGET_TOKENS}" \
+    --max-len "${MAX_LEN}" \
+    --chunk-size "${CHUNK_SIZE}" \
     --needle-frac "${NEEDLE_FRAC}" \
     --out "${OUT_DIR}/semantic_attention_trace_core19_${SUFFIX}.csv" \
     --summary-out "${OUT_DIR}/semantic_attention_trace_core19_${SUFFIX}_summary.json"
@@ -60,6 +70,8 @@ for NEEDLE_FRAC in ${NEEDLE_FRACS}; do
     --groups "${FUNCTIONAL_GROUPS}" \
     --n-per-variant "${N_PER_VARIANT}" \
     --target-tokens "${TARGET_TOKENS}" \
+    --max-len "${MAX_LEN}" \
+    --chunk-size "${CHUNK_SIZE}" \
     --needle-frac "${NEEDLE_FRAC}" \
     --include-head-rows \
     --out "${OUT_DIR}/semantic_activation_delta_functional_${SUFFIX}.csv" \

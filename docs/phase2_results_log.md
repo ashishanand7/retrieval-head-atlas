@@ -840,3 +840,100 @@ Expected readout:
 - If `L22H7` remains dominant at `0.5` and `0.9`, we have a strong general semantic-retrieval circuit claim.
 - If `L22H7` weakens and other heads take over, we pivot to a position-dependent circuit story.
 - If support-head ablation remains strong while patching stays weak, the role-decomposition story generalizes.
+
+## 2026-05-21: Position Generalization
+
+Pulled artifact commit:
+
+```text
+a19a700
+```
+
+Run:
+
+- Full phase-2 core suite at `needle_frac=0.5` and `needle_frac=0.9`.
+- Compared against existing `needle_frac=0.1` results.
+- `N=40` examples per position.
+- `8192` target tokens.
+
+The large diff in this commit is expected: it adds the five core artifact families for two new needle positions:
+
+- functional group ablation,
+- functional component patching,
+- single-head patching,
+- attention trace,
+- activation-delta analysis.
+
+### Cross-Position Summary
+
+| Metric | `0.1` | `0.5` | `0.9` | Read |
+| --- | ---: | ---: | ---: | --- |
+| `answer_address` ablation | -0.1625 | -0.1262 | -0.0940 | address group remains necessary, though less than support heads |
+| `non_address_core` ablation | -1.2689 | -1.3643 | -1.1980 | support/core necessity is stable and large |
+| `query_tail` ablation | -1.0146 | -0.9881 | -0.9561 | query-tail support remains strongly necessary |
+| `answer_address` patch | +0.5075 | +0.3729 | +0.4899 | address content patch generalizes, with a mid-position dip |
+| `non_address_core` patch | +0.0349 | +0.0356 | +0.0361 | support heads still do not transplant answer identity |
+| `L22H7` patch | +0.4571 | +0.3353 | +0.4619 | dominant content head remains dominant |
+| `L22H10` patch | +0.0720 | +0.0580 | +0.0507 | smaller companion effect persists |
+| `L21H11` patch | +0.0163 | +0.0291 | +0.0316 | weak standalone donor across positions |
+| `L22H7` gold attention | 0.6648 | 0.5208 | 0.6897 | direct answer attention remains strong |
+| `L22H7` needle attention | 0.8483 | 0.8053 | 0.8935 | direct needle attention remains strong |
+| `L22H7` activation relative diff | 1.1228 | 1.0113 | 1.1098 | answer-specific activation shift remains very large |
+
+Variant-level notes:
+
+- `L22H7` stays positive for every semantic variant at every position.
+- The middle-position dip is broad but not a collapse:
+  - `literal`: `+0.2941 -> +0.1759 -> +0.3706`
+  - `alias`: `+0.6152 -> +0.5171 -> +0.5742`
+  - `paraphrase`: `+0.5426 -> +0.3006 -> +0.4550`
+  - `relational`: `+0.4526 -> +0.4330 -> +0.5021`
+  - `distractor_heavy`: `+0.3808 -> +0.2499 -> +0.4074`
+- `L22H10` is consistently positive but smaller, with its largest relative role in relational prompts.
+- `L21H11` remains weak as a clean donor despite strong attention and ablation evidence.
+- Activation-sensitive control `L20H5` becomes mildly positive at later positions (`+0.0214` at `0.5`, `+0.0114` at `0.9`), but it is still far below `L22H7` and does not change the main conclusion.
+
+Interpretation:
+
+The position-generalization run supports the main story. This is not just an early-context artifact.
+
+The circuit role decomposition holds across early, middle, and late needle positions:
+
+1. **Dominant answer-content head**: `L22H7` keeps direct needle attention, large answer-specific activation shift, and the largest single-head patch effect at all positions.
+2. **Companion address head**: `L22H10` remains a smaller positive donor.
+3. **Support/state heads**: non-address core and query-tail groups remain highly necessary but weak as clean content donors.
+4. **Causal evidence still matters**: activation-sensitive controls do not become meaningful content carriers.
+
+The only meaningful wrinkle is the `0.5` dip in address patch strength. That is useful: the eventual paper can say the mechanism is robust but not perfectly position-invariant.
+
+## Next Step: Context-Length Stress Test
+
+After position generalization at `8192`, the next reviewer/jury question is whether the circuit is a genuine long-context retrieval circuit or only an 8k-context result.
+
+The position runner now accepts `MAX_LEN` and `CHUNK_SIZE`, so it can be reused for longer targets without silent prompt truncation.
+
+Start with a one-position 16k smoke run:
+
+```bash
+TARGET_TOKENS=16384 \
+MAX_LEN=32768 \
+NEEDLE_FRACS="0.5" \
+N_PER_VARIANT=4 \
+bash scripts/run_phase2_position_generalization.sh
+```
+
+If that succeeds, run the full 16k suite:
+
+```bash
+TARGET_TOKENS=16384 \
+MAX_LEN=32768 \
+NEEDLE_FRACS="0.1 0.5 0.9" \
+N_PER_VARIANT=8 \
+bash scripts/run_phase2_position_generalization.sh
+```
+
+Expected readout:
+
+- If `L22H7` remains dominant at 16k, the project gets a much stronger long-context claim.
+- If support necessity remains large and support patching remains weak, the role-decomposition story generalizes cleanly.
+- If the identity head changes or weakens at 16k, the narrative pivots to context-length-dependent circuit reconfiguration, which is still a publishable interpretability result.
