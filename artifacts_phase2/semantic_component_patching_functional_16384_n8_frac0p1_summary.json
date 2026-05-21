@@ -1,0 +1,1011 @@
+{
+  "n_rows": 320,
+  "variants": [
+    "literal",
+    "alias",
+    "paraphrase",
+    "relational",
+    "distractor_heavy"
+  ],
+  "groups": {
+    "answer_address": [
+      [
+        22,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        10
+      ]
+    ],
+    "non_address_core": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "strong13": [
+      [
+        20,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ]
+    ],
+    "core19": [
+      [
+        20,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        22,
+        10
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "first_token_sink": [
+      [
+        17,
+        10
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        23,
+        4
+      ]
+    ],
+    "query_tail": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        20,
+        3
+      ],
+      [
+        17,
+        3
+      ]
+    ],
+    "answer_address_inactive_control": [
+      [
+        21,
+        2
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ]
+    ],
+    "query_tail_inactive_control": [
+      [
+        17,
+        8
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ]
+    ]
+  },
+  "by_group": {
+    "answer_address": {
+      "n": 40,
+      "n_heads": 3,
+      "heads": [
+        [
+          22,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          10
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -4.627780659993489,
+      "mean_delta_patch": 0.4609507242838543,
+      "mean_recovery_fraction": 0.15417417075478215,
+      "positive_patch_examples": 39,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.28857421875,
+          "mean_recovery_fraction": 0.10790547428855435,
+          "positive_patch_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.7111002604166667,
+          "mean_recovery_fraction": 0.23532797184081325,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.568359375,
+          "mean_recovery_fraction": 0.18489176329512513,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.5696919759114584,
+          "mean_recovery_fraction": 0.18429262222694198,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.16702779134114598,
+          "mean_recovery_fraction": 0.058453022122476044,
+          "positive_patch_examples": 8
+        }
+      }
+    },
+    "non_address_core": {
+      "n": 40,
+      "n_heads": 16,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.0647120157877605,
+      "mean_delta_patch": 0.024019368489583304,
+      "mean_recovery_fraction": 0.008046241693278075,
+      "positive_patch_examples": 27,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.031249999999999778,
+          "mean_recovery_fraction": 0.012020253982973473,
+          "positive_patch_examples": 6
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.03759765625,
+          "mean_recovery_fraction": 0.011556887032447036,
+          "positive_patch_examples": 7
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.01900227864583326,
+          "mean_recovery_fraction": 0.005959251591605746,
+          "positive_patch_examples": 5
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.03467814127604163,
+          "mean_recovery_fraction": 0.01137609041337842,
+          "positive_patch_examples": 6
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.0024312337239581483,
+          "mean_recovery_fraction": -0.0006812745540143018,
+          "positive_patch_examples": 3
+        }
+      }
+    },
+    "strong13": {
+      "n": 40,
+      "n_heads": 13,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -4.666900380452474,
+      "mean_delta_patch": 0.4218310038248698,
+      "mean_recovery_fraction": 0.1407819840227132,
+      "positive_patch_examples": 39,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.2578125,
+          "mean_recovery_fraction": 0.09542592355746732,
+          "positive_patch_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.6651204427083334,
+          "mean_recovery_fraction": 0.21992402669077624,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.49662272135416674,
+          "mean_recovery_fraction": 0.16185212625889062,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.5204925537109374,
+          "mean_recovery_fraction": 0.16792111137551186,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.1691068013509116,
+          "mean_recovery_fraction": 0.05878673223091989,
+          "positive_patch_examples": 8
+        }
+      }
+    },
+    "core19": {
+      "n": 40,
+      "n_heads": 19,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          22,
+          10
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -4.618337504069011,
+      "mean_delta_patch": 0.4703938802083334,
+      "mean_recovery_fraction": 0.15710495202720237,
+      "positive_patch_examples": 39,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.3027343749999999,
+          "mean_recovery_fraction": 0.11295965157496833,
+          "positive_patch_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.7261962890625001,
+          "mean_recovery_fraction": 0.2399947394052716,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.5683593750000001,
+          "mean_recovery_fraction": 0.1841424111456085,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.5834452311197916,
+          "mean_recovery_fraction": 0.1884073929292865,
+          "positive_patch_examples": 8
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.1712341308593751,
+          "mean_recovery_fraction": 0.0600205650808768,
+          "positive_patch_examples": 7
+        }
+      }
+    },
+    "first_token_sink": {
+      "n": 40,
+      "n_heads": 6,
+      "heads": [
+        [
+          17,
+          10
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          23,
+          4
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.073193868001303,
+      "mean_delta_patch": 0.015537516276041585,
+      "mean_recovery_fraction": 0.005036401289076927,
+      "positive_patch_examples": 26,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.01676432291666652,
+          "mean_recovery_fraction": 0.006210641115213038,
+          "positive_patch_examples": 6
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.03108723958333348,
+          "mean_recovery_fraction": 0.009742214304286349,
+          "positive_patch_examples": 6
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.012776692708333148,
+          "mean_recovery_fraction": 0.004438583761622586,
+          "positive_patch_examples": 5
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.029917399088541408,
+          "mean_recovery_fraction": 0.009231065159665161,
+          "positive_patch_examples": 6
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.01285807291666663,
+          "mean_recovery_fraction": -0.0044404978954025,
+          "positive_patch_examples": 3
+        }
+      }
+    },
+    "query_tail": {
+      "n": 40,
+      "n_heads": 9,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          20,
+          3
+        ],
+        [
+          17,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.073014831542968,
+      "mean_delta_patch": 0.015716552734375,
+      "mean_recovery_fraction": 0.00521356332751659,
+      "positive_patch_examples": 24,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.02392578124999989,
+          "mean_recovery_fraction": 0.008843321090770108,
+          "positive_patch_examples": 5
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.02343750000000011,
+          "mean_recovery_fraction": 0.0069324248932711085,
+          "positive_patch_examples": 3
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.01249186197916674,
+          "mean_recovery_fraction": 0.0044106624345609646,
+          "positive_patch_examples": 5
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.01497395833333337,
+          "mean_recovery_fraction": 0.005021793070713658,
+          "positive_patch_examples": 6
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.003753662109374889,
+          "mean_recovery_fraction": 0.0008596151482671129,
+          "positive_patch_examples": 5
+        }
+      }
+    },
+    "answer_address_inactive_control": {
+      "n": 40,
+      "n_heads": 3,
+      "heads": [
+        [
+          21,
+          2
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.082552591959636,
+      "mean_delta_patch": 0.006178792317708348,
+      "mean_recovery_fraction": 0.0021807068988745834,
+      "positive_patch_examples": 22,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.01448567708333337,
+          "mean_recovery_fraction": 0.00571801877350704,
+          "positive_patch_examples": 4
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.004801432291666741,
+          "mean_recovery_fraction": 0.00139039471319331,
+          "positive_patch_examples": 5
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.007080078125,
+          "mean_recovery_fraction": 0.002843441771099321,
+          "positive_patch_examples": 5
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": -0.0006815592447918517,
+          "mean_recovery_fraction": -0.00023654839083085688,
+          "positive_patch_examples": 4
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.005208333333333481,
+          "mean_recovery_fraction": 0.0011882276274041027,
+          "positive_patch_examples": 4
+        }
+      }
+    },
+    "query_tail_inactive_control": {
+      "n": 40,
+      "n_heads": 9,
+      "heads": [
+        [
+          17,
+          8
+        ],
+        [
+          18,
+          1
+        ],
+        [
+          20,
+          5
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          20,
+          10
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.071117401123047,
+      "mean_delta_patch": 0.017613983154296874,
+      "mean_recovery_fraction": 0.006093042594707221,
+      "positive_patch_examples": 25,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.0302734375,
+          "mean_recovery_fraction": 0.011473950710273002,
+          "positive_patch_examples": 5
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.00439453125,
+          "mean_recovery_fraction": 0.0011147887038981679,
+          "positive_patch_examples": 4
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.04134114583333326,
+          "mean_recovery_fraction": 0.014308805766086561,
+          "positive_patch_examples": 7
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.014617919921874889,
+          "mean_recovery_fraction": 0.004503368869596617,
+          "positive_patch_examples": 6
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.0025571187337237733,
+          "mean_recovery_fraction": -0.0009357010763182422,
+          "positive_patch_examples": 3
+        }
+      }
+    }
+  },
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "n_examples": 40,
+  "groups_csv": "/home/ec2-user/SageMaker/retrieval-head-atlas/configs/semantic_functional_groups.csv",
+  "target_tokens": 16384,
+  "needle_frac": 0.1
+}

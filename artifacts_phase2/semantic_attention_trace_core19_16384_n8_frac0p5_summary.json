@@ -1,0 +1,1040 @@
+{
+  "n_rows": 760,
+  "variants": [
+    "literal",
+    "alias",
+    "paraphrase",
+    "relational",
+    "distractor_heavy"
+  ],
+  "heads": [
+    [
+      20,
+      7
+    ],
+    [
+      21,
+      11
+    ],
+    [
+      22,
+      7
+    ],
+    [
+      18,
+      3
+    ],
+    [
+      17,
+      10
+    ],
+    [
+      20,
+      8
+    ],
+    [
+      22,
+      0
+    ],
+    [
+      22,
+      4
+    ],
+    [
+      21,
+      0
+    ],
+    [
+      20,
+      6
+    ],
+    [
+      20,
+      9
+    ],
+    [
+      21,
+      3
+    ],
+    [
+      21,
+      1
+    ],
+    [
+      21,
+      4
+    ],
+    [
+      21,
+      5
+    ],
+    [
+      17,
+      3
+    ],
+    [
+      22,
+      10
+    ],
+    [
+      23,
+      4
+    ],
+    [
+      20,
+      3
+    ]
+  ],
+  "by_head": [
+    {
+      "layer": 22,
+      "head": 7,
+      "n": 40,
+      "mean_gold_mass": 0.6658887684345245,
+      "mean_needle_mass": 0.91895642131567,
+      "mean_distractor_mass": 0.02793991668149829,
+      "mean_gold_rank": 1.0,
+      "argmax_in_gold_rate": 1.0,
+      "argmax_in_needle_rate": 1.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.44415999203920364,
+          "mean_needle_mass": 0.8713866546750069,
+          "mean_distractor_mass": 0.015406612306833267,
+          "argmax_in_needle_rate": 1.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.885826975107193,
+          "mean_needle_mass": 0.9751388132572174,
+          "mean_distractor_mass": 0.0029992854688316584,
+          "argmax_in_needle_rate": 1.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.6308169364929199,
+          "mean_needle_mass": 0.8752464652061462,
+          "mean_distractor_mass": 0.017493946477770805,
+          "argmax_in_needle_rate": 1.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.7920016571879387,
+          "mean_needle_mass": 0.9360105842351913,
+          "mean_distractor_mass": 0.0287988290656358,
+          "argmax_in_needle_rate": 1.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.5766382813453674,
+          "mean_needle_mass": 0.9369995892047882,
+          "mean_distractor_mass": 0.07500091008841991,
+          "argmax_in_needle_rate": 1.0
+        }
+      }
+    },
+    {
+      "layer": 21,
+      "head": 11,
+      "n": 40,
+      "mean_gold_mass": 0.47647857666015625,
+      "mean_needle_mass": 0.6319375075399876,
+      "mean_distractor_mass": 0.10543460845947265,
+      "mean_gold_rank": 1.45,
+      "argmax_in_gold_rate": 0.6,
+      "argmax_in_needle_rate": 0.6,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.4964599609375,
+          "mean_needle_mass": 0.6450142860412598,
+          "mean_distractor_mass": 0.059844970703125,
+          "argmax_in_needle_rate": 1.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.6366729736328125,
+          "mean_needle_mass": 0.7597204446792603,
+          "mean_distractor_mass": 0.05498981475830078,
+          "argmax_in_needle_rate": 0.75
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.36501312255859375,
+          "mean_needle_mass": 0.47361942008137703,
+          "mean_distractor_mass": 0.12802600860595703,
+          "argmax_in_needle_rate": 0.25
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.431182861328125,
+          "mean_needle_mass": 0.600487619638443,
+          "mean_distractor_mass": 0.12802505493164062,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.45306396484375,
+          "mean_needle_mass": 0.6808457672595978,
+          "mean_distractor_mass": 0.15628719329833984,
+          "argmax_in_needle_rate": 1.0
+        }
+      }
+    },
+    {
+      "layer": 22,
+      "head": 10,
+      "n": 40,
+      "mean_gold_mass": 0.3358619689941406,
+      "mean_needle_mass": 0.6599442675709725,
+      "mean_distractor_mass": 0.016736194491386414,
+      "mean_gold_rank": 3.75,
+      "argmax_in_gold_rate": 0.375,
+      "argmax_in_needle_rate": 0.725,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.13230323791503906,
+          "mean_needle_mass": 0.5635915026068687,
+          "mean_distractor_mass": 0.0025843828916549683,
+          "argmax_in_needle_rate": 0.75
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.519195556640625,
+          "mean_needle_mass": 0.7975904196500778,
+          "mean_distractor_mass": 0.0034081637859344482,
+          "argmax_in_needle_rate": 1.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.227081298828125,
+          "mean_needle_mass": 0.5229881331324577,
+          "mean_distractor_mass": 0.009486615657806396,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.5947341918945312,
+          "mean_needle_mass": 0.7788282111287117,
+          "mean_distractor_mass": 0.008926182985305786,
+          "argmax_in_needle_rate": 1.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.2059955596923828,
+          "mean_needle_mass": 0.6367230713367462,
+          "mean_distractor_mass": 0.05927562713623047,
+          "argmax_in_needle_rate": 0.875
+        }
+      }
+    },
+    {
+      "layer": 23,
+      "head": 4,
+      "n": 40,
+      "mean_gold_mass": 0.026541304588317872,
+      "mean_needle_mass": 0.2077822245657444,
+      "mean_distractor_mass": 0.019099541753530503,
+      "mean_gold_rank": 13.525,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.020313143730163574,
+          "mean_needle_mass": 0.23357274755835533,
+          "mean_distractor_mass": 0.01481577754020691,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.04901266098022461,
+          "mean_needle_mass": 0.2134520709514618,
+          "mean_distractor_mass": 0.013079363852739334,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.026381343603134155,
+          "mean_needle_mass": 0.18173474818468094,
+          "mean_distractor_mass": 0.03858563303947449,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.02618587017059326,
+          "mean_needle_mass": 0.14785225689411163,
+          "mean_distractor_mass": 0.013607904314994812,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.010813504457473755,
+          "mean_needle_mass": 0.2622992992401123,
+          "mean_distractor_mass": 0.015409030020236969,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 21,
+      "head": 0,
+      "n": 40,
+      "mean_gold_mass": 0.014516139030456543,
+      "mean_needle_mass": 0.036020610854029654,
+      "mean_distractor_mass": 0.0037909358739852904,
+      "mean_gold_rank": 7.9,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.012059926986694336,
+          "mean_needle_mass": 0.030400658026337624,
+          "mean_distractor_mass": 0.0037374496459960938,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.020819664001464844,
+          "mean_needle_mass": 0.04275861382484436,
+          "mean_distractor_mass": 0.0012732744216918945,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.010375022888183594,
+          "mean_needle_mass": 0.036572493612766266,
+          "mean_distractor_mass": 0.0016736984252929688,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.006574749946594238,
+          "mean_needle_mass": 0.02802853286266327,
+          "mean_distractor_mass": 0.0015225857496261597,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.022751331329345703,
+          "mean_needle_mass": 0.04234275594353676,
+          "mean_distractor_mass": 0.010747671127319336,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 21,
+      "head": 4,
+      "n": 40,
+      "mean_gold_mass": 0.01339038908481598,
+      "mean_needle_mass": 0.09600411802530288,
+      "mean_distractor_mass": 0.007489198446273803,
+      "mean_gold_rank": 26.425,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.004607975482940674,
+          "mean_needle_mass": 0.04411773383617401,
+          "mean_distractor_mass": 0.004784107208251953,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0225677490234375,
+          "mean_needle_mass": 0.11527175270020962,
+          "mean_distractor_mass": 0.002806723117828369,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.013202667236328125,
+          "mean_needle_mass": 0.1559368558228016,
+          "mean_distractor_mass": 0.01214289665222168,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.023088932037353516,
+          "mean_needle_mass": 0.11437591351568699,
+          "mean_distractor_mass": 0.007863521575927734,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.0034846216440200806,
+          "mean_needle_mass": 0.05031833425164223,
+          "mean_distractor_mass": 0.009848743677139282,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 21,
+      "head": 5,
+      "n": 40,
+      "mean_gold_mass": 0.011099147796630859,
+      "mean_needle_mass": 0.13635079860687255,
+      "mean_distractor_mass": 0.0036999642848968505,
+      "mean_gold_rank": 36.8,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.005797147750854492,
+          "mean_needle_mass": 0.08322960138320923,
+          "mean_distractor_mass": 0.0009723007678985596,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.008639335632324219,
+          "mean_needle_mass": 0.1393776834011078,
+          "mean_distractor_mass": 0.001878499984741211,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.021140575408935547,
+          "mean_needle_mass": 0.10364019870758057,
+          "mean_distractor_mass": 0.002896547317504883,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.01440119743347168,
+          "mean_needle_mass": 0.26688316464424133,
+          "mean_distractor_mass": 0.0034269392490386963,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.005517482757568359,
+          "mean_needle_mass": 0.08862334489822388,
+          "mean_distractor_mass": 0.009325534105300903,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 18,
+      "head": 3,
+      "n": 40,
+      "mean_gold_mass": 0.008317312598228455,
+      "mean_needle_mass": 0.1918642371892929,
+      "mean_distractor_mass": 0.019661039113998413,
+      "mean_gold_rank": 44.55,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.007890105247497559,
+          "mean_needle_mass": 0.15777426958084106,
+          "mean_distractor_mass": 0.0304107666015625,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.015141606330871582,
+          "mean_needle_mass": 0.22781433165073395,
+          "mean_distractor_mass": 0.012946844100952148,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.011649131774902344,
+          "mean_needle_mass": 0.21897052228450775,
+          "mean_distractor_mass": 0.013521909713745117,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.002326473593711853,
+          "mean_needle_mass": 0.21676884591579437,
+          "mean_distractor_mass": 0.01196560263633728,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.0045792460441589355,
+          "mean_needle_mass": 0.1379932165145874,
+          "mean_distractor_mass": 0.02946007251739502,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 22,
+      "head": 4,
+      "n": 40,
+      "mean_gold_mass": 0.007408134639263153,
+      "mean_needle_mass": 0.05373073667287827,
+      "mean_distractor_mass": 0.008773504197597504,
+      "mean_gold_rank": 27.05,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.00115271657705307,
+          "mean_needle_mass": 0.019027876667678356,
+          "mean_distractor_mass": 0.0016135498881340027,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.004638552665710449,
+          "mean_needle_mass": 0.044563837349414825,
+          "mean_distractor_mass": 0.0061522722244262695,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.009950876235961914,
+          "mean_needle_mass": 0.06660640984773636,
+          "mean_distractor_mass": 0.017222821712493896,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.014107704162597656,
+          "mean_needle_mass": 0.0690818578004837,
+          "mean_distractor_mass": 0.012574076652526855,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.007190823554992676,
+          "mean_needle_mass": 0.06937370169907808,
+          "mean_distractor_mass": 0.006304800510406494,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 20,
+      "head": 9,
+      "n": 40,
+      "mean_gold_mass": 0.005991527438163757,
+      "mean_needle_mass": 0.007918633751978632,
+      "mean_distractor_mass": 0.005766021832823753,
+      "mean_gold_rank": 11.975,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.009922027587890625,
+          "mean_needle_mass": 0.013043385930359364,
+          "mean_distractor_mass": 0.013008713722229004,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0010527074337005615,
+          "mean_needle_mass": 0.0017835552571341395,
+          "mean_distractor_mass": 0.002593323588371277,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.009552001953125,
+          "mean_needle_mass": 0.013598838937468827,
+          "mean_distractor_mass": 0.0072896480560302734,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.000824466347694397,
+          "mean_needle_mass": 0.001357652472506743,
+          "mean_distractor_mass": 0.004938110709190369,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.008606433868408203,
+          "mean_needle_mass": 0.009809736162424088,
+          "mean_distractor_mass": 0.001000313088297844,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 17,
+      "head": 10,
+      "n": 40,
+      "mean_gold_mass": 0.0009485572576522827,
+      "mean_needle_mass": 0.10663865506649017,
+      "mean_distractor_mass": 0.00736316442489624,
+      "mean_gold_rank": 95.05,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.00116044282913208,
+          "mean_needle_mass": 0.09940582513809204,
+          "mean_distractor_mass": 0.010399341583251953,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0009112358093261719,
+          "mean_needle_mass": 0.11556077003479004,
+          "mean_distractor_mass": 0.005938053131103516,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.0018191337585449219,
+          "mean_needle_mass": 0.12801480293273926,
+          "mean_distractor_mass": 0.00921773910522461,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.0004496723413467407,
+          "mean_needle_mass": 0.10229970514774323,
+          "mean_distractor_mass": 0.004932403564453125,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.000402301549911499,
+          "mean_needle_mass": 0.0879121720790863,
+          "mean_distractor_mass": 0.006328284740447998,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 20,
+      "head": 7,
+      "n": 40,
+      "mean_gold_mass": 0.0009173050522804261,
+      "mean_needle_mass": 0.006339955702424049,
+      "mean_distractor_mass": 0.009086894243955613,
+      "mean_gold_rank": 64.6,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.000527113676071167,
+          "mean_needle_mass": 0.00493981409817934,
+          "mean_distractor_mass": 0.007711648941040039,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0007157623767852783,
+          "mean_needle_mass": 0.005162488669157028,
+          "mean_distractor_mass": 0.012869775295257568,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.0015353932976722717,
+          "mean_needle_mass": 0.010704492218792439,
+          "mean_distractor_mass": 0.011387348175048828,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.0004374012351036072,
+          "mean_needle_mass": 0.004518289119005203,
+          "mean_distractor_mass": 0.004657294601202011,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.001370854675769806,
+          "mean_needle_mass": 0.006374694406986237,
+          "mean_distractor_mass": 0.008808404207229614,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 20,
+      "head": 6,
+      "n": 40,
+      "mean_gold_mass": 0.0008746601641178131,
+      "mean_needle_mass": 0.08647165149450302,
+      "mean_distractor_mass": 0.001208658330142498,
+      "mean_gold_rank": 66.875,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.0005397424101829529,
+          "mean_needle_mass": 0.09479372948408127,
+          "mean_distractor_mass": 0.0006890147924423218,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0011702775955200195,
+          "mean_needle_mass": 0.12569556012749672,
+          "mean_distractor_mass": 0.0007447414100170135,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.0019268989562988281,
+          "mean_needle_mass": 0.07250963896512985,
+          "mean_distractor_mass": 0.003453493118286133,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.0005181320011615753,
+          "mean_needle_mass": 0.046577347442507744,
+          "mean_distractor_mass": 0.000244971364736557,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.0002182498574256897,
+          "mean_needle_mass": 0.09278198145329952,
+          "mean_distractor_mass": 0.0009110709652304649,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 20,
+      "head": 3,
+      "n": 40,
+      "mean_gold_mass": 0.0007810920011252165,
+      "mean_needle_mass": 0.022046742925886063,
+      "mean_distractor_mass": 0.0011848881840705872,
+      "mean_gold_rank": 59.9,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.0023589283227920532,
+          "mean_needle_mass": 0.04536086693406105,
+          "mean_distractor_mass": 0.0012899413704872131,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0001798868179321289,
+          "mean_needle_mass": 0.012880947440862656,
+          "mean_distractor_mass": 0.0008072070777416229,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.0010899975895881653,
+          "mean_needle_mass": 0.007609968830365688,
+          "mean_distractor_mass": 0.0005080997943878174,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 2.4929409846663475e-05,
+          "mean_needle_mass": 0.005080388858914375,
+          "mean_distractor_mass": 0.0005769617855548859,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.00025171786546707153,
+          "mean_needle_mass": 0.039301542565226555,
+          "mean_distractor_mass": 0.0027422308921813965,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 17,
+      "head": 3,
+      "n": 40,
+      "mean_gold_mass": 0.0006868861615657807,
+      "mean_needle_mass": 0.018378443270921706,
+      "mean_distractor_mass": 0.008806315064430238,
+      "mean_gold_rank": 74.4,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.0008200705051422119,
+          "mean_needle_mass": 0.01942145824432373,
+          "mean_distractor_mass": 0.008588075637817383,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0008306205272674561,
+          "mean_needle_mass": 0.019742757081985474,
+          "mean_distractor_mass": 0.008336782455444336,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.0011295676231384277,
+          "mean_needle_mass": 0.014494076371192932,
+          "mean_distractor_mass": 0.013659477233886719,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.0003139674663543701,
+          "mean_needle_mass": 0.016910992562770844,
+          "mean_distractor_mass": 0.0074672698974609375,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.0003402046859264374,
+          "mean_needle_mass": 0.021322932094335556,
+          "mean_distractor_mass": 0.005979970097541809,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 21,
+      "head": 1,
+      "n": 40,
+      "mean_gold_mass": 0.0006269104778766632,
+      "mean_needle_mass": 0.06998239196836949,
+      "mean_distractor_mass": 0.003260582685470581,
+      "mean_gold_rank": 92.25,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.0008350461721420288,
+          "mean_needle_mass": 0.09766875207424164,
+          "mean_distractor_mass": 0.0018834173679351807,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0003549903631210327,
+          "mean_needle_mass": 0.06976085901260376,
+          "mean_distractor_mass": 0.001752316951751709,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.0011203289031982422,
+          "mean_needle_mass": 0.06421918421983719,
+          "mean_distractor_mass": 0.005444169044494629,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.00040315091609954834,
+          "mean_needle_mass": 0.04149881564080715,
+          "mean_distractor_mass": 0.0022681355476379395,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.000421036034822464,
+          "mean_needle_mass": 0.07676434889435768,
+          "mean_distractor_mass": 0.004954874515533447,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 21,
+      "head": 3,
+      "n": 40,
+      "mean_gold_mass": 0.00033235298469662665,
+      "mean_needle_mass": 0.01009092761669308,
+      "mean_distractor_mass": 0.003491663932800293,
+      "mean_gold_rank": 157.7,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.00018719211220741272,
+          "mean_needle_mass": 0.007999377325177193,
+          "mean_distractor_mass": 0.0016407370567321777,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0007875673472881317,
+          "mean_needle_mass": 0.012903900817036629,
+          "mean_distractor_mass": 0.002049952745437622,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.0002608299255371094,
+          "mean_needle_mass": 0.013229671865701675,
+          "mean_distractor_mass": 0.00711512565612793,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 0.0003605019301176071,
+          "mean_needle_mass": 0.008450516499578953,
+          "mean_distractor_mass": 0.002568662166595459,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 6.567360833287239e-05,
+          "mean_needle_mass": 0.007871171575970948,
+          "mean_distractor_mass": 0.004083842039108276,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 20,
+      "head": 8,
+      "n": 40,
+      "mean_gold_mass": 0.00028470258694142104,
+      "mean_needle_mass": 0.001218389267614839,
+      "mean_distractor_mass": 0.0022590221837162972,
+      "mean_gold_rank": 44.175,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 0.0008336938917636871,
+          "mean_needle_mass": 0.002901637926697731,
+          "mean_distractor_mass": 0.002781808376312256,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 0.0002091703936457634,
+          "mean_needle_mass": 0.0008278170716948807,
+          "mean_distractor_mass": 0.0014048516750335693,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 0.00016037467867136002,
+          "mean_needle_mass": 0.001362004732072819,
+          "mean_distractor_mass": 0.0027939975261688232,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 3.2929121516644955e-05,
+          "mean_needle_mass": 9.620621358408243e-05,
+          "mean_distractor_mass": 0.0027010440826416016,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 0.00018734484910964966,
+          "mean_needle_mass": 0.0009042803940246813,
+          "mean_distractor_mass": 0.0016134092584252357,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    },
+    {
+      "layer": 22,
+      "head": 0,
+      "n": 40,
+      "mean_gold_mass": 1.6137564671225846e-05,
+      "mean_needle_mass": 0.00035535989445634186,
+      "mean_distractor_mass": 6.371283379849046e-05,
+      "mean_gold_rank": 991.575,
+      "argmax_in_gold_rate": 0.0,
+      "argmax_in_needle_rate": 0.0,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_gold_mass": 2.9301474569365382e-05,
+          "mean_needle_mass": 0.0003517160366754979,
+          "mean_distractor_mass": 4.897359758615494e-05,
+          "argmax_in_needle_rate": 0.0
+        },
+        "alias": {
+          "n": 8,
+          "mean_gold_mass": 5.8937439462170005e-06,
+          "mean_needle_mass": 0.0003675848274724558,
+          "mean_distractor_mass": 4.0605198591947556e-05,
+          "argmax_in_needle_rate": 0.0
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_gold_mass": 3.262070822529495e-05,
+          "mean_needle_mass": 0.00039929943159222603,
+          "mean_distractor_mass": 0.00012092443648725748,
+          "argmax_in_needle_rate": 0.0
+        },
+        "relational": {
+          "n": 8,
+          "mean_gold_mass": 7.190006726887077e-06,
+          "mean_needle_mass": 0.00023969646281329915,
+          "mean_distractor_mass": 4.153279587626457e-05,
+          "argmax_in_needle_rate": 0.0
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_gold_mass": 5.681889888364822e-06,
+          "mean_needle_mass": 0.00041850271372823045,
+          "mean_distractor_mass": 6.652814045082778e-05,
+          "argmax_in_needle_rate": 0.0
+        }
+      }
+    }
+  ],
+  "by_variant": {
+    "literal": {
+      "n": 152,
+      "mean_gold_mass": 0.06010304029730737,
+      "mean_needle_mass": 0.15968431018776946,
+      "mean_distractor_mass": 0.009590083684184049
+    },
+    "alias": {
+      "n": 152,
+      "mean_gold_mass": 0.11414385191701033,
+      "mean_needle_mass": 0.1937039056739243,
+      "mean_distractor_mass": 0.007161676381273489
+    },
+    "paraphrase": {
+      "n": 152,
+      "mean_gold_mass": 0.0702230590747939,
+      "mean_needle_mass": 0.1558661697571025,
+      "mean_distractor_mass": 0.01589684735517949
+    },
+    "relational": {
+      "n": 152,
+      "mean_gold_mass": 0.1004197883437308,
+      "mean_needle_mass": 0.1781761366871347,
+      "mean_distractor_mass": 0.013005635982967521
+    },
+    "distractor_heavy": {
+      "n": 152,
+      "mean_gold_mass": 0.06852127971337484,
+      "mean_needle_mass": 0.17099897066777645,
+      "mean_distractor_mass": 0.021481500548696585
+    }
+  },
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "n_examples": 40,
+  "n_heads": 19,
+  "heads_csv": "/home/ec2-user/SageMaker/retrieval-head-atlas/configs/semantic_core_heads.csv",
+  "target_tokens": 16384,
+  "needle_frac": 0.5
+}

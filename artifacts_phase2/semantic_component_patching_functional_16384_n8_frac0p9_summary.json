@@ -1,0 +1,1011 @@
+{
+  "n_rows": 320,
+  "variants": [
+    "literal",
+    "alias",
+    "paraphrase",
+    "relational",
+    "distractor_heavy"
+  ],
+  "groups": {
+    "answer_address": [
+      [
+        22,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        10
+      ]
+    ],
+    "non_address_core": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "strong13": [
+      [
+        20,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ]
+    ],
+    "core19": [
+      [
+        20,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        22,
+        10
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "first_token_sink": [
+      [
+        17,
+        10
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        23,
+        4
+      ]
+    ],
+    "query_tail": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        20,
+        3
+      ],
+      [
+        17,
+        3
+      ]
+    ],
+    "answer_address_inactive_control": [
+      [
+        21,
+        2
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ]
+    ],
+    "query_tail_inactive_control": [
+      [
+        17,
+        8
+      ],
+      [
+        18,
+        1
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        22,
+        8
+      ],
+      [
+        22,
+        3
+      ]
+    ]
+  },
+  "by_group": {
+    "answer_address": {
+      "n": 40,
+      "n_heads": 3,
+      "heads": [
+        [
+          22,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          10
+        ]
+      ],
+      "mean_clean_logprob": -2.141100641091665,
+      "mean_corrupt_clean_logprob": -5.272799682617188,
+      "mean_patched_logprob": -4.73760248819987,
+      "mean_delta_patch": 0.5351971944173177,
+      "mean_recovery_fraction": 0.17543575224213356,
+      "positive_patch_examples": 38,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.3774414062500001,
+          "mean_recovery_fraction": 0.13615369640228445,
+          "positive_patch_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.7088216145833336,
+          "mean_recovery_fraction": 0.243873031266864,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.5638020833333333,
+          "mean_recovery_fraction": 0.17787702636627462,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.635284423828125,
+          "mean_recovery_fraction": 0.1953970950609215,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.3906364440917971,
+          "mean_recovery_fraction": 0.12387791211432332,
+          "positive_patch_examples": 7
+        }
+      }
+    },
+    "non_address_core": {
+      "n": 40,
+      "n_heads": 16,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.141100641091665,
+      "mean_corrupt_clean_logprob": -5.272799682617188,
+      "mean_patched_logprob": -5.229440307617187,
+      "mean_delta_patch": 0.04335937500000007,
+      "mean_recovery_fraction": 0.013564754043080138,
+      "positive_patch_examples": 34,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.03499348958333337,
+          "mean_recovery_fraction": 0.012615521559728116,
+          "positive_patch_examples": 7
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.020833333333333592,
+          "mean_recovery_fraction": 0.0070305468247971285,
+          "positive_patch_examples": 6
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.03706868489583326,
+          "mean_recovery_fraction": 0.009919042037751173,
+          "positive_patch_examples": 7
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.08760579427083337,
+          "mean_recovery_fraction": 0.026938530670105883,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.03629557291666674,
+          "mean_recovery_fraction": 0.011320129123018382,
+          "positive_patch_examples": 7
+        }
+      }
+    },
+    "strong13": {
+      "n": 40,
+      "n_heads": 13,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ]
+      ],
+      "mean_clean_logprob": -2.141100641091665,
+      "mean_corrupt_clean_logprob": -5.272799682617188,
+      "mean_patched_logprob": -4.7582252502441404,
+      "mean_delta_patch": 0.514574432373047,
+      "mean_recovery_fraction": 0.16822067720698278,
+      "positive_patch_examples": 38,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.36474609375,
+          "mean_recovery_fraction": 0.13135803461466428,
+          "positive_patch_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.6751302083333335,
+          "mean_recovery_fraction": 0.23192109484031392,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.5487874348958334,
+          "mean_recovery_fraction": 0.17268420031350762,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.59942626953125,
+          "mean_recovery_fraction": 0.18401210462183776,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.38478215535481786,
+          "mean_recovery_fraction": 0.12112795164459023,
+          "positive_patch_examples": 7
+        }
+      }
+    },
+    "core19": {
+      "n": 40,
+      "n_heads": 19,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          22,
+          10
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.141100641091665,
+      "mean_corrupt_clean_logprob": -5.272799682617188,
+      "mean_patched_logprob": -4.731366729736328,
+      "mean_delta_patch": 0.5414329528808594,
+      "mean_recovery_fraction": 0.1773678900795058,
+      "positive_patch_examples": 39,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.40266927083333337,
+          "mean_recovery_fraction": 0.14529163948763307,
+          "positive_patch_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.7079264322916669,
+          "mean_recovery_fraction": 0.24323037313601098,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.5673421223958331,
+          "mean_recovery_fraction": 0.17826506894002983,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.6241048177083334,
+          "mean_recovery_fraction": 0.19242256275871136,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.40512212117513025,
+          "mean_recovery_fraction": 0.12762980607514368,
+          "positive_patch_examples": 8
+        }
+      }
+    },
+    "first_token_sink": {
+      "n": 40,
+      "n_heads": 6,
+      "heads": [
+        [
+          17,
+          10
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          23,
+          4
+        ]
+      ],
+      "mean_clean_logprob": -2.141100641091665,
+      "mean_corrupt_clean_logprob": -5.272799682617188,
+      "mean_patched_logprob": -5.252541097005208,
+      "mean_delta_patch": 0.02025858561197915,
+      "mean_recovery_fraction": 0.006258536246939015,
+      "positive_patch_examples": 28,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.02718098958333326,
+          "mean_recovery_fraction": 0.010228950358745405,
+          "positive_patch_examples": 7
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.01692708333333348,
+          "mean_recovery_fraction": 0.005657292631793417,
+          "positive_patch_examples": 6
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.014119466145833148,
+          "mean_recovery_fraction": 0.0028142438085429705,
+          "positive_patch_examples": 6
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.05379231770833337,
+          "mean_recovery_fraction": 0.016291598899199497,
+          "positive_patch_examples": 6
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.0107269287109375,
+          "mean_recovery_fraction": -0.0036994044635862166,
+          "positive_patch_examples": 3
+        }
+      }
+    },
+    "query_tail": {
+      "n": 40,
+      "n_heads": 9,
+      "heads": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          20,
+          3
+        ],
+        [
+          17,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.141100641091665,
+      "mean_corrupt_clean_logprob": -5.272799682617188,
+      "mean_patched_logprob": -5.244417317708333,
+      "mean_delta_patch": 0.028382364908854263,
+      "mean_recovery_fraction": 0.008768871585773316,
+      "positive_patch_examples": 34,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.02897135416666674,
+          "mean_recovery_fraction": 0.010284144447024223,
+          "positive_patch_examples": 6
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.026123046875000222,
+          "mean_recovery_fraction": 0.008734658875516967,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.01212565104166663,
+          "mean_recovery_fraction": 0.002186752205127883,
+          "positive_patch_examples": 5
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.04866536458333337,
+          "mean_recovery_fraction": 0.014883646056854754,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.02602640787760435,
+          "mean_recovery_fraction": 0.007755156344342748,
+          "positive_patch_examples": 8
+        }
+      }
+    },
+    "answer_address_inactive_control": {
+      "n": 40,
+      "n_heads": 3,
+      "heads": [
+        [
+          21,
+          2
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.141100641091665,
+      "mean_corrupt_clean_logprob": -5.272799682617188,
+      "mean_patched_logprob": -5.26981201171875,
+      "mean_delta_patch": 0.0029876708984375444,
+      "mean_recovery_fraction": 0.0006982302144160348,
+      "positive_patch_examples": 20,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.0006510416666667407,
+          "mean_recovery_fraction": 0.0006209175512700776,
+          "positive_patch_examples": 4
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.0034993489583333703,
+          "mean_recovery_fraction": 0.0013546641628741298,
+          "positive_patch_examples": 4
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.009765625,
+          "mean_recovery_fraction": 0.0014107123687097534,
+          "positive_patch_examples": 5
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.006225585937500111,
+          "mean_recovery_fraction": 0.001851185503382638,
+          "positive_patch_examples": 4
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.0052032470703125,
+          "mean_recovery_fraction": -0.001746328514156425,
+          "positive_patch_examples": 3
+        }
+      }
+    },
+    "query_tail_inactive_control": {
+      "n": 40,
+      "n_heads": 9,
+      "heads": [
+        [
+          17,
+          8
+        ],
+        [
+          18,
+          1
+        ],
+        [
+          20,
+          5
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          20,
+          2
+        ],
+        [
+          20,
+          1
+        ],
+        [
+          20,
+          10
+        ],
+        [
+          22,
+          8
+        ],
+        [
+          22,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.141100641091665,
+      "mean_corrupt_clean_logprob": -5.272799682617188,
+      "mean_patched_logprob": -5.256788126627605,
+      "mean_delta_patch": 0.01601155598958339,
+      "mean_recovery_fraction": 0.005100565867570454,
+      "positive_patch_examples": 27,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.014811197916666519,
+          "mean_recovery_fraction": 0.005196112690843692,
+          "positive_patch_examples": 5
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.005777994791666741,
+          "mean_recovery_fraction": 0.0019740947532898502,
+          "positive_patch_examples": 6
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.04683430989583337,
+          "mean_recovery_fraction": 0.01447635084831991,
+          "positive_patch_examples": 7
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.00791422526041674,
+          "mean_recovery_fraction": 0.0025090377485837718,
+          "positive_patch_examples": 4
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.004720052083333592,
+          "mean_recovery_fraction": 0.0013472332968150454,
+          "positive_patch_examples": 5
+        }
+      }
+    }
+  },
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "n_examples": 40,
+  "groups_csv": "/home/ec2-user/SageMaker/retrieval-head-atlas/configs/semantic_functional_groups.csv",
+  "target_tokens": 16384,
+  "needle_frac": 0.9
+}

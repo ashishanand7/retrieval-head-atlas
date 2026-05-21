@@ -1,0 +1,721 @@
+{
+  "n_rows": 520,
+  "variants": [
+    "literal",
+    "alias",
+    "paraphrase",
+    "relational",
+    "distractor_heavy"
+  ],
+  "groups": {
+    "address_L22H7": [
+      [
+        22,
+        7
+      ]
+    ],
+    "address_L21H11": [
+      [
+        21,
+        11
+      ]
+    ],
+    "address_L22H10": [
+      [
+        22,
+        10
+      ]
+    ],
+    "support_L20H7": [
+      [
+        20,
+        7
+      ]
+    ],
+    "support_L18H3": [
+      [
+        18,
+        3
+      ]
+    ],
+    "support_L17H10": [
+      [
+        17,
+        10
+      ]
+    ],
+    "support_L20H8": [
+      [
+        20,
+        8
+      ]
+    ],
+    "support_L22H0": [
+      [
+        22,
+        0
+      ]
+    ],
+    "support_L22H4": [
+      [
+        22,
+        4
+      ]
+    ],
+    "activation_control_L20H5": [
+      [
+        20,
+        5
+      ]
+    ],
+    "inactive_control_L21H2": [
+      [
+        21,
+        2
+      ]
+    ],
+    "inactive_control_L22H8": [
+      [
+        22,
+        8
+      ]
+    ],
+    "inactive_control_L22H3": [
+      [
+        22,
+        3
+      ]
+    ]
+  },
+  "by_group": {
+    "address_L22H7": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          22,
+          7
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -4.6809850056966145,
+      "mean_delta_patch": 0.4077463785807292,
+      "mean_recovery_fraction": 0.1357083761706009,
+      "positive_patch_examples": 38,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.23014322916666652,
+          "mean_recovery_fraction": 0.08525707802429763,
+          "positive_patch_examples": 8
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.6484375000000002,
+          "mean_recovery_fraction": 0.21450769070953235,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.5000813802083334,
+          "mean_recovery_fraction": 0.16220626284731998,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.5207112630208333,
+          "mean_recovery_fraction": 0.1677938053447223,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.1393585205078126,
+          "mean_recovery_fraction": 0.048777043927131974,
+          "positive_patch_examples": 7
+        }
+      }
+    },
+    "address_L21H11": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          21,
+          11
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.067539978027344,
+      "mean_delta_patch": 0.021191406249999954,
+      "mean_recovery_fraction": 0.007070363781425465,
+      "positive_patch_examples": 30,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.02978515624999989,
+          "mean_recovery_fraction": 0.011303731717536484,
+          "positive_patch_examples": 6
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.02571614583333337,
+          "mean_recovery_fraction": 0.007870669594686129,
+          "positive_patch_examples": 6
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.03035481770833326,
+          "mean_recovery_fraction": 0.01023191060561103,
+          "positive_patch_examples": 7
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.01880900065104163,
+          "mean_recovery_fraction": 0.006229657918405325,
+          "positive_patch_examples": 5
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.0012919108072916297,
+          "mean_recovery_fraction": -0.00028415092911164607,
+          "positive_patch_examples": 6
+        }
+      }
+    },
+    "address_L22H10": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          22,
+          10
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -4.97823486328125,
+      "mean_delta_patch": 0.11049652099609378,
+      "mean_recovery_fraction": 0.03591828737287543,
+      "positive_patch_examples": 34,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.04329427083333326,
+          "mean_recovery_fraction": 0.016230889623270663,
+          "positive_patch_examples": 7
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.15315755208333348,
+          "mean_recovery_fraction": 0.048975958087242706,
+          "positive_patch_examples": 8
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.1348876953125,
+          "mean_recovery_fraction": 0.042243038712357045,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.2229309082031249,
+          "mean_recovery_fraction": 0.07246592748878738,
+          "positive_patch_examples": 7
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.0017878214518227686,
+          "mean_recovery_fraction": -0.00032437704728060916,
+          "positive_patch_examples": 4
+        }
+      }
+    },
+    "support_L20H7": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          20,
+          7
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.0792994181315105,
+      "mean_delta_patch": 0.00943196614583337,
+      "mean_recovery_fraction": 0.0031828308133160844,
+      "positive_patch_examples": 24,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.01220703125,
+          "mean_recovery_fraction": 0.004834298347555058,
+          "positive_patch_examples": 5
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.02416992187500011,
+          "mean_recovery_fraction": 0.007648005216679013,
+          "positive_patch_examples": 6
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": -0.0011800130208334814,
+          "mean_recovery_fraction": -0.0006155053767688031,
+          "positive_patch_examples": 4
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.01604207356770837,
+          "mean_recovery_fraction": 0.0054998913397578154,
+          "positive_patch_examples": 5
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.004079182942708148,
+          "mean_recovery_fraction": -0.0014525354606426612,
+          "positive_patch_examples": 4
+        }
+      }
+    },
+    "support_L18H3": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          18,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.084605407714844,
+      "mean_delta_patch": 0.004125976562500045,
+      "mean_recovery_fraction": 0.0013927967537469637,
+      "positive_patch_examples": 24,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.006510416666666519,
+          "mean_recovery_fraction": 0.002589391985722122,
+          "positive_patch_examples": 5
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.004150390625000222,
+          "mean_recovery_fraction": 0.0007562811499068249,
+          "positive_patch_examples": 4
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.004109700520833259,
+          "mean_recovery_fraction": 0.0015612355964788793,
+          "positive_patch_examples": 5
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.014312744140625,
+          "mean_recovery_fraction": 0.0045212269027270595,
+          "positive_patch_examples": 5
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.008453369140624778,
+          "mean_recovery_fraction": -0.0024641518661000666,
+          "positive_patch_examples": 5
+        }
+      }
+    },
+    "support_L17H10": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          17,
+          10
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.083887227376302,
+      "mean_delta_patch": 0.004844156901041674,
+      "mean_recovery_fraction": 0.0016899694195517214,
+      "positive_patch_examples": 20,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.00862630208333326,
+          "mean_recovery_fraction": 0.003369923554741314,
+          "positive_patch_examples": 3
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.005533854166666852,
+          "mean_recovery_fraction": 0.0013587277926724395,
+          "positive_patch_examples": 4
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.01216634114583326,
+          "mean_recovery_fraction": 0.004002074015749554,
+          "positive_patch_examples": 6
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.008138020833333148,
+          "mean_recovery_fraction": 0.0025418014512733804,
+          "positive_patch_examples": 3
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.010243733723958148,
+          "mean_recovery_fraction": -0.0028226797166780813,
+          "positive_patch_examples": 4
+        }
+      }
+    },
+    "support_L20H8": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          20,
+          8
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.083375040690104,
+      "mean_delta_patch": 0.00535634358723962,
+      "mean_recovery_fraction": 0.0017830550875092502,
+      "positive_patch_examples": 24,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.00146484375,
+          "mean_recovery_fraction": 0.000534282704693731,
+          "positive_patch_examples": 4
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.013753255208333481,
+          "mean_recovery_fraction": 0.00394302892778319,
+          "positive_patch_examples": 4
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.01224772135416674,
+          "mean_recovery_fraction": 0.004313044234005619,
+          "positive_patch_examples": 7
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.0032246907552081483,
+          "mean_recovery_fraction": 0.0013512527366106503,
+          "positive_patch_examples": 5
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.003908793131510269,
+          "mean_recovery_fraction": -0.0012263331655469386,
+          "positive_patch_examples": 4
+        }
+      }
+    },
+    "support_L22H0": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          22,
+          0
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.08289794921875,
+      "mean_delta_patch": 0.005833435058593772,
+      "mean_recovery_fraction": 0.0019676722781876454,
+      "positive_patch_examples": 21,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.012858072916666519,
+          "mean_recovery_fraction": 0.005107734202964225,
+          "positive_patch_examples": 5
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.000488281250000222,
+          "mean_recovery_fraction": 0.00013408419614907986,
+          "positive_patch_examples": 4
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.01806640625000011,
+          "mean_recovery_fraction": 0.00587068568045359,
+          "positive_patch_examples": 6
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.003265380859374778,
+          "mean_recovery_fraction": 0.0012705387305772123,
+          "positive_patch_examples": 3
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.005510965983072769,
+          "mean_recovery_fraction": -0.002544681419205881,
+          "positive_patch_examples": 3
+        }
+      }
+    },
+    "support_L22H4": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          22,
+          4
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.0783843994140625,
+      "mean_delta_patch": 0.010346984863281183,
+      "mean_recovery_fraction": 0.003361390119221764,
+      "positive_patch_examples": 23,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.004394531249999778,
+          "mean_recovery_fraction": 0.0017191990919630782,
+          "positive_patch_examples": 4
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.005859375000000111,
+          "mean_recovery_fraction": 0.0018025493175270616,
+          "positive_patch_examples": 3
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.03173828125,
+          "mean_recovery_fraction": 0.010340532295994478,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.021779378255208037,
+          "mean_recovery_fraction": 0.007169133115994897,
+          "positive_patch_examples": 5
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.01203664143880201,
+          "mean_recovery_fraction": -0.0042244632253706955,
+          "positive_patch_examples": 3
+        }
+      }
+    },
+    "activation_control_L20H5": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          20,
+          5
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.0642445882161455,
+      "mean_delta_patch": 0.024486796061197948,
+      "mean_recovery_fraction": 0.007910077600238045,
+      "positive_patch_examples": 30,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.02180989583333326,
+          "mean_recovery_fraction": 0.007623745689786101,
+          "positive_patch_examples": 6
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.014892578125000111,
+          "mean_recovery_fraction": 0.004789942725291882,
+          "positive_patch_examples": 7
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.05623372395833326,
+          "mean_recovery_fraction": 0.018263616020842234,
+          "positive_patch_examples": 8
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.022979736328125,
+          "mean_recovery_fraction": 0.007169515660413383,
+          "positive_patch_examples": 5
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.006518046061198102,
+          "mean_recovery_fraction": 0.0017035679048566128,
+          "positive_patch_examples": 4
+        }
+      }
+    },
+    "inactive_control_L21H2": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          21,
+          2
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.0855367024739575,
+      "mean_delta_patch": 0.003194681803385424,
+      "mean_recovery_fraction": 0.0012720820120689222,
+      "positive_patch_examples": 22,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.005696614583333259,
+          "mean_recovery_fraction": 0.002029001690957998,
+          "positive_patch_examples": 5
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.004231770833333481,
+          "mean_recovery_fraction": 0.0012797013884783214,
+          "positive_patch_examples": 4
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": -0.0001220703125,
+          "mean_recovery_fraction": 0.0006209581775081007,
+          "positive_patch_examples": 4
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.0022481282552081483,
+          "mean_recovery_fraction": 0.0008761239532860272,
+          "positive_patch_examples": 5
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": 0.003918965657552231,
+          "mean_recovery_fraction": 0.0015546248501141639,
+          "positive_patch_examples": 4
+        }
+      }
+    },
+    "inactive_control_L22H8": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          22,
+          8
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.091736857096354,
+      "mean_delta_patch": -0.003005472819010424,
+      "mean_recovery_fraction": -0.0009043875268471256,
+      "positive_patch_examples": 15,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": -0.0027669270833333703,
+          "mean_recovery_fraction": -0.0012002811699057142,
+          "positive_patch_examples": 5
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": -0.00797526041666663,
+          "mean_recovery_fraction": -0.0025482159667730266,
+          "positive_patch_examples": 1
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.0024007161458334814,
+          "mean_recovery_fraction": 0.001647774394780217,
+          "positive_patch_examples": 4
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.0012715657552081483,
+          "mean_recovery_fraction": 0.000563100101044322,
+          "positive_patch_examples": 4
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.00795745849609375,
+          "mean_recovery_fraction": -0.002984314993381427,
+          "positive_patch_examples": 1
+        }
+      }
+    },
+    "inactive_control_L22H3": {
+      "n": 40,
+      "n_heads": 1,
+      "heads": [
+        [
+          22,
+          3
+        ]
+      ],
+      "mean_clean_logprob": -2.0753965437412263,
+      "mean_corrupt_clean_logprob": -5.088731384277343,
+      "mean_patched_logprob": -5.085673014322917,
+      "mean_delta_patch": 0.003058369954427098,
+      "mean_recovery_fraction": 0.0010601030135326014,
+      "positive_patch_examples": 19,
+      "by_variant": {
+        "literal": {
+          "n": 8,
+          "mean_delta_patch": 0.003417968749999889,
+          "mean_recovery_fraction": 0.0009508782036599053,
+          "positive_patch_examples": 4
+        },
+        "alias": {
+          "n": 8,
+          "mean_delta_patch": 0.001708984375000111,
+          "mean_recovery_fraction": 0.0005104954872214064,
+          "positive_patch_examples": 3
+        },
+        "paraphrase": {
+          "n": 8,
+          "mean_delta_patch": 0.007242838541666741,
+          "mean_recovery_fraction": 0.0030551273067860258,
+          "positive_patch_examples": 4
+        },
+        "relational": {
+          "n": 8,
+          "mean_delta_patch": 0.007130940755208148,
+          "mean_recovery_fraction": 0.002571598314049405,
+          "positive_patch_examples": 4
+        },
+        "distractor_heavy": {
+          "n": 8,
+          "mean_delta_patch": -0.004208882649739398,
+          "mean_recovery_fraction": -0.001787584244053735,
+          "positive_patch_examples": 4
+        }
+      }
+    }
+  },
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "n_examples": 40,
+  "groups_csv": "/home/ec2-user/SageMaker/retrieval-head-atlas/configs/semantic_single_head_patch_groups.csv",
+  "target_tokens": 16384,
+  "needle_frac": 0.1
+}
