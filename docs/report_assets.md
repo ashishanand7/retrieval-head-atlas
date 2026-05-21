@@ -1,9 +1,9 @@
-# Phase 2 Report Assets
+# Retrieval Circuit Report Assets
 
 The report tables and figures are generated from committed `artifacts_phase2` outputs with:
 
 ```bash
-.venv/bin/python scripts/build_phase2_report_assets.py
+.venv/bin/python scripts/build_report_assets.py
 ```
 
 Outputs are written to:
@@ -15,7 +15,7 @@ artifacts_phase2/report_assets/
 Open the generated HTML preview for a quick visual review:
 
 ```text
-artifacts_phase2/report_assets/phase2_report_preview.html
+artifacts_phase2/report_assets/retrieval_circuit_report_preview.html
 ```
 
 Use the generated `README.md` in that folder as the figure/table shortlist for the report. The most important report flow is:
