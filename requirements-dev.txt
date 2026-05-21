@@ -1,3 +1,9 @@
 jupytext
 nbstripout
 ipykernel
+numpy
+pandas
+matplotlib
+seaborn
+tabulate
+jinja2

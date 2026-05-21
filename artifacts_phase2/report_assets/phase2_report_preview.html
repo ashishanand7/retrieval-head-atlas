@@ -1,0 +1,380 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Phase 2 Retrieval Circuit Report Assets</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 40px; color: #111827; background: #f8fafc; }
+    h1 { font-size: 32px; margin-bottom: 8px; }
+    h2 { font-size: 22px; margin-top: 34px; }
+    p { color: #4b5563; max-width: 900px; line-height: 1.5; }
+    section { background: white; padding: 24px; margin: 24px 0; border: 1px solid #e5e7eb; border-radius: 12px; box-shadow: 0 1px 3px rgba(15,23,42,0.06); }
+    img { max-width: 100%; height: auto; display: block; }
+    .data-table { border-collapse: collapse; font-size: 13px; background: white; }
+    .data-table th, .data-table td { padding: 7px 9px; border-bottom: 1px solid #e5e7eb; text-align: right; }
+    .data-table th:first-child, .data-table td:first-child { text-align: left; }
+    .data-table th { background: #f3f4f6; color: #374151; }
+  </style>
+</head>
+<body>
+  <h1>Phase 2 Retrieval Circuit Report Assets</h1>
+  <p>Generated from committed experiment artifacts. The figures are designed for the paper/report narrative: a stable role-decomposed semantic retrieval circuit with a dominant answer-content head and separate support heads.</p>
+  <section><h2>Role decomposition at 16k</h2><img src='figures/fig_01_role_decomposition_16k.svg' alt='Role decomposition at 16k'></section><section><h2>L22H7 generalization</h2><img src='figures/fig_02_l22h7_generalization.svg' alt='L22H7 generalization'></section><section><h2>Single-head patch decomposition</h2><img src='figures/fig_03_single_head_decomposition.svg' alt='Single-head patch decomposition'></section><section><h2>Attention/activation/patch alignment</h2><img src='figures/fig_04_l22h7_attention_activation_alignment.svg' alt='Attention/activation/patch alignment'></section><section><h2>Necessity vs sufficiency</h2><img src='figures/fig_05_necessity_vs_sufficiency.svg' alt='Necessity vs sufficiency'></section><section><h2>Evidence matrix</h2><img src='figures/fig_06_evidence_matrix.svg' alt='Evidence matrix'></section>
+  <section><h2>Main Results Table</h2><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>setting</th>
+      <th>target_tokens</th>
+      <th>needle_frac</th>
+      <th>n_examples</th>
+      <th>prompt_tokens_mean</th>
+      <th>prompt_tokens_min</th>
+      <th>prompt_tokens_max</th>
+      <th>clean_logprob</th>
+      <th>corrupt_clean_logprob</th>
+      <th>corrupt_gold_logprob</th>
+      <th>recovery_gap</th>
+      <th>answer_address_ablation</th>
+      <th>non_address_core_ablation</th>
+      <th>query_tail_ablation</th>
+      <th>answer_address_patch</th>
+      <th>non_address_core_patch</th>
+      <th>l22h7_patch</th>
+      <th>l22h7_patch_ci_low</th>
+      <th>l22h7_patch_ci_high</th>
+      <th>l22h7_positive_examples</th>
+      <th>l22h7_gold_attention</th>
+      <th>l22h7_needle_attention</th>
+      <th>l22h7_activation_relative_diff</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8k / 0.1</td>
+      <td>8192</td>
+      <td>0.1000</td>
+      <td>40</td>
+      <td>8192.0500</td>
+      <td>8191.0000</td>
+      <td>8193.0000</td>
+      <td>-2.0122</td>
+      <td>-5.1059</td>
+      <td>-2.0432</td>
+      <td>3.0936</td>
+      <td>-0.1625</td>
+      <td>-1.2689</td>
+      <td>-1.0146</td>
+      <td>0.5075</td>
+      <td>0.0349</td>
+      <td>0.4571</td>
+      <td>0.4025</td>
+      <td>0.5116</td>
+      <td>38</td>
+      <td>0.6648</td>
+      <td>0.8483</td>
+      <td>1.1228</td>
+    </tr>
+    <tr>
+      <td>8k / 0.5</td>
+      <td>8192</td>
+      <td>0.5000</td>
+      <td>40</td>
+      <td>8191.8500</td>
+      <td>8191.0000</td>
+      <td>8193.0000</td>
+      <td>-1.9533</td>
+      <td>-4.9325</td>
+      <td>-1.9889</td>
+      <td>2.9792</td>
+      <td>-0.1262</td>
+      <td>-1.3643</td>
+      <td>-0.9881</td>
+      <td>0.3729</td>
+      <td>0.0356</td>
+      <td>0.3353</td>
+      <td>0.2838</td>
+      <td>0.3868</td>
+      <td>39</td>
+      <td>0.5208</td>
+      <td>0.8053</td>
+      <td>1.0113</td>
+    </tr>
+    <tr>
+      <td>8k / 0.9</td>
+      <td>8192</td>
+      <td>0.9000</td>
+      <td>40</td>
+      <td>8191.9500</td>
+      <td>8191.0000</td>
+      <td>8193.0000</td>
+      <td>-2.0298</td>
+      <td>-5.1217</td>
+      <td>-2.0581</td>
+      <td>3.0919</td>
+      <td>-0.0940</td>
+      <td>-1.1980</td>
+      <td>-0.9561</td>
+      <td>0.4899</td>
+      <td>0.0361</td>
+      <td>0.4619</td>
+      <td>0.4143</td>
+      <td>0.5094</td>
+      <td>38</td>
+      <td>0.6897</td>
+      <td>0.8935</td>
+      <td>1.1098</td>
+    </tr>
+    <tr>
+      <td>16k / 0.1</td>
+      <td>16384</td>
+      <td>0.1000</td>
+      <td>40</td>
+      <td>16383.9750</td>
+      <td>16383.0000</td>
+      <td>16385.0000</td>
+      <td>-2.0754</td>
+      <td>-5.0887</td>
+      <td>-2.1096</td>
+      <td>3.0133</td>
+      <td>-0.1901</td>
+      <td>-1.3490</td>
+      <td>-1.0429</td>
+      <td>0.4610</td>
+      <td>0.0240</td>
+      <td>0.4077</td>
+      <td>0.3366</td>
+      <td>0.4789</td>
+      <td>38</td>
+      <td>0.5936</td>
+      <td>0.8653</td>
+      <td>1.0418</td>
+    </tr>
+    <tr>
+      <td>16k / 0.5</td>
+      <td>16384</td>
+      <td>0.5000</td>
+      <td>40</td>
+      <td>16384.0250</td>
+      <td>16383.0000</td>
+      <td>16385.0000</td>
+      <td>-2.0278</td>
+      <td>-5.1038</td>
+      <td>-2.0568</td>
+      <td>3.0760</td>
+      <td>-0.1862</td>
+      <td>-1.2737</td>
+      <td>-0.9462</td>
+      <td>0.5380</td>
+      <td>0.0414</td>
+      <td>0.4998</td>
+      <td>0.4314</td>
+      <td>0.5682</td>
+      <td>38</td>
+      <td>0.6659</td>
+      <td>0.9190</td>
+      <td>1.1031</td>
+    </tr>
+    <tr>
+      <td>16k / 0.9</td>
+      <td>16384</td>
+      <td>0.9000</td>
+      <td>40</td>
+      <td>16383.8750</td>
+      <td>16383.0000</td>
+      <td>16385.0000</td>
+      <td>-2.1411</td>
+      <td>-5.2728</td>
+      <td>-2.1604</td>
+      <td>3.1317</td>
+      <td>-0.1197</td>
+      <td>-1.3289</td>
+      <td>-0.9571</td>
+      <td>0.5352</td>
+      <td>0.0434</td>
+      <td>0.5007</td>
+      <td>0.4379</td>
+      <td>0.5636</td>
+      <td>38</td>
+      <td>0.6729</td>
+      <td>0.9308</td>
+      <td>1.0896</td>
+    </tr>
+  </tbody>
+</table></section>
+  <section><h2>Statistical Checks</h2><table class="dataframe data-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>setting</th>
+      <th>target_tokens</th>
+      <th>needle_frac</th>
+      <th>metric</th>
+      <th>group</th>
+      <th>mean</th>
+      <th>ci_low</th>
+      <th>ci_high</th>
+      <th>std</th>
+      <th>supporting_examples</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8k / 0.1</td>
+      <td>8192</td>
+      <td>0.1000</td>
+      <td>single_head_patch</td>
+      <td>address_L22H7</td>
+      <td>0.4571</td>
+      <td>0.4025</td>
+      <td>0.5116</td>
+      <td>0.1759</td>
+      <td>38</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.1</td>
+      <td>8192</td>
+      <td>0.1000</td>
+      <td>group_ablation</td>
+      <td>non_address_core</td>
+      <td>-1.2689</td>
+      <td>-1.3231</td>
+      <td>-1.2146</td>
+      <td>0.1750</td>
+      <td>40</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.1</td>
+      <td>8192</td>
+      <td>0.1000</td>
+      <td>group_ablation</td>
+      <td>query_tail</td>
+      <td>-1.0146</td>
+      <td>-1.0491</td>
+      <td>-0.9800</td>
+      <td>0.1116</td>
+      <td>40</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.1</td>
+      <td>8192</td>
+      <td>0.1000</td>
+      <td>group_ablation</td>
+      <td>answer_address</td>
+      <td>-0.1625</td>
+      <td>-0.1898</td>
+      <td>-0.1352</td>
+      <td>0.0881</td>
+      <td>39</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.5</td>
+      <td>8192</td>
+      <td>0.5000</td>
+      <td>single_head_patch</td>
+      <td>address_L22H7</td>
+      <td>0.3353</td>
+      <td>0.2838</td>
+      <td>0.3868</td>
+      <td>0.1662</td>
+      <td>39</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.5</td>
+      <td>8192</td>
+      <td>0.5000</td>
+      <td>group_ablation</td>
+      <td>non_address_core</td>
+      <td>-1.3643</td>
+      <td>-1.4126</td>
+      <td>-1.3160</td>
+      <td>0.1559</td>
+      <td>40</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.5</td>
+      <td>8192</td>
+      <td>0.5000</td>
+      <td>group_ablation</td>
+      <td>query_tail</td>
+      <td>-0.9881</td>
+      <td>-1.0209</td>
+      <td>-0.9553</td>
+      <td>0.1058</td>
+      <td>40</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.5</td>
+      <td>8192</td>
+      <td>0.5000</td>
+      <td>group_ablation</td>
+      <td>answer_address</td>
+      <td>-0.1262</td>
+      <td>-0.1535</td>
+      <td>-0.0988</td>
+      <td>0.0883</td>
+      <td>38</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.9</td>
+      <td>8192</td>
+      <td>0.9000</td>
+      <td>single_head_patch</td>
+      <td>address_L22H7</td>
+      <td>0.4619</td>
+      <td>0.4143</td>
+      <td>0.5094</td>
+      <td>0.1536</td>
+      <td>38</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.9</td>
+      <td>8192</td>
+      <td>0.9000</td>
+      <td>group_ablation</td>
+      <td>non_address_core</td>
+      <td>-1.1980</td>
+      <td>-1.2408</td>
+      <td>-1.1553</td>
+      <td>0.1378</td>
+      <td>40</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.9</td>
+      <td>8192</td>
+      <td>0.9000</td>
+      <td>group_ablation</td>
+      <td>query_tail</td>
+      <td>-0.9561</td>
+      <td>-0.9875</td>
+      <td>-0.9246</td>
+      <td>0.1015</td>
+      <td>40</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>8k / 0.9</td>
+      <td>8192</td>
+      <td>0.9000</td>
+      <td>group_ablation</td>
+      <td>answer_address</td>
+      <td>-0.0940</td>
+      <td>-0.1164</td>
+      <td>-0.0716</td>
+      <td>0.0723</td>
+      <td>38</td>
+      <td>40</td>
+    </tr>
+  </tbody>
+</table></section>
+</body>
+</html>
