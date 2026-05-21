@@ -582,3 +582,69 @@ Key readout:
 
 - `patch_effect_under_ablation = patch_plus_ablate - ablate_only`.
 - If this is much smaller than `patch_only - corrupt_baseline`, then the support group is genuinely required for using the address-head patch.
+
+## 2026-05-21: Patch Interaction With Ablate-Only Controls
+
+Pulled artifact commit:
+
+```text
+142fde0
+```
+
+Run:
+
+- Patch clean `answer_address` activations into corrupt prompts.
+- Compare `patch_only`, `ablate_only`, and `patch_plus_ablate`.
+- `N=40` paired examples.
+- `440` rows.
+
+Results:
+
+| Ablated group | Ablate-only delta | Patch under ablation | Interaction loss | Interpretation |
+| --- | ---: | ---: | ---: | --- |
+| `query_tail` | -0.6628 | +0.4475 | -0.0600 | patch still works; small interaction loss |
+| `first_token_sink` | -0.2674 | +0.4997 | -0.0078 | patch essentially unchanged |
+| `non_address_core` | -0.7898 | +0.4400 | -0.0675 | patch still works; small interaction loss |
+| `query_tail_inactive_control` | -0.0085 | +0.5414 | +0.0339 | inactive control does not suppress patch |
+| `answer_address_inactive_control` | +0.0095 | +0.5203 | +0.0128 | inactive control does not suppress patch |
+
+Interpretation:
+
+The refined interaction control changes the dependency-chain claim:
+
+- `query_tail` and `non_address_core` strongly affect the absolute clean-answer logprob under corrupt prompts.
+- But after subtracting `ablate_only`, the answer-address patch still provides a large positive boost.
+- Therefore the non-address groups are not strictly required to *use* the answer-address patch.
+
+Updated mechanism:
+
+The circuit is better described as a **two-role, partly additive system** rather than a strict serial chain.
+
+1. **Address/content heads** carry answer-specific information and are partially sufficient to transplant that information.
+2. **Support heads** provide an answer-independent retrieval/usefulness state. They are strongly necessary for performance, but do not themselves carry the clean answer and do not gate the address-head patch in a strict downstream sense.
+
+This is still a strong narrative: we separated content transport from support/state machinery.
+
+## Next Step: Activation-Difference Analysis
+
+The next question is why support-head patching is weak despite support-head ablation being strong.
+
+Hypothesis:
+
+- Address heads differ substantially between clean and corrupt prompts because they encode answer identity.
+- Support heads may be highly necessary but nearly invariant between clean and corrupt prompts, so clean-to-corrupt patching has little to transplant.
+
+Run:
+
+```bash
+python scripts/run_semantic_activation_delta.py \
+  --groups-csv configs/semantic_functional_groups.csv \
+  --groups answer_address,non_address_core,strong13,core19,first_token_sink,query_tail,answer_address_inactive_control,query_tail_inactive_control \
+  --n-per-variant 8 \
+  --target-tokens 8192 \
+  --include-head-rows \
+  --out artifacts_phase2/semantic_activation_delta_functional_8192_n8.csv \
+  --summary-out artifacts_phase2/semantic_activation_delta_functional_8192_n8_summary.json
+```
+
+If address heads show much larger clean-corrupt activation deltas than support heads, it explains the necessity/sufficiency split cleanly.
