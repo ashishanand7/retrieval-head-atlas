@@ -937,3 +937,99 @@ Expected readout:
 - If `L22H7` remains dominant at 16k, the project gets a much stronger long-context claim.
 - If support necessity remains large and support patching remains weak, the role-decomposition story generalizes cleanly.
 - If the identity head changes or weakens at 16k, the narrative pivots to context-length-dependent circuit reconfiguration, which is still a publishable interpretability result.
+
+## 2026-05-21: 16k Context-Length Generalization
+
+Pulled artifact commit:
+
+```text
+6c298e7
+```
+
+Run:
+
+- Full phase-2 core suite at `target_tokens=16384`.
+- `needle_frac=0.1`, `0.5`, and `0.9`.
+- `N=40` examples per position.
+- Prompt lengths were actually near 16k:
+  - `0.1`: mean `16384.0`, min `16383`, max `16385`
+  - `0.5`: mean `16384.0`, min `16383`, max `16385`
+  - `0.9`: mean `16383.9`, min `16383`, max `16385`
+
+### 8k vs 16k Summary
+
+| Length | Frac | `answer_address` ablate | `non_address_core` ablate | `query_tail` ablate | `answer_address` patch | `non_address_core` patch | `L22H7` patch | `L22H10` patch | `L21H11` patch |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 8192 | 0.1 | -0.1625 | -1.2689 | -1.0146 | +0.5075 | +0.0349 | +0.4571 | +0.0720 | +0.0163 |
+| 8192 | 0.5 | -0.1262 | -1.3643 | -0.9881 | +0.3729 | +0.0356 | +0.3353 | +0.0580 | +0.0291 |
+| 8192 | 0.9 | -0.0940 | -1.1980 | -0.9561 | +0.4899 | +0.0361 | +0.4619 | +0.0507 | +0.0316 |
+| 16384 | 0.1 | -0.1901 | -1.3490 | -1.0429 | +0.4610 | +0.0240 | +0.4077 | +0.1105 | +0.0212 |
+| 16384 | 0.5 | -0.1862 | -1.2737 | -0.9462 | +0.5380 | +0.0414 | +0.4998 | +0.0954 | +0.0176 |
+| 16384 | 0.9 | -0.1197 | -1.3289 | -0.9571 | +0.5352 | +0.0434 | +0.5007 | +0.0703 | +0.0256 |
+
+Attention and activation checks:
+
+| Length | Frac | `L22H7` gold attention | `L22H7` needle attention | `L22H7` activation relative diff |
+| ---: | ---: | ---: | ---: | ---: |
+| 8192 | 0.1 | 0.6648 | 0.8483 | 1.1228 |
+| 8192 | 0.5 | 0.5208 | 0.8053 | 1.0113 |
+| 8192 | 0.9 | 0.6897 | 0.8935 | 1.1098 |
+| 16384 | 0.1 | 0.5936 | 0.8653 | 1.0418 |
+| 16384 | 0.5 | 0.6659 | 0.9190 | 1.1031 |
+| 16384 | 0.9 | 0.6729 | 0.9308 | 1.0896 |
+
+Statistical sanity checks:
+
+- `L22H7` single-head patch is positive with 95% normal-approx intervals at every tested length and position:
+  - `8192/0.1`: `+0.4571`, CI `[+0.4025, +0.5116]`
+  - `8192/0.5`: `+0.3353`, CI `[+0.2838, +0.3868]`
+  - `8192/0.9`: `+0.4619`, CI `[+0.4143, +0.5094]`
+  - `16384/0.1`: `+0.4077`, CI `[+0.3366, +0.4789]`
+  - `16384/0.5`: `+0.4998`, CI `[+0.4314, +0.5682]`
+  - `16384/0.9`: `+0.5007`, CI `[+0.4379, +0.5636]`
+- `non_address_core` ablation is negative in `40/40` examples at every tested length and position.
+- `query_tail` ablation is negative in `40/40` examples at every tested length and position.
+- `L22H7` accounts for about `88%` to `94%` of the `answer_address` group patch across all tested settings.
+- `answer_address` patch is roughly `12x` to `19x` larger than `non_address_core` patch at 16k.
+
+Interpretation:
+
+This is a major strengthening result. The circuit is not merely an 8k artifact.
+
+At 16k:
+
+1. `L22H7` remains the dominant answer-content donor.
+2. `L22H10` remains a smaller positive companion donor.
+3. `L21H11` remains weak as a clean donor despite address-like attention.
+4. Non-address support heads remain strongly necessary under ablation.
+5. Support-head clean patching remains tiny compared with address-head patching.
+6. Direct attention, activation-difference, ablation, and patching evidence all point to the same role decomposition.
+
+Updated paper-level claim:
+
+The strongest current claim is now:
+
+> In Qwen2.5-1.5B-Instruct, semantic key-value retrieval at 8k-16k contexts uses a stable, role-decomposed circuit: a dominant address/content head (`L22H7`) transports answer identity, a smaller companion head (`L22H10`) contributes additional content signal, and a separate set of support heads is necessary for retrieval performance but does not itself transplant answer identity under clean activation patching.
+
+## Next Step: Evidence Consolidation And Figures
+
+The discovery phase has enough signal for a serious paper/project narrative. The next step should be consolidation rather than immediate broad exploration:
+
+1. Build report-ready summary tables with confidence intervals.
+2. Generate figures for:
+   - ablation necessity by group across context length and position,
+   - patch sufficiency by group across context length and position,
+   - single-head patch decomposition (`L22H7`, `L22H10`, `L21H11`, controls),
+   - attention/activation alignment for `L22H7`.
+3. Draft the Results narrative around role decomposition.
+4. Then decide whether to run one final high-N confirmation suite.
+
+If a final high-N run is needed, reuse the existing runner:
+
+```bash
+TARGET_TOKENS=16384 \
+MAX_LEN=32768 \
+NEEDLE_FRACS="0.1 0.5 0.9" \
+N_PER_VARIANT=16 \
+bash scripts/run_phase2_position_generalization.sh
+```
