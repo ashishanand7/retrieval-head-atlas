@@ -1,14 +1,12 @@
 # Retrieval Head Atlas: A Role-Decomposed Circuit for Semantic Long-Context Retrieval
 
-Status: content draft. This file is intentionally Markdown-first; LaTeX formatting, citation styling, figure placement, and final table formatting can be handled in a later conversion pass.
-
 ## Abstract
 
 Long-context language models can often answer questions about information that appeared thousands of tokens earlier, but task accuracy alone does not explain how this retrieval happens internally. In our previous work, we built a retrieval-head atlas for Qwen2.5-1.5B-Instruct and showed that long-context copying behavior is supported by a sparse set of attention heads: only a small subset of heads reliably pointed to the source answer span, and targeted ablations showed that these heads played a causal role in difficult long-distance retrieval.
 
 In this work, we extend that analysis from literal copying to semantic key-value retrieval. Instead of asking only whether a model can copy a hidden string, we test whether the same internal machinery supports retrieval when the query uses aliases, paraphrases, relational descriptions, and distractor-heavy contexts. We combine semantic retrieval probes with causal ablation, clean-to-corrupt activation patching, single-head decomposition, attention tracing, and activation-difference analysis across 8k and 16k token contexts.
 
-The main finding is that semantic retrieval in Qwen2.5-1.5B-Instruct is not implemented by one undifferentiated set of important heads. It is better described as a role-decomposed circuit. A dominant answer-content head, L22H7, directly attends to the answer-bearing context, changes strongly when the answer identity changes, and restores a large fraction of the correct-answer log probability when patched from a clean run into a corrupted run. A smaller companion head, L22H10, contributes additional answer signal. In contrast, a separate set of non-address support heads is strongly necessary under ablation but does not itself transplant answer identity under clean activation patching. This separation between content transport and support-state machinery remains stable across early, middle, and late needle positions and across 8k-16k contexts.
+The main finding is that semantic retrieval in Qwen2.5-1.5B-Instruct is not implemented by one undifferentiated set of important heads. It is better described as a role-decomposed circuit. A dominant answer-content head, L22H7, directly attends to the answer-bearing context, changes strongly when the answer identity changes, and restores the largest single-head portion of the correct-answer log probability when patched from a clean run into a corrupted run. A smaller companion head, L22H10, contributes additional answer signal. In contrast, a separate set of non-address support heads is strongly necessary under ablation but does not itself transplant answer identity under clean activation patching. This separation between content transport and support-state machinery remains stable across early, middle, and late needle positions and across 8k-16k contexts.
 
 These results sharpen the original Retrieval Head Atlas from a head-discovery project into a mechanistic account of semantic long-context retrieval. The model appears to route answer identity through a small address/content pathway while relying on broader support heads to make that retrieval usable.
 
@@ -754,7 +752,7 @@ The evidence so far supports a two-role view of the semantic retrieval circuit:
 
 This is already a stronger explanation than the previous submission. The previous report established that retrieval-like heads exist and matter. The current result shows that the retrieval mechanism is internally differentiated: the model needs both address/content pathways and support-state machinery.
 
-**Main figure.** This section should use `artifacts_phase2/report_assets/figures/fig_01_role_decomposition_16k.svg`. That figure visually captures the central split: support heads have large necessity under ablation but weak sufficiency under patching, while address heads are the meaningful answer donors.
+**Main figure.** This section should use `fig_01_role_decomposition_16k.svg`. That figure visually captures the central split: support heads have large necessity under ablation but weak sufficiency under patching, while address heads are the meaningful answer donors.
 
 ## 11. Results III: L22H7 Is The Dominant Answer-Content Head
 
@@ -907,6 +905,8 @@ The final evidence matrix is useful because it compresses the result into one vi
 
 This is the strongest “jury narrative” figure because it shows the volume of work without requiring the reader to inspect every CSV. It makes clear that the conclusion does not rest on one experiment.
 
+Because the matrix combines different kinds of quantities, its caption should make clear that rows should be read as an evidence map rather than as one shared physical scale. The important pattern is row-wise consistency across settings: content-patching rows stay positive, support-patching rows stay small, support-necessity rows stay large, and L22H7 attention/activation rows remain high.
+
 **Main figures.** This section should use `fig_04_l22h7_attention_activation_alignment.svg` and `fig_06_evidence_matrix.svg`. The first tells the mechanistic story for L22H7; the second shows the whole evidence stack across settings.
 
 ### 12.6 Interpretation
@@ -1038,7 +1038,7 @@ Such failure modes could turn into a strong extension: not only “this is the c
 
 This report extends the Retrieval Head Atlas from literal long-context copying to semantic long-context retrieval. The previous submission showed that retrieval-like behavior is sparse and causally localized. The current work shows that the mechanism is also role-decomposed.
 
-Across semantic prompt variants, answer positions, and 8k-16k context lengths, Qwen2.5-1.5B-Instruct uses a stable retrieval circuit with separable roles. L22H7 is the dominant answer-content head: it attends to the answer-bearing span, changes strongly when the answer changes, and restores clean-answer probability when patched into a corrupt run. L22H10 contributes as a smaller companion. L21H11 is address-like and necessary but weak as a standalone answer donor. A broader set of non-address support heads is strongly necessary under ablation but does not itself transplant answer identity under clean activation patching.
+Across these controlled semantic prompt variants, answer positions, and 8k-16k context lengths, Qwen2.5-1.5B-Instruct uses a stable retrieval circuit with separable roles. L22H7 is the dominant answer-content head: it attends to the answer-bearing span, changes strongly when the answer changes, and restores clean-answer probability when patched into a corrupt run. L22H10 contributes as a smaller companion. L21H11 is address-like and necessary but weak as a standalone answer donor. A broader set of non-address support heads is strongly necessary under ablation but does not itself transplant answer identity under clean activation patching.
 
 The main takeaway is simple:
 
@@ -1093,7 +1093,7 @@ The body should use a small number of compact tables:
 | Table 5 | `table_single_head_patching.md` | L22H7/L22H10/L21H11 decomposition |
 | Table 6 | `table_statistical_checks.md` | Confidence intervals and directional consistency |
 
-The appendix can include the full generated tables in CSV/Markdown/LaTeX form from `artifacts_phase2/report_assets/tables`.
+The appendix can include the full generated tables in CSV, Markdown, and LaTeX form from the generated report-assets directory.
 
 ### Appendix C: Additional diagrams for report/PPT
 
@@ -1115,7 +1115,7 @@ This appendix should list the main scripts:
 - `scripts/run_semantic_component_patching.py`
 - `scripts/run_semantic_patch_interaction.py`
 - `scripts/run_semantic_activation_delta.py`
-- `scripts/run_phase2_position_generalization.sh`
+- `scripts/run_position_generalization.sh`
 - `scripts/build_report_assets.py`
 
 It should also describe the SageMaker workflow briefly: code edited locally, experiments run on the GPU instance, artifacts pulled back into the repository, and report assets generated locally from committed artifacts.

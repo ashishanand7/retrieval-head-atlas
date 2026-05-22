@@ -6,29 +6,30 @@ Status: planning note. The report should use deterministic charts/diagrams for e
 
 These should be the main scientific figures in the report because they are generated directly from experiment artifacts.
 
-1. `artifacts_phase2/report_assets/figures/fig_01_role_decomposition_16k.svg`
+1. `fig_01_role_decomposition_16k.svg`
    - Purpose: show necessity vs sufficiency by functional role.
    - Best location: main Results section after introducing role decomposition.
 
-2. `artifacts_phase2/report_assets/figures/fig_02_l22h7_generalization.svg`
+2. `fig_02_l22h7_generalization.svg`
    - Purpose: show L22H7 remains a strong answer-content donor across 8k/16k and positions.
    - Best location: main Results section.
 
-3. `artifacts_phase2/report_assets/figures/fig_03_single_head_decomposition.svg`
+3. `fig_03_single_head_decomposition.svg`
    - Purpose: show L22H7 dominates L22H10/L21H11/controls in single-head patching.
    - Best location: head-level decomposition subsection.
 
-4. `artifacts_phase2/report_assets/figures/fig_04_l22h7_attention_activation_alignment.svg`
+4. `fig_04_l22h7_attention_activation_alignment.svg`
    - Purpose: connect attention, activation difference, and causal patching.
    - Best location: mechanistic evidence subsection.
 
-5. `artifacts_phase2/report_assets/figures/fig_05_necessity_vs_sufficiency.svg`
+5. `fig_05_necessity_vs_sufficiency.svg`
    - Purpose: explain why support heads can be necessary without being answer donors.
    - Best location: discussion or end of Results.
 
-6. `artifacts_phase2/report_assets/figures/fig_06_evidence_matrix.svg`
+6. `fig_06_evidence_matrix.svg`
    - Purpose: compact evidence matrix across length and position.
    - Best location: summary/results recap or appendix.
+   - Caption note: rows mix metric types, so the reader should compare patterns across settings within each row rather than treating color as one shared physical scale.
 
 ## Deterministic Diagrams To Add
 

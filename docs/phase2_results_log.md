@@ -1,5 +1,7 @@
 # Phase 2 Results Log
 
+Note: this is an internal experiment notebook/log. The position-generalization runner was later renamed from `scripts/run_phase2_position_generalization.sh` to `scripts/run_position_generalization.sh` for report-facing clarity.
+
 ## 2026-04-26: Semantic Ablation Probe
 
 Command family:
@@ -818,13 +820,13 @@ The current evidence is strong at `needle_frac=0.1`, an early-context needle. Fo
 Run the core suite at middle and late positions:
 
 ```bash
-bash scripts/run_phase2_position_generalization.sh
+bash scripts/run_position_generalization.sh
 ```
 
 To run only one position first:
 
 ```bash
-NEEDLE_FRACS="0.5" bash scripts/run_phase2_position_generalization.sh
+NEEDLE_FRACS="0.5" bash scripts/run_position_generalization.sh
 ```
 
 This executes, for each requested `needle_frac`:
@@ -919,7 +921,7 @@ TARGET_TOKENS=16384 \
 MAX_LEN=32768 \
 NEEDLE_FRACS="0.5" \
 N_PER_VARIANT=4 \
-bash scripts/run_phase2_position_generalization.sh
+bash scripts/run_position_generalization.sh
 ```
 
 If that succeeds, run the full 16k suite:
@@ -929,7 +931,7 @@ TARGET_TOKENS=16384 \
 MAX_LEN=32768 \
 NEEDLE_FRACS="0.1 0.5 0.9" \
 N_PER_VARIANT=8 \
-bash scripts/run_phase2_position_generalization.sh
+bash scripts/run_position_generalization.sh
 ```
 
 Expected readout:
@@ -1031,5 +1033,5 @@ TARGET_TOKENS=16384 \
 MAX_LEN=32768 \
 NEEDLE_FRACS="0.1 0.5 0.9" \
 N_PER_VARIANT=16 \
-bash scripts/run_phase2_position_generalization.sh
+bash scripts/run_position_generalization.sh
 ```
