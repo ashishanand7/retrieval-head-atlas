@@ -683,103 +683,450 @@ This last point is the bridge to the next result. If all important heads simply 
 
 ## 10. Results II: The Circuit Splits Into Address Heads And Support Heads
 
-Draft target: introduce the central role decomposition.
+The neighborhood sweep showed that semantic retrieval depends on more than one head and more than one kind of head. The next question was whether these heads all perform the same job. Attention tracing and functional group ablation show that they do not. The circuit separates into heads that directly address the answer span and heads that are necessary for retrieval without directly pointing to the answer.
 
-Core points:
+### 10.1 Direct answer-address heads
 
-- Some heads directly attend to the answer span: especially L22H7, L21H11, and L22H10.
-- Many necessary heads do not attend to the answer span; they attend to query-tail or sink-like positions.
-- Group ablation shows both address and non-address groups matter, but non-address support groups are often more damaging under ablation.
-- Matched inactive controls rule out a simple layer/group-size explanation.
+The attention trace identifies three heads with clear answer-address behavior: L22H7, L21H11, and L22H10. In the 8k early-position setting, their query-step attention masses are:
 
-Likely figures/tables:
+| Head | Gold attention | Needle attention | Argmax in needle |
+| --- | ---: | ---: | ---: |
+| L22H7 | 0.665 | 0.848 | 1.000 |
+| L21H11 | 0.531 | 0.716 | 0.925 |
+| L22H10 | 0.355 | 0.702 | 0.700 |
 
-- `fig_01_role_decomposition_16k`
-- `table_functional_ablation`
+These values mean that the heads are not merely active in the same layer neighborhood; they are directly looking at the answer-bearing span at the moment the model must answer the query. L22H7 is especially clean: its attention argmax is inside the needle span in every example in this setting, and its gold attention mass is the highest among the traced heads.
+
+This pattern remains visible across positions and lengths. At 16k, L22H7 needle attention is 0.865 at early position, 0.919 at middle position, and 0.931 at late position. This is important because it rules out the possibility that L22H7 is only a short-context or one-position pointer.
+
+### 10.2 Necessary heads that do not directly address the answer
+
+Not all important heads behave this way. L20H7 is the clearest counterexample. It was the most harmful head in the broader single-head ablation sweep, with mean ablation delta around -0.148, but its attention trace shows almost no direct answer attention. In the 8k early-position setting, L20H7 has only 0.0015 gold attention mass and 0.0083 needle attention mass.
+
+The same pattern appears for several other support heads. They can be strongly necessary under ablation while placing little direct attention on the answer tokens. Many of these heads attend near the query tail or to sink-like positions such as the first token. This suggests that semantic retrieval is not only an address operation. The model also needs support machinery that prepares, stabilizes, or routes the computation so that retrieved information can affect the output.
+
+This is the first major role split:
+
+- **Address heads** directly point to the answer-bearing context.
+- **Support heads** are necessary for retrieval but do not themselves directly point to the answer.
+
+### 10.3 Functional group ablation
+
+To test whether these roles matter causally, heads were grouped into functional sets and ablated at the query step. The most important groups are:
+
+- `answer_address`: L22H7, L22H10, L21H11
+- `non_address_core`: necessary non-address heads from the semantic core
+- `query_tail`: heads concentrated around query-tail behavior
+- `first_token_sink`: sink-like heads that appeared functionally active
+- inactive controls matched to active groups
+
+The result is striking. Address heads are necessary, but the non-address support machinery is much more damaging when ablated as a group.
+
+At 8k early position:
+
+| Group | Heads | Mean ablation delta | Negative examples |
+| --- | ---: | ---: | ---: |
+| Answer-address | 3 | -0.163 | 39/40 |
+| Non-address core | 16 | -1.269 | 40/40 |
+| Query-tail support | 9 | -1.015 | 40/40 |
+| First-token/sink | 6 | -0.376 | 40/40 |
+| Address inactive control | 3 | +0.011 | 13/40 |
+| Query-tail inactive control | 9 | +0.024 | 19/40 |
+
+At 16k, the same qualitative pattern holds. Non-address core ablation is between -1.274 and -1.349 across the three answer positions, and query-tail ablation is between -0.946 and -1.043. Both are negative in 40/40 examples at every tested 16k setting. Address-head ablation is smaller but consistently negative, between -0.120 and -0.190 at 16k.
+
+This means that support heads are not decorative. They are not merely heads that happen to be active near retrieval. Removing them reliably damages the model’s correct-answer probability.
+
+### 10.4 Matched inactive controls
+
+The inactive controls are important because the non-address groups are larger than the address group. Without controls, one might argue that the non-address core is more damaging simply because it contains more heads.
+
+The controls do not support that explanation. In the 8k early-position run, active non-address core ablation produces a mean delta of -1.269, while inactive controls are near zero or even slightly positive. Query-tail support produces -1.015, while its inactive control is only +0.024. This gap is too large to explain as generic late-layer ablation volume.
+
+The same argument applies across positions and lengths. The active groups repeatedly damage answer probability, while matched inactive controls do not behave like the active circuit components.
+
+### 10.5 Interpretation
+
+The evidence so far supports a two-role view of the semantic retrieval circuit:
+
+1. **Answer-address heads** directly attend to the answer-bearing context and are causally relevant.
+2. **Support-state heads** are strongly necessary but do not directly attend to the answer span.
+
+This is already a stronger explanation than the previous submission. The previous report established that retrieval-like heads exist and matter. The current result shows that the retrieval mechanism is internally differentiated: the model needs both address/content pathways and support-state machinery.
+
+**Main figure.** This section should use `artifacts_phase2/report_assets/figures/fig_01_role_decomposition_16k.svg`. That figure visually captures the central split: support heads have large necessity under ablation but weak sufficiency under patching, while address heads are the meaningful answer donors.
 
 ## 11. Results III: L22H7 Is The Dominant Answer-Content Head
 
-Draft target: present the strongest mechanistic result.
+The previous section showed that address heads and support heads have different causal roles. The next question is whether answer content is distributed evenly across the address heads or concentrated in one head. Clean-to-corrupt patching and single-head decomposition show that answer content is strongly concentrated in L22H7.
 
-Core points:
+### 11.1 Group patching separates content donors from support heads
 
-- Address-head patching restores correct-answer probability; support-head patching is tiny.
-- Single-head patching shows L22H7 accounts for most of the answer-address patch effect.
-- L22H10 is a smaller companion head.
-- L21H11 attends to the answer and is necessary but is weak as a standalone clean donor.
-- L20H5 is useful as an activation-sensitive but causally weak control.
+In clean-to-corrupt patching, the corrupt prompt changes the answer value, making the clean answer unlikely. Patching asks whether copying selected clean activations into the corrupt run restores probability for the clean answer.
 
-Likely figures/tables:
+At 8k early position, the recovery gap is about 3.094 log-probability units: the clean answer has mean log probability -2.012 under the clean prompt, but only -5.106 under the corrupt prompt. This gives a meaningful space for recovery.
 
-- `fig_02_l22h7_generalization`
-- `fig_03_single_head_decomposition`
-- `table_functional_patching`
-- `table_single_head_patching`
+The answer-address group patches strongly:
+
+\[
+\Delta_{\text{patch}}(\text{answer-address}) = +0.508.
+\]
+
+The non-address core, despite being much more damaging under ablation, barely patches:
+
+\[
+\Delta_{\text{patch}}(\text{non-address core}) = +0.035.
+\]
+
+Query-tail and first-token/sink groups are even smaller, around +0.013 and +0.011 in the same setting.
+
+This is the key necessity/sufficiency split. Non-address support heads are necessary for the model’s retrieval behavior, but their clean activations do not transplant the clean answer into the corrupt prompt. Address heads, by contrast, carry recoverable answer-specific signal.
+
+At 16k, the same pattern holds. Answer-address patching remains large: +0.461, +0.538, and +0.535 across early, middle, and late positions. Non-address core patching remains tiny: +0.024, +0.041, and +0.043. At 16k, answer-address patching is roughly 12x to 19x larger than non-address core patching.
+
+### 11.2 Single-head patching identifies L22H7
+
+The answer-address group contains L22H7, L22H10, and L21H11. Single-head patching decomposes this group.
+
+At 8k early position:
+
+| Head | Patch delta | Recovery fraction | Positive examples |
+| --- | ---: | ---: | ---: |
+| L22H7 | +0.457 | 15.2% | 38/40 |
+| L22H10 | +0.072 | 2.4% | 36/40 |
+| L21H11 | +0.016 | 0.6% | 25/40 |
+
+The full answer-address group patch is +0.508, so L22H7 alone accounts for about 90% of the group-level effect in this setting. Across all tested 8k and 16k settings, L22H7 accounts for roughly 88% to 94% of the answer-address group patch effect.
+
+This is the strongest head-level result in the project. L22H7 is not merely one address head among several. It is the dominant clean answer-content donor under the patching operation.
+
+### 11.3 L22H10 is a smaller companion
+
+L22H10 also contributes positively, but its effect is much smaller. It patches between about +0.051 and +0.111 across the tested settings. Its relative role is most visible in some semantic variants, especially alias and relational prompts. This suggests that L22H10 may carry a secondary answer-related signal or participate in a companion address route.
+
+The important point is that L22H10 supports the answer-content story without displacing L22H7. The report should describe it as a companion head, not as an equal partner.
+
+### 11.4 L21H11 is address-like but weak as a donor
+
+L21H11 is a useful nuance. It often attends strongly to the answer span and is necessary under ablation, but it is weak as a standalone clean donor. Its patch effect stays near +0.016 to +0.032 across the tested settings.
+
+This matters because it prevents an oversimplified interpretation: direct answer attention does not automatically imply strong transplantable answer content. L21H11 may help route, select, or prepare answer information without carrying the main clean-answer identity in the patched representation.
+
+### 11.5 Activation-sensitive controls
+
+The experiments also include L20H5 as an activation-sensitive control. It shows a noticeable clean-corrupt activation difference in some analyses, but it does not behave like a meaningful answer-content donor. Its patch effect is near zero or small compared with L22H7.
+
+This control is valuable because it shows that activation sensitivity alone is not enough. A head can change when the prompt answer changes without being a major causal carrier of the answer. The final claim therefore rests on the convergence of attention, activation, ablation, and patching, not on activation difference alone.
+
+### 11.6 Interpretation
+
+The evidence supports the following decomposition:
+
+- L22H7 is the dominant answer-content head.
+- L22H10 is a smaller companion answer head.
+- L21H11 is address-like and necessary but weak as a standalone answer donor.
+- Support heads such as L20H7, L18H3, L17H10, L22H0, and L22H4 are necessary but not content donors under this patching operation.
+
+This result is what turns the project from a retrieval-head atlas into a retrieval-circuit explanation. We can now say not only that some heads matter, but which head carries most of the transplantable answer identity.
+
+**Main figures.** This section should use `fig_02_l22h7_generalization.svg` and `fig_03_single_head_decomposition.svg`. The first shows L22H7’s patch effect across length and position. The second shows that L22H7 dominates the other address heads and controls.
 
 ## 12. Results IV: Attention, Activation, And Causality Converge Across 8k-16k Contexts
 
-Draft target: show robustness and convergence of evidence.
+The strongest interpretability claims come from converging evidence. A head is more convincing as a mechanism when it has the right attention pattern, the right causal effect, the right activation geometry, and the same behavior across settings. L22H7 satisfies all four conditions.
 
-Core points:
+### 12.1 L22H7 remains positive across all tested settings
 
-- L22H7 has strong needle attention at every tested setting.
-- L22H7 has large clean/corrupt activation differences at every tested setting.
-- L22H7 patch effect remains positive with confidence intervals that stay above zero at every tested setting.
-- Non-address support heads remain strongly necessary but weak as content donors at both 8k and 16k.
-- The mechanism is robust but not perfectly position-invariant; the 8k middle-position dip is a useful nuance.
+L22H7 single-head patching is positive in every tested context length and answer position:
 
-Likely figures/tables:
+| Setting | L22H7 patch delta | 95% CI |
+| --- | ---: | --- |
+| 8k / 0.1 | +0.457 | [+0.403, +0.512] |
+| 8k / 0.5 | +0.335 | [+0.284, +0.387] |
+| 8k / 0.9 | +0.462 | [+0.414, +0.509] |
+| 16k / 0.1 | +0.408 | [+0.337, +0.479] |
+| 16k / 0.5 | +0.500 | [+0.431, +0.568] |
+| 16k / 0.9 | +0.501 | [+0.438, +0.564] |
 
-- `fig_04_l22h7_attention_activation_alignment`
-- `fig_06_evidence_matrix`
-- `table_main_results`
-- `table_attention_activation`
-- `table_statistical_checks`
+The confidence intervals remain above zero in all six settings. L22H7 is therefore not a one-position or one-length artifact.
+
+The only notable wrinkle is the 8k middle-position dip, where L22H7 patching falls to +0.335. This is still strongly positive, but smaller than early and late positions. Rather than hide this, the report should use it to show that the mechanism is robust but not perfectly invariant. Real mechanisms often have such texture.
+
+### 12.2 L22H7 directly attends to the needle
+
+L22H7 also has strong attention evidence. Its needle attention mass is high in every setting:
+
+| Setting | Gold attention | Needle attention |
+| --- | ---: | ---: |
+| 8k / 0.1 | 0.665 | 0.848 |
+| 8k / 0.5 | 0.521 | 0.805 |
+| 8k / 0.9 | 0.690 | 0.894 |
+| 16k / 0.1 | 0.594 | 0.865 |
+| 16k / 0.5 | 0.666 | 0.919 |
+| 16k / 0.9 | 0.673 | 0.931 |
+
+In all settings, the head places most of its query-step attention mass on the marked needle span, and substantial mass on the gold answer tokens themselves. This strongly supports the interpretation that L22H7 is an answer-address head.
+
+### 12.3 L22H7 changes when the answer changes
+
+Activation-difference analysis adds another layer of evidence. L22H7 has large clean-corrupt activation relative differences:
+
+| Setting | L22H7 activation relative difference |
+| --- | ---: |
+| 8k / 0.1 | 1.123 |
+| 8k / 0.5 | 1.011 |
+| 8k / 0.9 | 1.110 |
+| 16k / 0.1 | 1.042 |
+| 16k / 0.5 | 1.103 |
+| 16k / 0.9 | 1.090 |
+
+This means L22H7’s query-step representation changes strongly when the answer identity changes. This is exactly what we would expect from a head that carries answer-specific information.
+
+The contrast with support heads is important. L20H7, one of the strongest necessary support heads, has very small activation relative differences, around 0.031 to 0.040 across the 16k and 8k settings. It is necessary, but it is not changing much with answer identity. This supports the distinction between answer content and support state.
+
+### 12.4 Support necessity remains stable
+
+The support-head result also generalizes. Non-address core ablation is negative in 40/40 examples at every tested setting, with mean deltas around -1.20 to -1.36 at 8k and -1.27 to -1.35 at 16k. Query-tail ablation is also negative in 40/40 examples at every tested setting, with mean deltas around -0.95 to -1.04.
+
+At the same time, non-address core patching remains tiny: roughly +0.024 to +0.043 at 16k, compared with answer-address patching of +0.461 to +0.538. This repeated contrast is central to the final narrative:
+
+- support heads are necessary,
+- support heads are not strong answer donors,
+- address heads carry the transplantable answer signal.
+
+### 12.5 Evidence matrix
+
+The final evidence matrix is useful because it compresses the result into one view. Across all six settings, the same rows stay high or low in the expected places:
+
+- answer-address patch is consistently positive,
+- L22H7 patch is consistently positive,
+- support patch remains small,
+- non-address and query-tail ablation necessity remains large,
+- L22H7 needle attention remains high,
+- L22H7 activation difference remains high.
+
+This is the strongest “jury narrative” figure because it shows the volume of work without requiring the reader to inspect every CSV. It makes clear that the conclusion does not rest on one experiment.
+
+**Main figures.** This section should use `fig_04_l22h7_attention_activation_alignment.svg` and `fig_06_evidence_matrix.svg`. The first tells the mechanistic story for L22H7; the second shows the whole evidence stack across settings.
+
+### 12.6 Interpretation
+
+The overall result is stable:
+
+1. L22H7 attends to the answer-bearing span.
+2. L22H7 changes strongly when the answer identity changes.
+3. L22H7 causally restores clean-answer probability when patched.
+4. L22H7 remains positive across 8k and 16k contexts.
+5. Support heads remain necessary but not answer donors.
+
+This convergence is the reason the final claim can be stronger than “we found a head with high attention.” We found a head whose attention, activation geometry, and causal patch effect agree across a meaningful experimental grid.
 
 ## 13. Discussion
 
-Draft target: interpret what the circuit means in simple but precise language.
+### 13.1 From head discovery to circuit explanation
 
-Planned subsections:
+The previous submission discovered sparse retrieval-like heads and showed that selected heads had causal effects under ablation. The current work changes the level of explanation. Instead of only identifying heads, it decomposes the retrieval mechanism into roles.
 
-- From head discovery to circuit explanation
-- Why support heads can be necessary without carrying answer identity
-- Why attention alone is not enough
-- Why activation difference alone is not enough
-- What this says about semantic long-context retrieval in Qwen2.5-1.5B-Instruct
+The central interpretation is that semantic long-context retrieval in this model uses a role-decomposed circuit. One small address/content pathway carries answer identity, dominated by L22H7 and supported by L22H10. A broader set of support heads is required for retrieval performance but does not directly transplant answer identity under clean activation patching.
 
-Likely figure:
+This is more informative than a simple ranking of heads. A head ranking says which components are important. A circuit explanation says how different components contribute.
 
-- `fig_05_necessity_vs_sufficiency`
+### 13.2 Why support heads can be necessary without carrying the answer
+
+The most important conceptual point is the separation between necessity and sufficiency. Non-address support heads are highly necessary: ablating them strongly reduces correct-answer log probability. But they are weak patch donors: copying their clean activations into a corrupt run barely restores the clean answer.
+
+This makes sense if support heads maintain answer-independent retrieval state. They may shape the query representation, preserve useful residual directions, stabilize long-context computation, or prepare downstream components to use information from the address heads. If the clean and corrupt prompts differ only in answer identity, support-head activations may remain similar across the pair. Patching them then has little answer-specific information to transplant.
+
+This explains the otherwise surprising contrast:
+
+- non-address core ablation at 16k is around -1.27 to -1.35,
+- non-address core patching at 16k is only around +0.024 to +0.043.
+
+The support heads are doing work, but not the same work as L22H7.
+
+### 13.3 Why attention alone is not enough
+
+L21H11 shows why attention alone is insufficient. It often attends strongly to the answer span and is necessary under ablation, but its single-head patch effect is small. This means direct attention to the answer is not automatically equivalent to carrying the answer in a cleanly transplantable form.
+
+Attention tells us where a head looks. Patching tests what its activation can do. Ablation tests whether the computation needs it. A convincing mechanism should align these signals, but they do not have to align perfectly for every head.
+
+L22H7 is compelling because all three signals align. L21H11 is instructive because they do not fully align.
+
+### 13.4 Why activation difference alone is not enough
+
+Activation-difference analysis is also not sufficient by itself. L20H5 shows that a head can change between clean and corrupt prompts without becoming a major causal answer donor. This is why the report does not claim “large activation difference equals mechanism.” Instead, activation difference is used diagnostically, together with ablation and patching.
+
+The strongest claim belongs to L22H7 because it satisfies all criteria:
+
+- direct needle attention,
+- large clean-corrupt activation shift,
+- positive patch effect,
+- stability across settings.
+
+### 13.5 Relation to the previous patching result
+
+The previous submission found that random patching could sometimes outperform patching the ablation-selected head set. At the time, this suggested that the patching operator was broad and that many sites could carry enough information to repair answer probability.
+
+The current work clarifies that result. The earlier patching experiment used head sets selected for retrieval-event or ablation-style importance. But necessity-oriented selection and sufficiency-oriented selection need not identify the same heads. Once we decompose the circuit, the patching result becomes cleaner: L22H7, an answer-address/content head, carries most of the transplantable answer signal. Support heads can be necessary without patching strongly.
+
+So the earlier “patching is broad” observation was not wrong. It was incomplete. The present work gives a more precise patching story by separating answer-content heads from support heads.
+
+### 13.6 What the result says about semantic retrieval
+
+Within this model and task family, semantic retrieval appears to involve a small content pathway plus broader support machinery. The model does not simply search the context with every head. It also does not appear to store the answer uniformly across all necessary heads. Instead, the answer identity is concentrated in a small number of heads, especially L22H7, while other heads make the retrieval computation usable.
+
+This is a meaningful interpretability result because it connects several levels of evidence:
+
+- semantic robustness across prompt variants,
+- causal necessity under ablation,
+- causal sufficiency under clean-to-corrupt patching,
+- attention alignment with the source span,
+- activation geometry under answer changes,
+- position and context-length generalization.
+
+The report should be careful not to claim that every model uses this exact head or this exact circuit. The defensible claim is model- and task-specific: Qwen2.5-1.5B-Instruct uses a stable role-decomposed circuit for this controlled semantic long-context retrieval family.
+
+**Discussion figure.** `fig_05_necessity_vs_sufficiency.svg` belongs here. It makes the conceptual point visually: support heads sit high on necessity and low on sufficiency, while address heads are the meaningful answer donors.
 
 ## 14. Limitations and Future Work
 
-Draft target: be honest but not apologetic. The study is strong for this model/task family, but not yet universal.
+### 14.1 Single-model scope
 
-Planned points:
+All experiments were run on Qwen2.5-1.5B-Instruct. This makes the study internally coherent but limits external validity. The report should not claim that L22H7, or even the same layer/head structure, will appear in other models. A natural next step is to run the same pipeline on another Qwen size and at least one different model family.
 
-- Single-model limitation
-- Synthetic semantic retrieval prompt family
-- Patch site limitation: query-step o-proj-input patching
-- Need for larger naturalistic evaluation
-- Possible next experiments: another model, naturalistic retrieval task, bootstrap reporting, failure-mode sweep
+The deeper question is whether the role decomposition generalizes, not whether the literal head index generalizes. It would still be a strong result if other models had different dominant content heads but similar separation between answer-content and support-state heads.
+
+### 14.2 Synthetic task family
+
+The semantic retrieval prompts are controlled and useful, but synthetic. They let us know the exact answer span, distractor span, prompt length, and clean/corrupt answer identity. This control is necessary for mechanistic experiments, but it does not cover all natural retrieval settings.
+
+Future work should add a naturalistic retrieval task where the answer is embedded in more realistic documents. The strict non-truncation idea from the previous submission remains relevant: naturalistic long-context evaluation should avoid silently cutting the prompt, because truncation changes the task.
+
+### 14.3 Patch-site limitation
+
+The patching experiments intervene at the query-step input to the attention output projection. This is a useful and interpretable site, but it is not the only possible site. It does not separate query, key, value, attention logits, value vectors, or MLP contributions.
+
+Future experiments could patch:
+
+- attention logits,
+- value vectors,
+- Q/K/V projections separately,
+- residual stream states before and after attention,
+- multiple timesteps rather than only the query step.
+
+These experiments would help answer whether L22H7’s answer-content role is mainly in where it attends, what values it reads, or what it writes into the residual stream.
+
+### 14.4 Dataset size and uncertainty
+
+The main grid uses 40 examples per setting. The effects are strong and consistent enough for the present claim, especially because many signs hold in 38/40, 39/40, or 40/40 examples. Still, a final paper version would benefit from larger confirmation runs, especially for the most important settings.
+
+A high-N confirmation run could use the same pipeline with more examples per variant at 16k. This would tighten confidence intervals and make the statistical presentation stronger.
+
+### 14.5 Possible failure modes
+
+The current prompt family tests literal, alias, paraphrase, relational, and distractor-heavy retrieval. It would be useful to find where the circuit stops working or changes form. Possible stress tests include:
+
+- multiple answer-bearing spans with conflicting relations,
+- longer and more natural distractor passages,
+- answers that are not six-digit strings,
+- multi-hop queries requiring two or more retrieved facts,
+- adversarial paraphrases where the query is semantically close but not identical.
+
+Such failure modes could turn into a strong extension: not only “this is the circuit when retrieval succeeds,” but “this is how the circuit changes or fails when retrieval becomes harder.”
 
 ## 15. Conclusion
 
-Draft target: restate the paper-level claim cleanly.
+This report extends the Retrieval Head Atlas from literal long-context copying to semantic long-context retrieval. The previous submission showed that retrieval-like behavior is sparse and causally localized. The current work shows that the mechanism is also role-decomposed.
 
-Core takeaway:
+Across semantic prompt variants, answer positions, and 8k-16k context lengths, Qwen2.5-1.5B-Instruct uses a stable retrieval circuit with separable roles. L22H7 is the dominant answer-content head: it attends to the answer-bearing span, changes strongly when the answer changes, and restores clean-answer probability when patched into a corrupt run. L22H10 contributes as a smaller companion. L21H11 is address-like and necessary but weak as a standalone answer donor. A broader set of non-address support heads is strongly necessary under ablation but does not itself transplant answer identity under clean activation patching.
 
-Semantic long-context retrieval in Qwen2.5-1.5B-Instruct appears to use a stable, role-decomposed circuit: L22H7 acts as the dominant answer-content head, L22H10 contributes as a smaller companion, and separate support heads are necessary for retrieval performance without directly transplanting answer identity under clean activation patching.
+The main takeaway is simple:
+
+> Semantic long-context retrieval in Qwen2.5-1.5B-Instruct is not just a diffuse model capability and not just a list of important heads. It is supported by a role-decomposed circuit: a small address/content pathway carries answer identity, while broader support heads make the retrieval computation work.
+
+This gives the project a stronger final narrative than the previous submission. We began by mapping retrieval heads. We now have evidence for a retrieval circuit.
 
 ## Appendix Targets
 
-The previous submission ended with a glossary. We should keep that style because it helps jury readability.
+The previous submission ended with a glossary. We should keep that style because it helps jury readability. The appendix can also carry the full artifact trail so the main report remains readable.
 
-Planned appendices:
+### Appendix A: Glossary
 
-- Glossary of mechanistic interpretability terms
-- Full artifact/file map
-- Full tables emitted from `artifacts_phase2/report_assets/tables`
-- Additional prompt examples
-- Implementation notes and reproducibility commands
+The glossary from the previous submission should be retained and updated. It should define:
+
+- attention head,
+- KV cache,
+- retrieval head,
+- answer-address head,
+- support head,
+- ablation,
+- activation patching,
+- clean/corrupt prompt pair,
+- teacher-forced log probability,
+- recovery fraction,
+- attention mass,
+- activation relative difference,
+- layer-matched control,
+- inactive control.
+
+### Appendix B: Figure and table placement map
+
+The report should use the following body figures:
+
+| Figure | File | Main purpose | Suggested section |
+| --- | --- | --- | --- |
+| Figure 1 | `fig_01_role_decomposition_16k.svg` | Role decomposition: necessity vs sufficiency | Results II |
+| Figure 2 | `fig_02_l22h7_generalization.svg` | L22H7 patch generalizes across length/position | Results III |
+| Figure 3 | `fig_03_single_head_decomposition.svg` | L22H7 dominates other address heads and controls | Results III |
+| Figure 4 | `fig_04_l22h7_attention_activation_alignment.svg` | Attention, activation, and patching align for L22H7 | Results IV |
+| Figure 5 | `fig_05_necessity_vs_sufficiency.svg` | Conceptual separation between necessary support and sufficient content | Discussion |
+| Figure 6 | `fig_06_evidence_matrix.svg` | Compact evidence matrix across all tested settings | Results IV or conclusion recap |
+
+The body should use a small number of compact tables:
+
+| Table | Source | Main purpose |
+| --- | --- | --- |
+| Table 1 | semantic ablation probe summary | Show semantic variants and top-k vs random effect |
+| Table 2 | `table_main_results.md` | Main cross-setting summary |
+| Table 3 | `table_functional_ablation.md` | Necessity by functional group |
+| Table 4 | `table_functional_patching.md` | Sufficiency by functional group |
+| Table 5 | `table_single_head_patching.md` | L22H7/L22H10/L21H11 decomposition |
+| Table 6 | `table_statistical_checks.md` | Confidence intervals and directional consistency |
+
+The appendix can include the full generated tables in CSV/Markdown/LaTeX form from `artifacts_phase2/report_assets/tables`.
+
+### Appendix C: Additional diagrams for report/PPT
+
+The LaTeX/PPT pass should add two deterministic explanatory diagrams:
+
+1. **Retrieval-circuit schematic.** Long context on the left, query on the right, L22H7/L22H10 as blue answer-content route, non-address/query-tail heads as orange support route, and answer probability as the output.
+2. **Evidence stack diagram.** Semantic variants, ablation, patching, attention trace, activation difference, and 8k/16k generalization stacked as converging evidence.
+
+Generated bitmap visuals can be used for PPT openers and section dividers, but scientific claims should rely on deterministic figures and artifact-derived plots.
+
+### Appendix D: Reproducibility notes
+
+This appendix should list the main scripts:
+
+- `scripts/run_semantic_ablation_probe.py`
+- `scripts/run_semantic_single_head_sweep.py`
+- `scripts/run_semantic_attention_trace.py`
+- `scripts/run_semantic_group_ablation.py`
+- `scripts/run_semantic_component_patching.py`
+- `scripts/run_semantic_patch_interaction.py`
+- `scripts/run_semantic_activation_delta.py`
+- `scripts/run_phase2_position_generalization.sh`
+- `scripts/build_report_assets.py`
+
+It should also describe the SageMaker workflow briefly: code edited locally, experiments run on the GPU instance, artifacts pulled back into the repository, and report assets generated locally from committed artifacts.
+
+### Appendix E: Reference map
+
+The LaTeX pass should include references for:
+
+- Transformer architecture: Vaswani et al., “Attention Is All You Need”
+- Qwen2.5 model: Qwen2.5 technical report
+- Retrieval heads / long-context factuality: “Retrieval Head Mechanistically Explains Long-Context Factuality”
+- Long-context position effects: “Lost in the Middle”
+- Activation patching / causal tracing: ROME and related causal tracing work
+- Tooling: Hugging Face Transformers
