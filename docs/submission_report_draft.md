@@ -251,35 +251,415 @@ Together, these metrics let us distinguish four types of evidence: behavioral pr
 
 ## 8. Methods
 
-Draft target: this section should mirror the previous report’s Methods section, but with the richer current pipeline.
+### 8.1 Overview
 
-Planned subsections:
+The method follows the same broad philosophy as the previous Retrieval Head Atlas pipeline: first identify candidate heads, then test them with causal interventions. The difference is that the current work does not stop at one head ranking. It uses multiple complementary tests to separate different roles inside the retrieval mechanism.
 
-- Semantic ablation probe
-- Neighborhood single-head sweep
-- Functional group construction
-- Attention tracing
-- Group ablation
-- Component patching
-- Patch-then-ablate interaction controls
-- Activation-difference analysis
-- Single-head patch decomposition
-- Statistical reporting and confidence intervals
+The full pipeline is:
+
+1. Run a semantic ablation probe on the initial retrieval-head candidates.
+2. Expand to a broader semantic neighborhood when random controls reveal additional active heads.
+3. Trace attention to identify which heads directly attend to the answer span.
+4. Build functional groups: answer-address heads, non-address support heads, query-tail heads, sink-like heads, and inactive controls.
+5. Run group ablations to test necessity.
+6. Run clean-to-corrupt component patching to test sufficiency.
+7. Run patch-then-ablate interaction controls to test whether support heads gate use of the address-head patch.
+8. Run activation-difference analysis to measure which heads actually change with answer identity.
+9. Run single-head patching to identify the main answer-content donor.
+10. Repeat the core suite across context positions and context lengths.
+
+This section describes each step in enough detail for the later LaTeX version to include equations, algorithm boxes, and figure callouts.
+
+### 8.2 Scoring answer probability
+
+Most experiments measure the model’s preference for the correct answer using teacher-forced mean answer log probability. Let a prompt be tokenized as \(x\), and let the gold answer be tokenized as \(y = (y_1,\dots,y_m)\). The score is:
+
+\[
+\ell(x, y) = \frac{1}{m}\sum_{t=1}^{m}\log p_\theta(y_t \mid x, y_{<t}).
+\]
+
+This score is computed at the final query point and then through the answer tokens under teacher forcing. We use mean log probability rather than total log probability so that scores remain comparable when tokenization differs slightly across six-digit answers.
+
+For interventions, the same score is recomputed with selected internal components modified. The key readout is a change in log probability:
+
+\[
+\Delta \ell = \ell_{\text{intervened}}(x,y) - \ell_{\text{baseline}}(x,y).
+\]
+
+For ablations, a negative \(\Delta \ell\) means the intervention made the correct answer less likely. For patching, a positive \(\Delta \ell\) means the patch restored some probability for the clean answer.
+
+**Visual hook for LaTeX/PPT.** A small equation callout can show the mean log-probability score beside a one-token-at-a-time teacher-forcing diagram.
+
+### 8.3 Query-step interventions
+
+The strongest current experiments intervene at the query step. This means the prompt is first prefetched into the KV cache, and the intervention is applied when the model processes the final prompt token immediately before scoring the answer. This design asks which components matter at the moment the model must use the long context to answer the final question.
+
+The intervention site is the input to the attention output projection (`o_proj`) for selected heads. In a transformer layer, the attention module produces per-head vectors that are concatenated and passed through the output projection. If the hidden size is \(d\), the number of heads is \(H\), and each head has dimension \(d_h = d/H\), then the vector entering the output projection can be viewed as:
+
+\[
+z^{(\ell)} = [z^{(\ell)}_1; z^{(\ell)}_2; \dots; z^{(\ell)}_H].
+\]
+
+Here \(z^{(\ell)}_h\) is the slice corresponding to head \(h\) in layer \(\ell\). Ablation and patching operate on these slices.
+
+This intervention target is useful because it directly modifies what an attention head writes into the residual stream after it has computed its attention pattern and value mixture. It is also a limitation: it does not separately isolate query, key, value, attention-logit, or value-vector mechanisms. That limitation is discussed later.
+
+### 8.4 Head ablation
+
+For a selected set of heads \(S = \{(\ell,h)\}\), ablation zeros the corresponding head slices at the intervention site:
+
+\[
+z^{(\ell)}_h \leftarrow 0 \quad \text{for all } (\ell,h)\in S.
+\]
+
+The ablation effect is:
+
+\[
+\Delta_{\text{ablate}}(S) = \ell_{\text{ablate}(S)}(x,y) - \ell_{\text{base}}(x,y).
+\]
+
+A more negative value means that the selected heads were more necessary for the model’s correct-answer probability. The report uses both single-head ablations and group ablations. Single-head ablations help identify candidate heads. Group ablations test whether a functional subsystem is necessary as a coordinated unit.
+
+The main functional group ablations are run query-only. This keeps the interpretation focused: we are asking what happens when a head’s contribution is removed at the final retrieval/use step, rather than throughout every answer-token continuation step.
+
+### 8.5 Layer-matched and inactive controls
+
+Ablating heads in late layers can have different effects from ablating heads in early layers. Therefore, random controls must be matched by layer. If the active group contains \(k_\ell\) heads in layer \(\ell\), the layer-matched random control also samples \(k_\ell\) heads from the same layer, excluding the active heads when possible. This prevents an unfair comparison where the active group appears important only because it occupies sensitive layers.
+
+The project uses two kinds of controls:
+
+1. **Layer-matched random controls.** These are used in the early semantic ablation probe to test whether the initial top-k heads are more damaging than random heads from the same layers.
+2. **Inactive functional controls.** These are used in later group experiments. They are chosen to match the rough layer/role structure of active groups but are empirically weak or inactive in the relevant prior sweeps.
+
+The inactive controls matter because some active groups are large. For example, the non-address core has more heads than the answer-address group. A large ablation effect must therefore be compared against controls that help rule out a simple “more heads removed” explanation.
+
+### 8.6 Semantic ablation probe
+
+The first extension beyond the previous submission tests whether retrieval heads discovered from literal long-context behavior remain important under semantic variants. The probe uses five variants: literal, alias, paraphrase, relational, and distractor-heavy. For each example, the model is scored under three conditions:
+
+- baseline,
+- ablation of the selected top-k heads,
+- ablation of layer-matched random heads.
+
+For each example, the script records:
+
+\[
+\Delta_{\text{topk}} = \ell_{\text{topk ablated}} - \ell_{\text{base}},
+\]
+
+and
+
+\[
+\Delta_{\text{random}} = \ell_{\text{random ablated}} - \ell_{\text{base}}.
+\]
+
+The early run showed that the top-k heads remained consistently damaging across semantic variants, while random controls were weaker on average. However, the random controls were not always inert. Some random draws were unexpectedly damaging. Rather than ignore this, we treated it as evidence that the initial top-k list was incomplete: the random draws were sometimes sampling real members of a broader semantic retrieval circuit.
+
+This led to the neighborhood sweep.
+
+### 8.7 Neighborhood single-head sweep
+
+The neighborhood sweep broadens the candidate set beyond the original top-k heads. It includes:
+
+- heads from the previous patch-ranked and retrieval-event lists,
+- heads from the semantic single-head sweep,
+- heads from earlier near/far mapping artifacts,
+- heads that appeared in damaging random-control draws.
+
+Each head is ablated individually at the query step and ranked by its mean effect on correct-answer log probability. The goal is not to claim that single-head ablation fully explains the circuit. Instead, the sweep is used to discover a broader semantic core and to separate active circuit members from inactive controls.
+
+This step is important narratively. What initially looked like a random-control complication became a discovery mechanism. The semantic retrieval circuit was broader than the first retrieval-head shortlist, and several important support heads were found through this expanded search.
+
+### 8.8 Attention tracing
+
+Attention tracing asks where selected heads look at the query step. The prompt contains explicit marker strings around the answer-bearing span. The tokenizer offset mapping is used to convert character spans into token spans:
+
+- \(G\): the gold answer token span,
+- \(N\): the full needle span between `[NEEDLE_START]` and `[NEEDLE_END]`,
+- \(D\): distractor six-digit spans outside the gold answer.
+
+For a head with query-step attention vector \(a^{(\ell,h)}\), gold attention mass is:
+
+\[
+M_G^{(\ell,h)} = \sum_{i\in G} a_i^{(\ell,h)}.
+\]
+
+Needle attention mass is:
+
+\[
+M_N^{(\ell,h)} = \sum_{i\in N} a_i^{(\ell,h)}.
+\]
+
+The scripts also record distractor mass, gold rank, whether the attention argmax lies inside the gold span, and whether the argmax lies inside the needle span.
+
+Attention tracing is observational, not causal. Its role is to distinguish direct address heads from heads that are necessary for other reasons. In the final interpretation, a direct answer-address head is one that both attends to the answer/needle span and has causal evidence from ablation or patching.
+
+**Visual hook for LaTeX/PPT.** A schematic can show query-step attention split into gold span, full needle span, distractor spans, and remaining context.
+
+### 8.9 Functional group construction
+
+After the neighborhood sweep and attention trace, heads are assigned to functional groups.
+
+The most important groups are:
+
+- **Answer-address.** Heads with direct attention to the answer-bearing span. This group contains L22H7, L22H10, and L21H11.
+- **Non-address core.** Heads that are necessary under ablation but do not directly attend to the answer span.
+- **Query-tail.** Heads whose attention behavior concentrates near the final query tokens and whose ablation strongly affects retrieval.
+- **First-token/sink.** Heads with sink-like behavior that are nevertheless not inert under ablation.
+- **Strong/core groups.** Larger aggregate groups used to measure total circuit necessity.
+- **Inactive controls.** Heads selected as matched controls for active functional groups.
+
+This grouping is not intended to be a perfect biological taxonomy of heads. It is an operational grouping based on converging experimental evidence. The report uses it to ask whether different roles show different causal signatures.
+
+### 8.10 Component patching
+
+Component patching tests whether selected heads carry answer-specific information that can be transplanted from a clean prompt to a corrupt prompt. Let \(x_c\) be the clean prompt with clean answer \(y_c\), and let \(x_r\) be the corrupt prompt with corrupt answer \(y_r\). The corrupt prompt is constructed so that the clean answer \(y_c\) becomes unlikely.
+
+First, the clean query-step activations are cached:
+
+\[
+z^{(\ell,h)}_{\text{clean}}.
+\]
+
+Then, during the corrupt run, selected head slices are replaced:
+
+\[
+z^{(\ell,h)}_{\text{corrupt}} \leftarrow z^{(\ell,h)}_{\text{clean}}
+\quad \text{for all } (\ell,h)\in S.
+\]
+
+The patch effect is:
+
+\[
+\Delta_{\text{patch}}(S) =
+\ell_{\text{patch}(S)}(x_r, y_c) -
+\ell_{\text{corrupt}}(x_r, y_c).
+\]
+
+The available recovery gap is:
+
+\[
+R = \ell_{\text{clean}}(x_c, y_c) -
+\ell_{\text{corrupt}}(x_r, y_c).
+\]
+
+The recovery fraction is:
+
+\[
+\rho(S) = \frac{\Delta_{\text{patch}}(S)}{R}.
+\]
+
+If \(\Delta_{\text{patch}}\) is positive, the patched component restored some probability for the clean answer. If \(\rho\) is large, the component restores a substantial fraction of the available clean-corrupt gap.
+
+This is where the role decomposition becomes visible. Address heads have meaningful positive patch effects. Non-address support heads are strongly necessary under ablation but have very small patch effects, suggesting that they do not carry much answer identity at the patched site.
+
+### 8.11 Patch-then-ablate interaction controls
+
+After finding that answer-address patching helps while support-head patching is weak, the next question is whether support heads are required to use the restored address-head signal. To test this, the pipeline runs patch-then-ablate interactions.
+
+For each example, it compares:
+
+- corrupt baseline,
+- address-head patch only,
+- support-group ablation only,
+- address-head patch plus support-group ablation.
+
+The crucial quantity is the patch effect under ablation:
+
+\[
+\Delta_{\text{patch under ablation}} =
+\ell_{\text{patch+ablate}}(x_r,y_c) -
+\ell_{\text{ablate only}}(x_r,y_c).
+\]
+
+If this value collapsed relative to patch-only, it would suggest that the support group is required downstream to use the patched address-head information. The refined interaction controls showed a more nuanced result: support-group ablation strongly damages absolute clean-answer log probability, but the address-head patch still provides a positive boost after subtracting the ablate-only baseline. This argues against a strict serial dependency chain and supports a partly additive two-role mechanism.
+
+### 8.12 Activation-difference analysis
+
+Activation-difference analysis measures whether a component changes when the answer identity changes. For a selected group \(S\), the query-step head slices are concatenated into one vector:
+
+\[
+v_S = \operatorname{concat}_{(\ell,h)\in S} z^{(\ell,h)}.
+\]
+
+For each clean/corrupt prompt pair, we compute:
+
+\[
+\Delta v_S = v_{S,\text{clean}} - v_{S,\text{corrupt}}.
+\]
+
+The main reported metric is relative L2 difference:
+
+\[
+r_S =
+\frac{\lVert v_{S,\text{clean}} - v_{S,\text{corrupt}} \rVert_2}
+{0.5(\lVert v_{S,\text{clean}} \rVert_2 + \lVert v_{S,\text{corrupt}} \rVert_2)}.
+\]
+
+The scripts also record cosine similarity, mean absolute difference, and maximum absolute difference.
+
+This analysis helps explain why necessity and sufficiency differ. Address heads, especially L22H7, have large clean-corrupt activation differences, indicating that they encode answer-specific state. Support heads are often nearly invariant between clean and corrupt prompts, even though ablation shows they are necessary. This supports the interpretation that support heads maintain retrieval/use state rather than carrying answer identity.
+
+### 8.13 Single-head patch decomposition
+
+The answer-address group contains three heads: L22H7, L22H10, and L21H11. Group patching shows that this group carries recoverable answer signal, but it does not reveal whether the signal is distributed evenly. Therefore, the pipeline runs single-head patching for:
+
+- the three answer-address heads,
+- several necessary support heads,
+- an activation-sensitive but causally weak control,
+- inactive controls.
+
+The same patch delta and recovery fraction are computed for each single-head group. This experiment identifies L22H7 as the dominant answer-content donor: it accounts for most of the answer-address group patch effect across the tested settings. L22H10 is a smaller companion. L21H11 attends to the answer and is necessary, but is weak as a standalone clean donor.
+
+### 8.14 Position and length generalization
+
+Once the core role decomposition is established at 8k early-position prompts, the same suite is repeated across:
+
+- early, middle, and late answer positions,
+- 8k and 16k context lengths.
+
+The repeated suite includes functional group ablation, functional component patching, single-head patching, attention tracing, and activation-difference analysis. This provides a stronger claim than a single setting would allow. The final report can say not only that L22H7 matters in one probe, but that its attention, activation, and causal patch signatures remain stable across all tested position/length settings.
+
+### 8.15 Statistical reporting
+
+The report uses per-example rows as the basic unit of aggregation. For each metric and setting, the report tables include the mean, standard deviation, and an approximate 95% confidence interval:
+
+\[
+\bar{x} \pm 1.96\frac{s}{\sqrt{n}}.
+\]
+
+This normal-approximation interval is used as a readable sanity check rather than as a claim of exact distributional normality. For the main results, the direction and consistency of effects are more important than any single p-value. For example, L22H7 patching is positive with confidence intervals above zero in every tested length/position setting, and non-address core ablation is negative in 40/40 examples at every tested setting.
+
+**Visual hook for LaTeX/PPT.** The Methods section should include a compact pipeline diagram: semantic prompts → attention trace → ablation → patching → activation difference → generalization. The Results sections then map directly onto this pipeline.
 
 ## 9. Results I: Semantic Retrieval Uses A Causal Head Neighborhood
 
-Draft target: show how we moved from the old literal-copying heads to a broader semantic retrieval neighborhood.
+The first question was whether heads discovered in the previous literal-retrieval setting remain important when retrieval becomes semantic. If the answer were no, then the previous atlas would be mainly a literal-copying result. If the answer were yes, then the same head neighborhood would be involved in a broader form of key-value retrieval.
 
-Core points:
+### 9.1 Initial semantic ablation probe
 
-- The initial top heads remain more damaging than ordinary controls across semantic variants.
-- Random controls were partly contaminated by real circuit heads, which became a finding rather than a failure.
-- The broader neighborhood sweep identified a necessary semantic core concentrated mostly in layers 20-22, with supporting heads in nearby layers.
+The initial semantic probe used five variants: literal, alias, paraphrase, relational, and distractor-heavy. Each variant had eight examples, giving 40 examples total. The intervention ablated the selected top-k heads and compared them against layer-matched random heads. The most informative version used query-only intervention, because it focused the ablation on the final retrieval/use step.
 
-Likely figures/tables:
+The top-k ablation was consistently harmful. Across all 40 examples, the mean query-only top-k ablation effect was approximately:
 
-- Summary table from semantic ablation probe.
-- Optional appendix table for neighborhood sweep.
+\[
+\Delta_{\text{topk}} \approx -0.389.
+\]
+
+A single layer-matched random draw was much weaker, near:
+
+\[
+\Delta_{\text{random}} \approx -0.032.
+\]
+
+This first result already showed that the selected heads were not merely literal-copy heads. They remained causally relevant when the query used aliases, paraphrases, relational descriptions, and distractor-heavy wording.
+
+The variant-level pattern is important because it shows breadth rather than one lucky aggregate. In the query-only run, the top-k ablation hurt every variant:
+
+| Variant | Top-k ablation delta | Random-k ablation delta |
+| --- | ---: | ---: |
+| Literal | -0.406 | +0.025 |
+| Alias | -0.356 | -0.075 |
+| Paraphrase | -0.518 | -0.042 |
+| Relational | -0.283 | -0.039 |
+| Distractor-heavy | -0.383 | -0.027 |
+
+The paraphrase case was especially strong, with a mean top-k delta around -0.518. This matters because paraphrase retrieval is less like exact copying than the literal condition. The top-k heads were therefore involved in more than just matching repeated surface text.
+
+**Table hook.** In the LaTeX version, this should become the first Results table: “Semantic ablation probe across retrieval variants.” It can report baseline log probability, top-k delta, random-k delta, and top-k minus random gap.
+
+### 9.2 Stronger random controls revealed a broader circuit
+
+The next control used 20 layer-matched random draws instead of a single random draw. This gave a more honest estimate of how often random heads from the same layers could damage retrieval.
+
+The result was nuanced. The top-k group still hurt more than the average random draw:
+
+\[
+\Delta_{\text{topk}} \approx -0.389,\qquad
+\mathbb{E}[\Delta_{\text{random draw}}] \approx -0.159.
+\]
+
+The average gap was therefore:
+
+\[
+\Delta_{\text{topk}} - \mathbb{E}[\Delta_{\text{random draw}}] \approx -0.231.
+\]
+
+The top-k group hurt all 40 examples, and it was more damaging than each example’s mean random draw in all 40 examples. This supports the original claim that the selected heads are meaningfully important.
+
+However, the random-draw distribution was not fully inert. The most damaging random draw had a mean delta around -0.436, which was even more damaging than the top-k group. At first glance, this could look like a weakness in the result. But inspection showed that the damaging random draws often sampled heads from the same retrieval neighborhood, including heads that later appeared as active circuit members.
+
+This changed the interpretation. The random controls were not simply noise; some of them were accidentally sampling real semantic-retrieval heads outside the initial top-k set. The correct conclusion was not that the top-k heads were unimportant, but that the initial top-k list was incomplete.
+
+### 9.3 Single-head semantic sweep
+
+To resolve this, we ran a query-only single-head ablation sweep over candidate heads. The sweep measured each head’s individual effect on semantic retrieval and ranked heads by mean log-probability damage.
+
+The first patch-ranked single-head sweep identified several individually harmful heads, including:
+
+| Rank | Head | Mean ablation delta | Negative examples |
+| ---: | --- | ---: | ---: |
+| 1 | L21H11 | -0.110 | 35/40 |
+| 2 | L22H7 | -0.107 | 37/40 |
+| 3 | L18H3 | -0.087 | 40/40 |
+| 4 | L20H9 | -0.055 | 35/40 |
+| 5 | L17H3 | -0.043 | 32/40 |
+
+This sweep already showed that semantic retrieval was not driven by a single head. Several heads were consistently harmful when ablated, and their effects varied by semantic variant.
+
+It also separated necessity from earlier patch rankings. Some heads that had appeared useful under patching were not strongly necessary as individual query-step ablations. This was an early warning that the final explanation would need separate notions of necessity and sufficiency.
+
+### 9.4 Neighborhood sweep
+
+The final selection run widened the sweep to 61 heads. This neighborhood included:
+
+- the semantic single-head candidates,
+- the patch-ranked candidates,
+- heads from the previous near/far retrieval maps,
+- non-zero ablation candidates from the earlier work,
+- heads sampled by the 20 random draws.
+
+This larger sweep produced 2,440 single-head ablation rows: 61 heads times 40 examples. The most harmful heads were:
+
+| Rank | Head | Mean ablation delta | Negative examples | Read |
+| ---: | --- | ---: | ---: | --- |
+| 1 | L20H7 | -0.148 | 39/40 | strongest newly discovered support head |
+| 2 | L21H11 | -0.110 | 35/40 | answer-address candidate |
+| 3 | L22H7 | -0.107 | 37/40 | answer-address/content candidate |
+| 4 | L18H3 | -0.087 | 40/40 | broad support head |
+| 5 | L17H10 | -0.080 | 40/40 | broad support head |
+| 6 | L20H8 | -0.075 | 37/40 | support/query-related |
+| 7 | L22H0 | -0.073 | 40/40 | support/query-related |
+| 8 | L22H4 | -0.069 | 40/40 | support/query-related |
+| 9 | L21H0 | -0.068 | 40/40 | support/sink-like |
+| 10 | L20H6 | -0.055 | 40/40 | support head |
+| 11 | L20H9 | -0.055 | 35/40 | semantic support |
+| 12 | L21H3 | -0.054 | 40/40 | support/sink-like |
+| 13 | L21H1 | -0.052 | 40/40 | support/sink-like |
+
+The strongest head in this broader sweep was L20H7, which was not the main answer-address head. This was a major clue. Semantic retrieval depended on a broader late-middle-layer circuit, not only on heads that directly pointed to the answer span.
+
+The sweep also explained the earlier random-control complication. The effects of the 20 random draws correlated strongly with the sum of the single-head effects of the heads they sampled:
+
+\[
+r \approx 0.92.
+\]
+
+This means the damaging random draws were predictable from the active heads they accidentally included. The random controls were not mysterious; they revealed that the semantic retrieval circuit extended beyond the first top-k group.
+
+### 9.5 Interpretation
+
+The first result section establishes the starting point for the rest of the report:
+
+1. Heads from the previous retrieval atlas remain causally relevant under semantic retrieval variants.
+2. The semantic circuit is broader than the initial literal-copying top-k list.
+3. Some random-control heads were damaging because they were not truly inactive; they were undiscovered circuit members.
+4. The broader semantic core is concentrated mainly in layers 20-22, with support from neighboring layers such as 17, 18, and 23.
+5. The strongest necessary heads are not all direct answer-address heads, motivating a functional decomposition.
+
+This last point is the bridge to the next result. If all important heads simply attended to the answer span, the story would be straightforward: retrieval heads point to the answer and carry it forward. Instead, the most harmful single-head ablation in the neighborhood sweep was L20H7, which later attention tracing showed was not a direct answer-address head. Therefore, semantic retrieval requires at least two kinds of machinery: heads that address the answer and heads that support the retrieval computation without directly pointing to the answer.
+
+**Figure hook.** This section could use a small “neighborhood discovery” figure in the report or PPT: initial top-k heads on the left, random-draw contamination in the middle, expanded semantic core on the right. This should be a deterministic diagram rather than a generated image because the head labels matter.
 
 ## 10. Results II: The Circuit Splits Into Address Heads And Support Heads
 
