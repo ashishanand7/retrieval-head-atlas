@@ -46,6 +46,10 @@ Third, causal testing mattered. The previous work did not stop at attention maps
 
 The previous submission also explored activation patching and external LongBench-style validation. Those results were useful but less conclusive than the ablation result. In particular, patching showed that many internal sites could improve answer probability, which suggested broad representational redundancy. This became a motivation for the present work: instead of treating all important heads as one group, we needed to separate different causal roles more carefully.
 
+The previous report’s headline result can be summarized as follows. On the 8k-token synthetic retrieval probe, the model solved both far and near retrieval almost perfectly, so ordinary accuracy made the task look solved. The internal analysis told a different story. The strongest retrieval-like heads were sparse and concentrated in late-middle to late layers. When the selected top-k heads were ablated, far retrieval dropped from perfect performance to roughly 94%, while a layer-matched random control stayed at perfect performance. Near retrieval remained robust. This gave the previous submission its central message: long-context retrieval can look effortless at the output level while depending on a small, distance-sensitive internal head ensemble.
+
+The previous patching result was also important, but in a different way. Patching selected heads from a clean run into a corrupted run increased the correct-answer log probability, showing that internal activations could repair the output distribution. However, random layer-matched patch sets sometimes repaired even more strongly than the originally selected top-k set. Rather than treating this as a contradiction, the current report treats it as a clue: necessity and sufficiency may live in different parts of the circuit, and a head can be useful for repair without being the exact component whose ablation most damages retrieval. This is one of the reasons the current work focuses on role decomposition.
+
 In short, the previous submission established the foundation:
 
 - Long-context retrieval can be behaviorally perfect while internally sparse.
@@ -104,7 +108,23 @@ Sections 13-15 will discuss interpretation, limitations, future work, and the fi
 
 ## 6. Background and Related Work
 
-### 6.1 Attention heads and long-context retrieval
+### 6.1 Circuit inspiration and related work
+
+This project is inspired by the mechanistic interpretability view that neural networks can sometimes be understood as circuits: interacting internal components that implement a recognizable computation. In this framing, a model is not only a black-box function from prompt to answer. It is also a collection of internal pathways, some of which can be localized, intervened on, and tested.
+
+The transformer-circuits line of work is especially relevant here. That work studies how attention heads, MLPs, residual streams, and token-level features interact to implement behaviors such as induction, copying, and in-context pattern completion. The key methodological lesson is that individual heads are rarely meaningful in isolation. A head becomes interpretable when we understand what it reads, what it writes, and how its output is used by later components.
+
+Induction-head work is a useful analogy. Induction heads are not merely heads with visually interesting attention patterns; they are components that implement a specific algorithmic behavior: detecting a repeated prefix and predicting the next token from an earlier occurrence. The circuit idea is that a capability can be decomposed into roles, and those roles can be tested mechanistically. Our retrieval-head project starts from a similar intuition, but the behavior is long-context answer retrieval rather than short-pattern induction.
+
+Another relevant line of work studies causal tracing and activation patching. These methods compare clean and corrupted runs of a model and patch internal activations to identify where information relevant to the output is stored or transported. This is the source of our clean-to-corrupt patching setup: if a head carries answer identity, then copying that head’s clean activation into a corrupt prompt should increase the clean-answer probability.
+
+Recent retrieval-head work directly motivates the previous submission and this continuation. It argues that sparse attention heads can play a mechanistic role in long-context factuality by retrieving relevant earlier facts. Our previous report adapted that idea into a controlled Retrieval Head Atlas for Qwen2.5-1.5B-Instruct. The present report extends the idea further: it asks whether retrieval heads form a role-decomposed semantic retrieval circuit, rather than merely a shortlist of heads that point to answer spans.
+
+Long-context evaluation work is also part of the motivation. Studies such as “lost in the middle” show that models’ use of long context can depend strongly on where information appears. This matters for interpretability because a mechanism discovered at one answer position may not generalize. That is why the current experiments test early, middle, and late answer positions and extend from 8k to 16k contexts.
+
+This report therefore sits at the intersection of several related lines of work: Transformers [Vaswani et al., 2017], transformer circuits [Elhage et al.], induction heads [Olsson et al.], causal tracing and activation patching [Meng et al., 2022], retrieval heads [Wu et al., 2025], Qwen2.5 [Qwen Team, 2024], and long-context position-sensitivity studies such as Lost in the Middle [Liu et al., 2024].
+
+### 6.2 Attention heads and long-context retrieval
 
 Transformers process a sequence by repeatedly mixing information across token positions. The attention mechanism is the part of the model that decides, at each layer and token position, which earlier tokens should influence the current representation. In a multi-head attention layer, each attention head computes its own attention pattern and value mixture. This means that a single transformer layer does not have one monolithic way of looking backward through context; it has several parallel attention heads that can specialize in different patterns.
 
@@ -112,7 +132,7 @@ This structure makes attention heads a natural starting point for studying long-
 
 However, attention is not the whole computation. An attention head has at least two distinct aspects: where it attends and what information it writes back into the residual stream. A head can look at the right source position but write information that is not decisive for the output. Conversely, a head may be causally important without directly attending to the answer span, because it prepares the query representation, stabilizes the residual stream, or supports downstream heads. This distinction is central to the present report. We do not assume that “attention to the answer” and “causal responsibility for the answer” are the same thing.
 
-### 6.2 Retrieval heads
+### 6.3 Retrieval heads
 
 Recent interpretability work has argued that long-context factual retrieval can depend on a sparse set of retrieval heads: attention heads that attend to relevant earlier facts and whose intervention affects factual output. This idea is attractive because it gives a concrete mechanism for a capability that otherwise looks diffuse. Instead of saying only that “the model uses the context,” we can ask which heads point to the relevant context and whether those heads matter causally.
 
@@ -120,7 +140,7 @@ Our previous submission followed this retrieval-head framing. It showed that, on
 
 The present work extends that framing in two directions. First, it studies semantic retrieval rather than only literal copying. In realistic retrieval settings, the query often refers to information indirectly: through aliases, paraphrases, descriptions, relations, or nearby distractors. A mechanism that only copies exact strings would be less interesting than one that supports semantic key-value retrieval. Second, it moves from identifying retrieval heads to decomposing a retrieval circuit. The question is not merely whether some heads matter, but what different heads contribute.
 
-### 6.3 Mechanistic interpretability: from observation to intervention
+### 6.4 Mechanistic interpretability: from observation to intervention
 
 A common risk in interpretability is over-reading observational evidence. Attention maps can be visually compelling, but an attention map alone does not prove that a head is necessary for the model’s answer. A head may attend to the answer span because the answer is already represented elsewhere, or because attention to that span is correlated with success but not required for it.
 
@@ -128,7 +148,7 @@ For this reason, the project uses interventions. Interventions change internal m
 
 The important point is that different interventions answer different questions. We use ablation, patching, attention tracing, and activation-difference analysis together because no single tool is sufficient on its own.
 
-### 6.4 Ablation as a necessity test
+### 6.5 Ablation as a necessity test
 
 Ablation disables a selected internal component and measures how much the model’s behavior changes. In the context of attention heads, ablation usually means removing or zeroing a head’s contribution at a particular position or stage of the forward pass. If ablating a head or group of heads reduces the correct-answer log probability, this is evidence that the component was necessary for the original computation.
 
@@ -136,7 +156,7 @@ Necessity should be interpreted carefully. A small ablation effect does not alwa
 
 This is why the report uses both single-head and group-level ablations. Single-head sweeps help identify candidate heads and localize effects. Functional group ablations test whether a role-defined group is necessary as a system. Matched inactive controls are included to reduce the risk that a result is caused merely by ablating many heads in late layers.
 
-### 6.5 Activation patching as a sufficiency test
+### 6.6 Activation patching as a sufficiency test
 
 Activation patching asks a different question. Instead of removing a component, we copy an activation from one run of the model into another run. In this project, the most important patching setup is clean-to-corrupt patching. The clean prompt contains one answer; the corrupt prompt is identical except that the answer value is changed. The corrupt prompt makes the model prefer the corrupt answer. We then copy selected clean activations into the corrupt run and measure whether the model becomes more likely to output the clean answer.
 
@@ -144,7 +164,7 @@ If patching a head increases the clean-answer log probability, that head contain
 
 At the same time, patching has its own limitations. A successful patch does not prove that a component is uniquely responsible for the behavior; many sites may carry overlapping answer information. A failed patch also does not prove that a component is unimportant; the component may be necessary for setting up the computation while not carrying a cleanly transplantable answer representation at the patched site. For this reason, patching and ablation must be read together.
 
-### 6.6 Why necessity and sufficiency can disagree
+### 6.7 Why necessity and sufficiency can disagree
 
 One of the main conceptual lessons of this work is that “necessary” and “sufficient” are not the same property. A support component can be necessary because the model needs it to maintain a useful query state, route residual information, or stabilize the computation. But that same component may not carry the identity of the answer. If we patch it from a clean run into a corrupt run, it may not restore the clean answer because there is little answer-specific information to transplant.
 
@@ -152,7 +172,7 @@ The reverse can also happen. A component can be a good patch target because it c
 
 This distinction is the key reason the present report moves beyond a simple “important heads” list. The results show that some heads behave like answer-content heads: they attend to the answer span, change strongly when the answer changes, and restore answer probability when patched. Other heads behave like support heads: they are strongly necessary under ablation but weak as answer donors under patching. The circuit explanation depends on separating these roles.
 
-### 6.7 Semantic retrieval and position generalization
+### 6.8 Semantic retrieval and position generalization
 
 Long-context retrieval is not a single fixed problem. Retrieval can be easy when the answer appears near the query and harder when it appears far away. It can also change when the query refers to the answer literally versus semantically. A robust mechanistic claim should therefore not depend on one prompt shape or one answer position.
 
