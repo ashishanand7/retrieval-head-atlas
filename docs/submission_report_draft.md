@@ -90,19 +90,19 @@ This work makes the following contributions.
 
 6. It provides a reusable experimental pipeline and report asset set: semantic probes, functional group ablations, component patching, single-head patching, attention tracing, activation-difference analysis, summary tables, and report-ready figures.
 
-## 5. Report Roadmap
+## 5. Report Organization
 
-The rest of the report should preserve the same broad conference-style structure used in the previous submission: background, experimental setup, methods, results, discussion, limitations, and conclusion. The scientific story is different, but the reader experience should feel familiar to the university/jury format.
+The remainder of the report follows the same broad conference-style structure used in the previous submission: background, experimental setup, methods, results, discussion, limitations, and conclusion. The scientific story is different, but the reader experience stays close to the university/jury format.
 
-Section 6 will summarize background and related work: attention heads, retrieval heads, long-context retrieval, causal ablation, and activation patching.
+Section 6 summarizes background and related work: attention heads, retrieval heads, long-context retrieval, causal ablation, and activation patching.
 
-Section 7 will describe the experimental setup: model, semantic prompt variants, clean/corrupt prompt pairs, context lengths, answer positions, and metrics.
+Section 7 describes the experimental setup: model, semantic prompt variants, clean/corrupt prompt pairs, context lengths, answer positions, and metrics.
 
-Section 8 will describe the methods: attention tracing, group ablation, clean-to-corrupt patching, single-head decomposition, activation-difference analysis, and matched controls.
+Section 8 describes the methods: attention tracing, group ablation, clean-to-corrupt patching, single-head decomposition, activation-difference analysis, and matched controls.
 
-Sections 9-12 will present the results: semantic retrieval heads remain causal, the circuit separates into address/content and support roles, L22H7 dominates answer-content transport, and the pattern generalizes to 16k contexts.
+Sections 9-12 present the results: semantic retrieval heads remain causal, the circuit separates into address/content and support roles, L22H7 dominates answer-content transport, and the pattern generalizes to 16k contexts.
 
-Sections 13-15 will discuss interpretation, limitations, future work, and the final conclusion.
+Sections 13-15 discuss interpretation, limitations, future work, and the final conclusion.
 
 ## 6. Background and Related Work
 
@@ -286,7 +286,7 @@ The full pipeline is:
 9. Run single-head patching to identify the main answer-content donor.
 10. Repeat the core suite across context positions and context lengths.
 
-This section describes each step in enough detail for the later LaTeX version to include equations, algorithm boxes, and figure callouts.
+This section describes each step in enough detail to make the later causal claims auditable.
 
 ### 8.2 Scoring answer probability
 
@@ -305,8 +305,6 @@ For interventions, the same score is recomputed with selected internal component
 \]
 
 For ablations, a negative \(\Delta \ell\) means the intervention made the correct answer less likely. For patching, a positive \(\Delta \ell\) means the patch restored some probability for the clean answer.
-
-**Visual hook for LaTeX/PPT.** A small equation callout can show the mean log-probability score beside a one-token-at-a-time teacher-forcing diagram.
 
 ### 8.3 Query-step interventions
 
@@ -411,8 +409,6 @@ M_N^{(\ell,h)} = \sum_{i\in N} a_i^{(\ell,h)}.
 The scripts also record distractor mass, gold rank, whether the attention argmax lies inside the gold span, and whether the argmax lies inside the needle span.
 
 Attention tracing is observational, not causal. Its role is to distinguish direct address heads from heads that are necessary for other reasons. In the final interpretation, a direct answer-address head is one that both attends to the answer/needle span and has causal evidence from ablation or patching.
-
-**Visual hook for LaTeX/PPT.** A schematic can show query-step attention split into gold span, full needle span, distractor spans, and remaining context.
 
 ### 8.9 Functional group construction
 
@@ -536,7 +532,7 @@ Once the core role decomposition is established at 8k early-position prompts, th
 - early, middle, and late answer positions,
 - 8k and 16k context lengths.
 
-The repeated suite includes functional group ablation, functional component patching, single-head patching, attention tracing, and activation-difference analysis. This provides a stronger claim than a single setting would allow. The final report can say not only that L22H7 matters in one probe, but that its attention, activation, and causal patch signatures remain stable across all tested position/length settings.
+The repeated suite includes functional group ablation, functional component patching, single-head patching, attention tracing, and activation-difference analysis. This provides a stronger claim than a single setting would allow. The conclusion is not only that L22H7 matters in one probe, but that its attention, activation, and causal patch signatures remain stable across all tested position/length settings.
 
 ### 8.15 Statistical reporting
 
@@ -547,8 +543,6 @@ The report uses per-example rows as the basic unit of aggregation. For each metr
 \]
 
 This normal-approximation interval is used as a readable sanity check rather than as a claim of exact distributional normality. For the main results, the direction and consistency of effects are more important than any single p-value. For example, L22H7 patching is positive with confidence intervals above zero in every tested length/position setting, and non-address core ablation is negative in 40/40 examples at every tested setting.
-
-**Visual hook for LaTeX/PPT.** The Methods section should include a compact pipeline diagram: semantic prompts → attention trace → ablation → patching → activation difference → generalization. The Results sections then map directly onto this pipeline.
 
 ## 9. Results I: Semantic Retrieval Uses A Causal Head Neighborhood
 
@@ -583,8 +577,6 @@ The variant-level pattern is important because it shows breadth rather than one 
 | Distractor-heavy | -0.383 | -0.027 |
 
 The paraphrase case was especially strong, with a mean top-k delta around -0.518. This matters because paraphrase retrieval is less like exact copying than the literal condition. The top-k heads were therefore involved in more than just matching repeated surface text.
-
-**Table hook.** In the LaTeX version, this should become the first Results table: “Semantic ablation probe across retrieval variants.” It can report baseline log probability, top-k delta, random-k delta, and top-k minus random gap.
 
 ### 9.2 Stronger random controls revealed a broader circuit
 
@@ -677,8 +669,6 @@ The first result section establishes the starting point for the rest of the repo
 
 This last point is the bridge to the next result. If all important heads simply attended to the answer span, the story would be straightforward: retrieval heads point to the answer and carry it forward. Instead, the most harmful single-head ablation in the neighborhood sweep was L20H7, which later attention tracing showed was not a direct answer-address head. Therefore, semantic retrieval requires at least two kinds of machinery: heads that address the answer and heads that support the retrieval computation without directly pointing to the answer.
 
-**Figure hook.** This section could use a small “neighborhood discovery” figure in the report or PPT: initial top-k heads on the left, random-draw contamination in the middle, expanded semantic core on the right. This should be a deterministic diagram rather than a generated image because the head labels matter.
-
 ## 10. Results II: The Circuit Splits Into Address Heads And Support Heads
 
 The neighborhood sweep showed that semantic retrieval depends on more than one head and more than one kind of head. The next question was whether these heads all perform the same job. Attention tracing and functional group ablation show that they do not. The circuit separates into heads that directly address the answer span and heads that are necessary for retrieval without directly pointing to the answer.
@@ -752,7 +742,7 @@ The evidence so far supports a two-role view of the semantic retrieval circuit:
 
 This is already a stronger explanation than the previous submission. The previous report established that retrieval-like heads exist and matter. The current result shows that the retrieval mechanism is internally differentiated: the model needs both address/content pathways and support-state machinery.
 
-**Main figure.** This section should use `fig_01_role_decomposition_16k.svg`. That figure visually captures the central split: support heads have large necessity under ablation but weak sufficiency under patching, while address heads are the meaningful answer donors.
+<!-- FIGURE: fig_01_role_decomposition_16k.png -->
 
 ## 11. Results III: L22H7 Is The Dominant Answer-Content Head
 
@@ -802,7 +792,7 @@ This is the strongest head-level result in the project. L22H7 is not merely one 
 
 L22H10 also contributes positively, but its effect is much smaller. It patches between about +0.051 and +0.111 across the tested settings. Its relative role is most visible in some semantic variants, especially alias and relational prompts. This suggests that L22H10 may carry a secondary answer-related signal or participate in a companion address route.
 
-The important point is that L22H10 supports the answer-content story without displacing L22H7. The report should describe it as a companion head, not as an equal partner.
+The important point is that L22H10 supports the answer-content story without displacing L22H7. We therefore treat it as a companion head, not as an equal partner.
 
 ### 11.4 L21H11 is address-like but weak as a donor
 
@@ -827,7 +817,9 @@ The evidence supports the following decomposition:
 
 This result is what turns the project from a retrieval-head atlas into a retrieval-circuit explanation. We can now say not only that some heads matter, but which head carries most of the transplantable answer identity.
 
-**Main figures.** This section should use `fig_02_l22h7_generalization.svg` and `fig_03_single_head_decomposition.svg`. The first shows L22H7’s patch effect across length and position. The second shows that L22H7 dominates the other address heads and controls.
+<!-- FIGURE: fig_02_l22h7_generalization.png -->
+
+<!-- FIGURE: fig_03_single_head_decomposition.png -->
 
 ## 12. Results IV: Attention, Activation, And Causality Converge Across 8k-16k Contexts
 
@@ -848,7 +840,7 @@ L22H7 single-head patching is positive in every tested context length and answer
 
 The confidence intervals remain above zero in all six settings. L22H7 is therefore not a one-position or one-length artifact.
 
-The only notable wrinkle is the 8k middle-position dip, where L22H7 patching falls to +0.335. This is still strongly positive, but smaller than early and late positions. Rather than hide this, the report should use it to show that the mechanism is robust but not perfectly invariant. Real mechanisms often have such texture.
+The only notable wrinkle is the 8k middle-position dip, where L22H7 patching falls to +0.335. This is still strongly positive, but smaller than early and late positions. Rather than hiding this, we use it to show that the mechanism is robust but not perfectly invariant. Real mechanisms often have such texture.
 
 ### 12.2 L22H7 directly attends to the needle
 
@@ -905,9 +897,11 @@ The final evidence matrix is useful because it compresses the result into one vi
 
 This is the strongest “jury narrative” figure because it shows the volume of work without requiring the reader to inspect every CSV. It makes clear that the conclusion does not rest on one experiment.
 
-Because the matrix combines different kinds of quantities, its caption should make clear that rows should be read as an evidence map rather than as one shared physical scale. The important pattern is row-wise consistency across settings: content-patching rows stay positive, support-patching rows stay small, support-necessity rows stay large, and L22H7 attention/activation rows remain high.
+Because the matrix combines different kinds of quantities, it should be read as an evidence map rather than as one shared physical scale. The important pattern is row-wise consistency across settings: content-patching rows stay positive, support-patching rows stay small, support-necessity rows stay large, and L22H7 attention/activation rows remain high.
 
-**Main figures.** This section should use `fig_04_l22h7_attention_activation_alignment.svg` and `fig_06_evidence_matrix.svg`. The first tells the mechanistic story for L22H7; the second shows the whole evidence stack across settings.
+<!-- FIGURE: fig_04_l22h7_attention_activation_alignment.png -->
+
+<!-- FIGURE: fig_06_evidence_matrix.png -->
 
 ### 12.6 Interpretation
 
@@ -984,15 +978,15 @@ This is a meaningful interpretability result because it connects several levels 
 - activation geometry under answer changes,
 - position and context-length generalization.
 
-The report should be careful not to claim that every model uses this exact head or this exact circuit. The defensible claim is model- and task-specific: Qwen2.5-1.5B-Instruct uses a stable role-decomposed circuit for this controlled semantic long-context retrieval family.
+We therefore do not claim that every model uses this exact head or this exact circuit. The defensible claim is model- and task-specific: Qwen2.5-1.5B-Instruct uses a stable role-decomposed circuit for this controlled semantic long-context retrieval family.
 
-**Discussion figure.** `fig_05_necessity_vs_sufficiency.svg` belongs here. It makes the conceptual point visually: support heads sit high on necessity and low on sufficiency, while address heads are the meaningful answer donors.
+<!-- FIGURE: fig_05_necessity_vs_sufficiency.png -->
 
 ## 14. Limitations and Future Work
 
 ### 14.1 Single-model scope
 
-All experiments were run on Qwen2.5-1.5B-Instruct. This makes the study internally coherent but limits external validity. The report should not claim that L22H7, or even the same layer/head structure, will appear in other models. A natural next step is to run the same pipeline on another Qwen size and at least one different model family.
+All experiments were run on Qwen2.5-1.5B-Instruct. This makes the study internally coherent but limits external validity. We do not claim that L22H7, or even the same layer/head structure, will appear in other models. A natural next step is to run the same pipeline on another Qwen size and at least one different model family.
 
 The deeper question is whether the role decomposition generalizes, not whether the literal head index generalizes. It would still be a strong result if other models had different dominant content heads but similar separation between answer-content and support-state heads.
 
@@ -1046,67 +1040,30 @@ The main takeaway is simple:
 
 This gives the project a stronger final narrative than the previous submission. We began by mapping retrieval heads. We now have evidence for a retrieval circuit.
 
-## Appendix Targets
+## Appendix
 
-The previous submission ended with a glossary. We should keep that style because it helps jury readability. The appendix can also carry the full artifact trail so the main report remains readable.
+The appendix keeps the main report readable while preserving the implementation map needed to reproduce and audit the work.
 
 ### Appendix A: Glossary
 
-The glossary from the previous submission should be retained and updated. It should define:
+- **Attention head.** One parallel attention component inside a transformer layer. Each head computes its own attention pattern and writes a head-specific vector back into the residual stream.
+- **KV cache.** Cached key and value tensors from earlier prompt tokens, used so the model can score the final query and answer tokens without recomputing the whole prefix.
+- **Retrieval head.** An attention head that attends to answer-relevant context and has causal evidence for affecting retrieval behavior.
+- **Answer-address head.** A retrieval head whose query-step attention directly targets the answer-bearing needle span.
+- **Support head.** A head that is necessary under ablation but does not directly carry the answer identity under the clean-to-corrupt patching operation.
+- **Ablation.** An intervention that removes a selected component, here by zeroing selected head slices at the query-step attention output site.
+- **Activation patching.** An intervention that copies internal activations from a clean run into a corrupted run to test whether that component carries information sufficient to repair the output distribution.
+- **Clean/corrupt prompt pair.** A paired prompt construction where the clean prompt contains the target answer and the corrupt prompt changes the answer value while preserving the rest of the retrieval structure.
+- **Teacher-forced log probability.** The mean log probability assigned to the gold answer tokens when the answer tokens are supplied one by one.
+- **Recovery fraction.** The fraction of the clean-corrupt log-probability gap restored by a patching intervention.
+- **Attention mass.** The total attention probability assigned by a head to a specified token span, such as the gold answer span or the full needle span.
+- **Activation relative difference.** A normalized measure of how much a head activation changes between clean and corrupt prompts.
+- **Layer-matched control.** A random control group that samples the same number of heads from the same layers as the tested group.
+- **Inactive control.** A control head or head group selected because prior experiments showed weak activity under the relevant retrieval metrics.
 
-- attention head,
-- KV cache,
-- retrieval head,
-- answer-address head,
-- support head,
-- ablation,
-- activation patching,
-- clean/corrupt prompt pair,
-- teacher-forced log probability,
-- recovery fraction,
-- attention mass,
-- activation relative difference,
-- layer-matched control,
-- inactive control.
+### Appendix B: Reproducibility notes
 
-### Appendix B: Figure and table placement map
-
-The report should use the following body figures:
-
-| Figure | File | Main purpose | Suggested section |
-| --- | --- | --- | --- |
-| Figure 1 | `fig_01_role_decomposition_16k.svg` | Role decomposition: necessity vs sufficiency | Results II |
-| Figure 2 | `fig_02_l22h7_generalization.svg` | L22H7 patch generalizes across length/position | Results III |
-| Figure 3 | `fig_03_single_head_decomposition.svg` | L22H7 dominates other address heads and controls | Results III |
-| Figure 4 | `fig_04_l22h7_attention_activation_alignment.svg` | Attention, activation, and patching align for L22H7 | Results IV |
-| Figure 5 | `fig_05_necessity_vs_sufficiency.svg` | Conceptual separation between necessary support and sufficient content | Discussion |
-| Figure 6 | `fig_06_evidence_matrix.svg` | Compact evidence matrix across all tested settings | Results IV or conclusion recap |
-
-The body should use a small number of compact tables:
-
-| Table | Source | Main purpose |
-| --- | --- | --- |
-| Table 1 | semantic ablation probe summary | Show semantic variants and top-k vs random effect |
-| Table 2 | `table_main_results.md` | Main cross-setting summary |
-| Table 3 | `table_functional_ablation.md` | Necessity by functional group |
-| Table 4 | `table_functional_patching.md` | Sufficiency by functional group |
-| Table 5 | `table_single_head_patching.md` | L22H7/L22H10/L21H11 decomposition |
-| Table 6 | `table_statistical_checks.md` | Confidence intervals and directional consistency |
-
-The appendix can include the full generated tables in CSV, Markdown, and LaTeX form from the generated report-assets directory.
-
-### Appendix C: Additional diagrams for report/PPT
-
-The LaTeX/PPT pass should add two deterministic explanatory diagrams:
-
-1. **Retrieval-circuit schematic.** Long context on the left, query on the right, L22H7/L22H10 as blue answer-content route, non-address/query-tail heads as orange support route, and answer probability as the output.
-2. **Evidence stack diagram.** Semantic variants, ablation, patching, attention trace, activation difference, and 8k/16k generalization stacked as converging evidence.
-
-Generated bitmap visuals can be used for PPT openers and section dividers, but scientific claims should rely on deterministic figures and artifact-derived plots.
-
-### Appendix D: Reproducibility notes
-
-This appendix should list the main scripts:
+The main experiment scripts are:
 
 - `scripts/run_semantic_ablation_probe.py`
 - `scripts/run_semantic_single_head_sweep.py`
@@ -1118,15 +1075,31 @@ This appendix should list the main scripts:
 - `scripts/run_position_generalization.sh`
 - `scripts/build_report_assets.py`
 
-It should also describe the SageMaker workflow briefly: code edited locally, experiments run on the GPU instance, artifacts pulled back into the repository, and report assets generated locally from committed artifacts.
+The main report assets are generated from the committed experiment outputs using `scripts/build_report_assets.py`. The LaTeX report is generated locally from `docs/submission_report_draft.md`, `paper/main.tex`, and `paper/references.bib` using `make report-pdf` and `make report-pages`.
 
-### Appendix E: Reference map
+The expected project workflow is: code is edited locally, GPU experiments are run on the SageMaker notebook instance, artifacts are pulled back into the repository, and report assets are regenerated locally from those committed artifacts.
 
-The LaTeX pass should include references for:
+### Appendix C: Report asset map
+
+The report uses six generated body figures:
+
+- `fig_01_role_decomposition_16k.png`: role decomposition between necessity and sufficiency.
+- `fig_02_l22h7_generalization.png`: L22H7 patching across length and position.
+- `fig_03_single_head_decomposition.png`: L22H7 compared with other address heads and controls.
+- `fig_04_l22h7_attention_activation_alignment.png`: attention, activation, and patching alignment for L22H7.
+- `fig_06_evidence_matrix.png`: compact evidence matrix across all tested settings.
+- `fig_05_necessity_vs_sufficiency.png`: conceptual separation between support heads and content donors.
+
+The generated tables are stored with the report assets as CSV, Markdown, and LaTeX files. They are used to audit the numerical claims in the main report and can be included in a longer appendix if required by the submission format.
+
+### Appendix D: Reference map
+
+The report cites the following core reference areas:
 
 - Transformer architecture: Vaswani et al., “Attention Is All You Need”
 - Qwen2.5 model: Qwen2.5 technical report
 - Retrieval heads / long-context factuality: “Retrieval Head Mechanistically Explains Long-Context Factuality”
 - Long-context position effects: “Lost in the Middle”
+- Transformer circuits and induction heads: Anthropic transformer-circuits work and induction-head work
 - Activation patching / causal tracing: ROME and related causal tracing work
 - Tooling: Hugging Face Transformers

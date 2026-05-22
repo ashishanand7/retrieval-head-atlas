@@ -36,6 +36,12 @@ models/
 logs/
 *.log
 
+# Report build outputs
+paper/build/
+paper/generated/
+paper/figures/
+paper/rendered_pages/
+
 # OS/editor
 .DS_Store
 .vscode/
