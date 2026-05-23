@@ -13,14 +13,22 @@ Build the final PDF with:
 make report-pdf
 ```
 
+Build the shorter capstone/jury version with:
+
+```bash
+make capstone-pdf
+```
+
 Render page PNGs for visual QA with:
 
 ```bash
 make report-pages
+make capstone-pages
 ```
 
-The stable PDF artifact is written to:
+The stable PDF artifacts are written to:
 
 ```text
 paper/retrieval_head_atlas_report.pdf
+paper/retrieval_head_atlas_capstone_report.pdf
 ```

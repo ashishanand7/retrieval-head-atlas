@@ -38,9 +38,12 @@ logs/
 
 # Report build outputs
 paper/build/
+paper/build_capstone/
 paper/generated/
+paper/generated_capstone/
 paper/figures/
 paper/rendered_pages/
+paper/rendered_capstone_pages/
 
 # OS/editor
 .DS_Store

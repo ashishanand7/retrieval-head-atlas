@@ -1,0 +1,58 @@
+% !TEX program = tectonic
+\documentclass[sigconf,nonacm]{acmart}
+
+\settopmatter{printacmref=false,printfolios=true}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\setcopyright{none}
+
+\usepackage{amsmath}
+\let\Bbbk\relax
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{adjustbox}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{placeins}
+\usepackage{microtype}
+
+\graphicspath{{figures/}}
+
+\newcounter{none}
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}%
+}
+
+\title{Retrieval Head Atlas: A Role-Decomposed Circuit for Semantic Long-Context Retrieval}
+
+\author{Ashish Anand}
+\affiliation{%
+  \institution{Indian Institute of Technology Hyderabad}
+  \country{India}
+}
+\email{cs23mtech15007@iith.ac.in}
+
+\begin{document}
+
+\begin{abstract}
+\input{generated_capstone/abstract}
+\end{abstract}
+
+\keywords{mechanistic interpretability, long-context retrieval, attention heads, activation patching, ablation, semantic retrieval}
+
+\maketitle
+
+\input{generated_capstone/body}
+
+\clearpage
+\appendix
+\input{generated_capstone/appendix}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

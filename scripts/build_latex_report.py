@@ -8,6 +8,7 @@ into paper/figures for a self-contained local build.
 
 from __future__ import annotations
 
+import argparse
 import re
 import shutil
 import subprocess
@@ -15,11 +16,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DRAFT = ROOT / "docs" / "submission_report_draft.md"
 PAPER = ROOT / "paper"
-GENERATED = PAPER / "generated"
 FIGURES_SRC = ROOT / "artifacts_phase2" / "report_assets" / "figures"
-FIGURES_DST = PAPER / "figures"
 
 PANDOC_FROM = (
     "markdown"
@@ -207,21 +205,31 @@ def split_draft(markdown: str) -> tuple[str, str, str]:
     return abstract, body, appendix
 
 
-def copy_figures() -> None:
-    FIGURES_DST.mkdir(parents=True, exist_ok=True)
+def copy_figures(figures_dst: Path) -> None:
+    figures_dst.mkdir(parents=True, exist_ok=True)
     for filename in FIGURES:
         source = FIGURES_SRC / filename
-        target = FIGURES_DST / filename
+        target = figures_dst / filename
         if not source.exists():
             raise FileNotFoundError(source)
         shutil.copy2(source, target)
 
 
 def main() -> None:
-    GENERATED.mkdir(parents=True, exist_ok=True)
-    copy_figures()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--draft", type=Path, default=ROOT / "docs" / "submission_report_draft.md")
+    parser.add_argument("--generated-dir", type=Path, default=PAPER / "generated")
+    parser.add_argument("--figures-dir", type=Path, default=PAPER / "figures")
+    args = parser.parse_args()
 
-    raw = DRAFT.read_text(encoding="utf-8")
+    draft = args.draft.resolve()
+    generated = args.generated_dir.resolve()
+    figures_dir = args.figures_dir.resolve()
+
+    generated.mkdir(parents=True, exist_ok=True)
+    copy_figures(figures_dir)
+
+    raw = draft.read_text(encoding="utf-8")
     abstract_md, body_md, appendix_md = split_draft(raw)
     body_md = clean_heading_numbers(body_md)
 
@@ -232,9 +240,9 @@ def main() -> None:
     body_tex = convert_longtables(run_pandoc(body_md, shift=-1)).strip() + "\n"
     appendix_tex = convert_longtables(run_pandoc(appendix_md, shift=-1)).strip() + "\n" if appendix_md else ""
 
-    (GENERATED / "abstract.tex").write_text(abstract_tex, encoding="utf-8")
-    (GENERATED / "body.tex").write_text(body_tex, encoding="utf-8")
-    (GENERATED / "appendix.tex").write_text(appendix_tex, encoding="utf-8")
+    (generated / "abstract.tex").write_text(abstract_tex, encoding="utf-8")
+    (generated / "body.tex").write_text(body_tex, encoding="utf-8")
+    (generated / "appendix.tex").write_text(appendix_tex, encoding="utf-8")
 
 
 if __name__ == "__main__":
