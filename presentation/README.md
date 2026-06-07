@@ -11,4 +11,4 @@ circuit submission.
 - `assets/generated/` contains narrative visuals generated specifically for the
   deck. These are explanatory visuals, not experimental evidence.
 
-The PPTX has 15 slides and embedded speaker notes for each slide.
+The PPTX has 16 slides and embedded speaker notes for each slide.
