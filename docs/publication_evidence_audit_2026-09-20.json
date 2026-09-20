@@ -1,0 +1,143 @@
+{
+  "scope": "Historical core patching/ablation arithmetic, identities, and interaction control; not a GPU rerun or exhaustive artifact audit.",
+  "settings": [
+    {
+      "target_tokens": 8192,
+      "needle_frac": 0.1,
+      "n_examples": 40,
+      "overlap_with_discovery": 40,
+      "l22h7_patch": 0.4570555369059245,
+      "address_patch": 0.5074848175048828,
+      "support_patch": 0.03488972981770837,
+      "support_ablation": -1.2688809752464294,
+      "clean_corrupt_gap": 3.0936248709758125,
+      "l22h7_over_address_ratio_of_means": 0.9006289866031841,
+      "l22h7_recovery_ratio_of_means": 0.1477410985391247,
+      "l22h7_recovery_mean_of_ratios": 0.1515462094788576,
+      "prompt_tokens_min": 8191,
+      "prompt_tokens_max": 8193
+    },
+    {
+      "target_tokens": 8192,
+      "needle_frac": 0.5,
+      "n_examples": 40,
+      "overlap_with_discovery": 40,
+      "l22h7_patch": 0.33529752095540355,
+      "address_patch": 0.3728988647460937,
+      "support_patch": 0.03555781046549469,
+      "support_ablation": -1.3643178795774777,
+      "clean_corrupt_gap": 2.979164592425028,
+      "l22h7_over_address_ratio_of_means": 0.8991647673256049,
+      "l22h7_recovery_ratio_of_means": 0.11254749798247055,
+      "l22h7_recovery_mean_of_ratios": 0.11555984862243207,
+      "prompt_tokens_min": 8191,
+      "prompt_tokens_max": 8193
+    },
+    {
+      "target_tokens": 8192,
+      "needle_frac": 0.9,
+      "n_examples": 40,
+      "overlap_with_discovery": 40,
+      "l22h7_patch": 0.4618550618489584,
+      "address_patch": 0.4898701985677084,
+      "support_patch": 0.03612162272135413,
+      "support_ablation": -1.1980452289183936,
+      "clean_corrupt_gap": 3.091873678565025,
+      "l22h7_over_address_ratio_of_means": 0.9428111022049082,
+      "l22h7_recovery_ratio_of_means": 0.1493770800051931,
+      "l22h7_recovery_mean_of_ratios": 0.15359961588655957,
+      "prompt_tokens_min": 8191,
+      "prompt_tokens_max": 8193
+    },
+    {
+      "target_tokens": 16384,
+      "needle_frac": 0.1,
+      "n_examples": 40,
+      "overlap_with_discovery": 40,
+      "l22h7_patch": 0.4077463785807292,
+      "address_patch": 0.4609507242838542,
+      "support_patch": 0.024019368489583304,
+      "support_ablation": -1.3490260283152262,
+      "clean_corrupt_gap": 3.0133348405361176,
+      "l22h7_over_address_ratio_of_means": 0.8845769343658485,
+      "l22h7_recovery_ratio_of_means": 0.1353139960072227,
+      "l22h7_recovery_mean_of_ratios": 0.13570837617060086,
+      "prompt_tokens_min": 16383,
+      "prompt_tokens_max": 16385
+    },
+    {
+      "target_tokens": 16384,
+      "needle_frac": 0.5,
+      "n_examples": 40,
+      "overlap_with_discovery": 40,
+      "l22h7_patch": 0.4998087565104167,
+      "address_patch": 0.5380215962727866,
+      "support_patch": 0.04138285319010415,
+      "support_ablation": -1.27369367480278,
+      "clean_corrupt_gap": 3.076004873712858,
+      "l22h7_over_address_ratio_of_means": 0.9289752678571005,
+      "l22h7_recovery_ratio_of_means": 0.1624863343948893,
+      "l22h7_recovery_mean_of_ratios": 0.1654385864522023,
+      "prompt_tokens_min": 16383,
+      "prompt_tokens_max": 16385
+    },
+    {
+      "target_tokens": 16384,
+      "needle_frac": 0.9,
+      "n_examples": 40,
+      "overlap_with_discovery": 40,
+      "l22h7_patch": 0.5007280985514324,
+      "address_patch": 0.5351971944173177,
+      "support_patch": 0.04335937500000007,
+      "support_ablation": -1.3289378682772317,
+      "clean_corrupt_gap": 3.131699041525523,
+      "l22h7_over_address_ratio_of_means": 0.9355955221263582,
+      "l22h7_recovery_ratio_of_means": 0.15989023591089271,
+      "l22h7_recovery_mean_of_ratios": 0.16355149029198526,
+      "prompt_tokens_min": 16383,
+      "prompt_tokens_max": 16385
+    }
+  ],
+  "unique_example_identities_across_settings": 40,
+  "identities_shared_by_all_settings": 40,
+  "interaction_control": {
+    "non_address_core": {
+      "n_examples": 40,
+      "patch_effect_under_ablation": 0.43996225992838556,
+      "change_from_patch_only": -0.06752255757649736
+    },
+    "query_tail": {
+      "n_examples": 40,
+      "patch_effect_under_ablation": 0.4475311279296876,
+      "change_from_patch_only": -0.05995368957519528
+    },
+    "first_token_sink": {
+      "n_examples": 40,
+      "patch_effect_under_ablation": 0.49965565999348954,
+      "change_from_patch_only": -0.007829157511393302
+    }
+  },
+  "historical_interval_method": "Pointwise mean +/- 1.96 * sample_sd / sqrt(n); not a bootstrap or selection-adjusted interval.",
+  "source_sha256": {
+    "artifacts_phase2/semantic_single_head_sweep_neighborhood61_8192_n8_query.csv": "e4afd3e1cc49849ec87f1ab20e4c7f08cb3046add60bddbab0423fdfe6903963",
+    "artifacts_phase2/semantic_single_head_patching_8192_n8.csv": "f1ca58186f1b5ee502cfaf93771214c7925d1128cd1a85052705584cb0a11352",
+    "artifacts_phase2/semantic_component_patching_functional_8192_n8.csv": "9fe3e25bd9affb27d5361eee4d8db729eceba948ae7906a1034785e7d1747319",
+    "artifacts_phase2/semantic_group_ablation_functional_controls_8192_n8_query.csv": "0896b205d347d071d9cdfcd047c39f0d0eb06b063252c400b13f0dfa52788ba4",
+    "artifacts_phase2/semantic_single_head_patching_8192_n8_frac0p5.csv": "fa8578169db54d8e3e91962d8cd4cfa3cf73519f0fbcdb68cbb7fcb98d1c14fc",
+    "artifacts_phase2/semantic_component_patching_functional_8192_n8_frac0p5.csv": "8bc4e5ef719580438fc5deb4223b502b806586d88053037fbfd75fa576a8e887",
+    "artifacts_phase2/semantic_group_ablation_functional_controls_8192_n8_frac0p5_query.csv": "39f3cad5d12940d7109a045206d306aac150ea2711f3d4788881d43868673555",
+    "artifacts_phase2/semantic_single_head_patching_8192_n8_frac0p9.csv": "fca9c79a7464cd5bd36b411df5e1ca0c9804c8f5b8cd970ae56cba5139152891",
+    "artifacts_phase2/semantic_component_patching_functional_8192_n8_frac0p9.csv": "ef1306c9f95df60f3dcf0b25c790ae3eb4bb8f176b13b1a1ff197bd54176665d",
+    "artifacts_phase2/semantic_group_ablation_functional_controls_8192_n8_frac0p9_query.csv": "ba425b44b64816ece0c7fc55a2b8b426c8fcec06e3ca449442497a4b773585b2",
+    "artifacts_phase2/semantic_single_head_patching_16384_n8_frac0p1.csv": "411e90a7e6a451164202f9bd972b2c1b75116efa9390d3d25ef004bdb3eea397",
+    "artifacts_phase2/semantic_component_patching_functional_16384_n8_frac0p1.csv": "8d8302725256432f930525f74a40f14c025b19c71e2b3fd59d44d902ca7eb696",
+    "artifacts_phase2/semantic_group_ablation_functional_controls_16384_n8_frac0p1_query.csv": "edfdfe6b7d62c2b234674dcef509a48f23c29a57b020892c5b3b68b2e2d721dd",
+    "artifacts_phase2/semantic_single_head_patching_16384_n8_frac0p5.csv": "57a58dbf05b0777bdd16866a4d5c994493544194e6b043eb9403de9f1802df52",
+    "artifacts_phase2/semantic_component_patching_functional_16384_n8_frac0p5.csv": "44ff392ce0f0c4e1102bbfb6619c65a99cfbe40b78fb81ed06630f2f35226ed2",
+    "artifacts_phase2/semantic_group_ablation_functional_controls_16384_n8_frac0p5_query.csv": "086404ae454174a27fcc810644922c9de0da5434ee9f977481f33035bf93aed0",
+    "artifacts_phase2/semantic_single_head_patching_16384_n8_frac0p9.csv": "051cb23b37d0cb30fab0c3e7539a608ac59889ff0e32a414077964aafdbdc629",
+    "artifacts_phase2/semantic_component_patching_functional_16384_n8_frac0p9.csv": "e4165a0733cc9f600555186d1c6cb3d0a4ec62954e5ab72f4151fc5dbb360118",
+    "artifacts_phase2/semantic_group_ablation_functional_controls_16384_n8_frac0p9_query.csv": "c7727c05d7d9c00692aa581b6996958d1c1909a67b00caa3902ef18c311abd74",
+    "artifacts_phase2/semantic_patch_interaction_answer_address_with_ablate_only_8192_n8.csv": "269a89f2bab6f07963602e48f53e806b159f1692aaf51334b3c76929f06084ad"
+  }
+}

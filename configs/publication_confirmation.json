@@ -1,0 +1,15 @@
+{
+  "protocol": "retrieval-confirmation-v1",
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "num_layers": 28,
+  "num_heads": 12,
+  "pilot_seed_base": 9100000,
+  "confirmation_seed_base": 10100000,
+  "random_control_seed": 730021,
+  "groups": {
+    "address_L22H7": [[22, 7]],
+    "support_L20H7": [[20, 7]],
+    "answer_address": [[22, 7], [21, 11], [22, 10]],
+    "non_address_core": [[20, 7], [18, 3], [17, 10], [20, 8], [22, 0], [22, 4], [21, 0], [20, 6], [20, 9], [21, 3], [21, 1], [21, 4], [21, 5], [17, 3], [23, 4], [20, 3]]
+  }
+}
