@@ -1,0 +1,350 @@
+{
+  "status": "complete",
+  "protocol": {
+    "protocol": "retrieval-confirmation-v1",
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "num_layers": 28,
+    "num_heads": 12,
+    "pilot_seed_base": 9100000,
+    "confirmation_seed_base": 10100000,
+    "random_control_seed": 730021,
+    "groups": {
+      "address_L22H7": [
+        [
+          22,
+          7
+        ]
+      ],
+      "support_L20H7": [
+        [
+          20,
+          7
+        ]
+      ],
+      "answer_address": [
+        [
+          22,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          10
+        ]
+      ],
+      "non_address_core": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ]
+    }
+  },
+  "groups": {
+    "address_L22H7": [
+      [
+        22,
+        7
+      ]
+    ],
+    "support_L20H7": [
+      [
+        20,
+        7
+      ]
+    ],
+    "answer_address": [
+      [
+        22,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        10
+      ]
+    ],
+    "non_address_core": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "random_address_L22H7_0": [
+      [
+        22,
+        6
+      ]
+    ],
+    "random_support_L20H7_0": [
+      [
+        20,
+        11
+      ]
+    ],
+    "random_answer_address_0": [
+      [
+        21,
+        1
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        8
+      ]
+    ],
+    "random_non_address_core_0": [
+      [
+        17,
+        8
+      ],
+      [
+        17,
+        0
+      ],
+      [
+        18,
+        7
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        22,
+        2
+      ],
+      [
+        22,
+        9
+      ],
+      [
+        23,
+        11
+      ]
+    ]
+  },
+  "runtime_config": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "precision": "auto",
+    "context_hint_tokens": 8192,
+    "hf_home": null
+  },
+  "arguments": {
+    "config": "config.yaml",
+    "protocol": "configs/publication_confirmation.json",
+    "stage": "pilot",
+    "n_per_variant": null,
+    "target_tokens": 4096,
+    "needle_frac": 0.1,
+    "prompt_format": "chat",
+    "max_len": 32768,
+    "chunk_size": 1024,
+    "max_new_tokens": 24,
+    "random_draws": 1,
+    "prepare_only": false,
+    "out_dir": "artifacts_publication/pilot_4096_chat"
+  },
+  "resolved_seed_base": 9100000,
+  "n_per_variant": 2,
+  "n_example_pairs": 20,
+  "n_independent_example_ids": 10,
+  "prompt_note": "Legacy templates/filler held fixed across marker modes; unmarked prompts are shorter by the marker tokens. This is not new-template validation.",
+  "intervention_scope": "final_prompt_token_only",
+  "score_note": "Float32 log-softmax; legacy scripts use the logits' native dtype. Report exact-match and candidate extraction separately.",
+  "git_commit": "02698708869484fba9ef8dd9382cbcefc7db19bd",
+  "git_status": "?? artifacts_publication/\n",
+  "python": "3.10.21",
+  "packages": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.57.1",
+    "accelerate": "1.11.0",
+    "numpy": "2.1.2"
+  },
+  "source_sha256": {
+    "scripts/run_publication_confirmation.py": "2d14237bb497b1525aec738622bb004daf854facf8b25ea16888f14f939d7aa9",
+    "rha/confirmation.py": "17a1cc859a39a04a0c4b8d465086a984cc15f6365cfed4b8d09cff5003be9749",
+    "rha/confirmation_scoring.py": "441070f88c960cc5900dc22e794496d999b8a7d666af20a34721d8e294b390d4",
+    "rha/prompts.py": "1d40db23e7caf969f1f439cc0994fe98bde7dda56052f687337d4a07df81adb0",
+    "rha/generation.py": "d2d53fe3810619737d9a85583581255ba16ab4dfab05bc0ed13048e62a737a03",
+    "rha/interventions.py": "ff7b53d382f77646e537f7463dd03fa8a7a300bcd32f8659e881dc776a186a9f",
+    "rha/modeling.py": "ad44d641598270aeabd9254cfce776a4ff0bbe1a38a9bec9169af0ee01a4a4a7",
+    "rha/config.py": "8223edf97e757e37673b1f50d9a3ca561811b3d09e48465e76658697a7371211",
+    "configs/publication_confirmation.json": "a90abb936b53cff533a703d6ecdaa69aac80b567f47f49c18dc250825a2d467f"
+  },
+  "examples_sha256": "a154155dc450b8e6deb9f5e39ced104f83c6595dfcf73c8a56822ba0e9ee9fdb",
+  "tokenizer_revision": null,
+  "tokenizer_and_chat_template_sha256": "60a5b4c18aa81b4018d0ea12fe9e05a5ddd59eb8b6d961ee3e13f91b1ce4f1ad",
+  "device": "NVIDIA A10G",
+  "dtype": "torch.bfloat16",
+  "cuda_version": "12.1",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "rows_written": 400,
+  "elapsed_seconds_including_model_load": 358.4315923469994,
+  "peak_cuda_memory_bytes": 3888394240
+}
