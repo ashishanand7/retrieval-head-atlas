@@ -120,3 +120,9 @@ Do not adjust the focal heads or discard poor-performing examples after viewing 
 - `paired_analysis.json`: paired effect contrasts and pointwise bootstrap intervals, created by the analysis command.
 
 There is deliberately no automatic resume or silent append: run a failed attempt into a new directory after fixing the cause, keeping its partial outputs for diagnosis. Terminal logs can help with exceptions, but the files contain the scientific readouts and environment details. Fetch the entire run directories back for analysis.
+
+## Pilot Decision On 14 October 2026
+
+Both pilot runs completed and passed the artifact/self-patch checks. Select **chat** for the reserved 8K confirmation because clean and corrupt baselines follow the requested six-digit response format on every pilot case. Keep the existing heads, marker conditions, 32 examples per variant, and five random draws. This resolves the format choice allowed above; it does not change the frozen intervention or scoring implementation.
+
+Interpret the new batch using the narrower claims and additional diagnostic readouts documented in [Publication Pilot Analysis](publication_pilot_analysis_2026-10-14.md). In particular, a likelihood shift is not complete donor-answer generation, and exact-output failure can reflect formatting while preserving the correct number. The first-token decomposition and repeated-identical-number diagnostic were added after pilot inspection and must be labeled accordingly. Do not launch the broader 16K or second-model studies before reviewing this confirmation.
