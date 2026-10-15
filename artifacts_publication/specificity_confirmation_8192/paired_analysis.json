@@ -1,0 +1,2359 @@
+{
+  "bootstrap_draws": 4000,
+  "method": "Paired percentile bootstrap of identities within variant; fixed controls averaged per identity. 95% pointwise intervals.",
+  "warning": "Views, corruptions and conditions are repeated measures, not additional identities. Reference donors are not analysis units. No multiplicity correction or interpretation of zero-event intervals as zero population risk.",
+  "contrasts": [
+    {
+      "contrast": "distance:far_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.0804386251752536,
+      "ci_low": 0.9484733686059674,
+      "ci_high": 1.2141016334218824
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.9729600170395883,
+      "ci_low": 0.8185002834369125,
+      "ci_high": 1.12594437334598
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.2908120348642302,
+      "ci_low": 1.132372487909308,
+      "ci_high": 1.4457505629149752
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.10747860813566512,
+      "ci_low": 0.03387700817742104,
+      "ci_high": 0.18237233197068706
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.21037340968897675,
+      "ci_low": -0.30064856642057813,
+      "ci_high": -0.12347492459369118
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.468950849948451,
+      "ci_low": 1.330698861434163,
+      "ci_high": 1.6093887531410438
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.6769701069608864,
+      "ci_low": 1.5293364115870727,
+      "ci_high": 1.8310102071672094
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 2.248714354096394,
+      "ci_low": 2.080966355450969,
+      "ci_high": 2.4139463232268734
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.20801925701243534,
+      "ci_low": -0.2930074694756101,
+      "ci_high": -0.11719351418332935
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.7797635041479435,
+      "ci_low": -0.9168492053384214,
+      "ci_high": -0.647038356862
+    },
+    {
+      "contrast": "distance:far_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.3885122247731974,
+      "ci_low": 0.3135671695271303,
+      "ci_high": 0.46266854046246836
+    },
+    {
+      "contrast": "distance:near_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.7040100899212977,
+      "ci_low": 0.6069113452655664,
+      "ci_high": 0.7994695694017016
+    },
+    {
+      "contrast": "distance:short_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.9579023192321638,
+      "ci_low": 0.8295147249097072,
+      "ci_high": 1.0918682294242448
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.0010544885698861469,
+      "ci_low": -0.0056223957368589554,
+      "ci_high": 0.007913624920115894
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.0037776462768791715,
+      "ci_low": -0.00993332649432861,
+      "ci_high": 0.0020734174561436
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.005294543677440134,
+      "ci_low": -0.0005799020110443999,
+      "ci_high": 0.01114364726764287
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.004832134846765319,
+      "ci_low": -0.005094837243880223,
+      "ci_high": 0.015039018854835431
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.004240055107553986,
+      "ci_low": -0.01165690397468835,
+      "ci_high": 0.0038645151957602698
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.6368387688015356,
+      "ci_low": 0.5817983796251454,
+      "ci_high": 0.6950744611045132
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.8730729290122083,
+      "ci_low": 0.8003388692374589,
+      "ci_high": 0.946607780694856
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.1201552498956577,
+      "ci_low": 1.0211041903685925,
+      "ci_high": 1.2175074399416028
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.23623416021067278,
+      "ci_low": -0.28645170651304297,
+      "ci_high": -0.18732334596405947
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.4833164810941223,
+      "ci_low": -0.5565050100906465,
+      "ci_high": -0.4117072525164178
+    },
+    {
+      "contrast": "distance:far_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.6357842802316493,
+      "ci_low": 0.5802336534458981,
+      "ci_high": 0.6938866004027271
+    },
+    {
+      "contrast": "distance:near_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.8768505752890874,
+      "ci_low": 0.8033837771466714,
+      "ci_high": 0.9501187259970199
+    },
+    {
+      "contrast": "distance:short_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.1148607062182176,
+      "ci_low": 1.015939728537703,
+      "ci_high": 1.212625943223177
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.4223087839389337,
+      "ci_low": 1.2647428445342885,
+      "ci_high": 1.576965568491595
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.1587241630699077,
+      "ci_low": 1.0022645021797754,
+      "ci_high": 1.3186373510614111
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.5510298930234512,
+      "ci_low": 1.38489552934464,
+      "ci_high": 1.717390790529157
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.263584620869026,
+      "ci_low": 0.17672104294203994,
+      "ci_high": 0.353011556876812
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.12872110908451756,
+      "ci_low": -0.22008152138525122,
+      "ci_high": -0.03678637833345987
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.992181860847025,
+      "ci_low": 1.8390248250365986,
+      "ci_high": 2.1413770160254457
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.9908765363275402,
+      "ci_low": 1.841687038449925,
+      "ci_high": 2.1393898110295266
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 2.6028234593159416,
+      "ci_low": 2.453898001298761,
+      "ci_high": 2.752068174024986
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.0013053245194848712,
+      "ci_low": -0.11007775813053707,
+      "ci_high": 0.1228237036832083
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.6106415984689166,
+      "ci_low": -0.7436100045082399,
+      "ci_high": -0.47395619499232655
+    },
+    {
+      "contrast": "distance:far_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.5698730769080915,
+      "ci_low": 0.4755068049026158,
+      "ci_high": 0.6643075569179359
+    },
+    {
+      "contrast": "distance:near_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.8321523732576328,
+      "ci_low": 0.7170737001048442,
+      "ci_high": 0.949941834680066
+    },
+    {
+      "contrast": "distance:short_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.0517935662924907,
+      "ci_low": 0.905462414657229,
+      "ci_high": 1.2014939365637745
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.017464662342924063,
+      "ci_low": 0.009063487359286282,
+      "ci_high": 0.02628150869463932
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.01197574955703511,
+      "ci_low": 0.0028447399509478784,
+      "ci_high": 0.022016032802309706
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.009250967786168452,
+      "ci_low": -0.00029978231620811157,
+      "ci_high": 0.01856999960877857
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.005488912785888954,
+      "ci_low": -0.0034124753738971046,
+      "ci_high": 0.014548830474852583
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.008213694556755611,
+      "ci_low": -0.002852433392231117,
+      "ci_high": 0.019840596508766174
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.9262353201442843,
+      "ci_low": 0.8485150097896028,
+      "ci_high": 1.006926340091526
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.1039174854805969,
+      "ci_low": 1.00802223039577,
+      "ci_high": 1.195593978108202
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.3989472193400254,
+      "ci_low": 1.2738617619655792,
+      "ci_high": 1.528130751807818
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.17768216533631248,
+      "ci_low": -0.24573943697725825,
+      "ci_high": -0.10624163529966388
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.47271189919574075,
+      "ci_low": -0.5710931106559496,
+      "ci_high": -0.37754197717978005
+    },
+    {
+      "contrast": "distance:far_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.9087706578013606,
+      "ci_low": 0.8318564019838742,
+      "ci_high": 0.9877294088092047
+    },
+    {
+      "contrast": "distance:near_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.091941735923562,
+      "ci_low": 0.9992803614439907,
+      "ci_high": 1.182109780288209
+    },
+    {
+      "contrast": "distance:short_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.3896962515538567,
+      "ci_low": 1.265801546136141,
+      "ci_high": 1.5180459695073225
+    },
+    {
+      "contrast": "ablation:far_chat:zero:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.03131693023749328,
+      "ci_low": -0.04104493743478172,
+      "ci_high": -0.02277707441248606
+    },
+    {
+      "contrast": "ablation:near_chat:zero:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.011111318167138104,
+      "ci_low": -0.016468197483288628,
+      "ci_high": -0.0068324465409590985
+    },
+    {
+      "contrast": "ablation:short_chat:zero:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.01108959542477044,
+      "ci_low": -0.01401624090479449,
+      "ci_high": -0.008502510155052495
+    },
+    {
+      "contrast": "ablation:far_raw:zero:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.08899620696558637,
+      "ci_low": -0.10822884334443811,
+      "ci_high": -0.06825529992430919
+    },
+    {
+      "contrast": "ablation:far_raw_space:zero:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.014131561556331839,
+      "ci_low": -0.017508232217167616,
+      "ci_high": -0.011069049621405931
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.020205612070355178,
+      "ci_low": -0.027134160618789482,
+      "ci_high": -0.014339730987824458
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.02022733481272284,
+      "ci_low": -0.028214297872970674,
+      "ci_high": -0.012784805447590935
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.07486464540925453,
+      "ci_low": 0.05390375711705584,
+      "ci_high": 0.09355707264832894
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.05767927672809309,
+      "ci_low": 0.03417945060376309,
+      "ci_high": 0.07981326530361972
+    },
+    {
+      "contrast": "ablation:far_chat:resample:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.2390215056128251,
+      "ci_low": -0.30422861694338704,
+      "ci_high": -0.1800266194417724
+    },
+    {
+      "contrast": "ablation:near_chat:resample:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.17884935896145576,
+      "ci_low": -0.23016019617923972,
+      "ci_high": -0.13177035034758136
+    },
+    {
+      "contrast": "ablation:short_chat:resample:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.24011270765313925,
+      "ci_low": -0.3003562499315782,
+      "ci_high": -0.18606831170046237
+    },
+    {
+      "contrast": "ablation:far_raw:resample:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.5435766017849831,
+      "ci_low": -0.5966279767181292,
+      "ci_high": -0.484575298219731
+    },
+    {
+      "contrast": "ablation:far_raw_space:resample:answer_address_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.14728284582873052,
+      "ci_low": -0.1823046418573457,
+      "ci_high": -0.1150179468597122
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.06017214665136931,
+      "ci_low": -0.08496719009064897,
+      "ci_high": -0.03644507694858896
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.001091202040314225,
+      "ci_low": -0.023599595865719754,
+      "ci_high": 0.026510899082720547
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.3962937559562526,
+      "ci_low": 0.34151019604036276,
+      "ci_high": 0.44965203833594203
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.3045550961721581,
+      "ci_low": 0.23665558756648883,
+      "ci_high": 0.3678271932590163
+    },
+    {
+      "contrast": "ablation:far_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.20770457537533177,
+      "ci_low": -0.2703034034358252,
+      "ci_high": -0.1502728275164134
+    },
+    {
+      "contrast": "ablation:near_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.16773804079431764,
+      "ci_low": -0.21900627359455818,
+      "ci_high": -0.12004410036976813
+    },
+    {
+      "contrast": "ablation:short_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.22902311222836885,
+      "ci_low": -0.28822013734594654,
+      "ci_high": -0.17572728031701226
+    },
+    {
+      "contrast": "ablation:far_raw:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.4545803948193969,
+      "ci_low": -0.5066354259663342,
+      "ci_high": -0.3956120182561565
+    },
+    {
+      "contrast": "ablation:far_raw_space:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.1331512842723987,
+      "ci_low": -0.1671365354250377,
+      "ci_high": -0.10159064697327612
+    },
+    {
+      "contrast": "ablation:far_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.05452140179481968,
+      "ci_low": -0.07516253782401602,
+      "ci_high": -0.03494558496474018
+    },
+    {
+      "contrast": "ablation:near_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.07387159991554126,
+      "ci_low": -0.08350763500959267,
+      "ci_high": -0.06416039066923825
+    },
+    {
+      "contrast": "ablation:short_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.015583740580013045,
+      "ci_low": -0.020979104465813435,
+      "ci_high": -0.01018758419396776
+    },
+    {
+      "contrast": "ablation:far_raw:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -1.1389367498751275,
+      "ci_low": -1.1812263741551225,
+      "ci_high": -1.0981035276249784
+    },
+    {
+      "contrast": "ablation:far_raw_space:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.010124907896115472,
+      "ci_low": 0.005411771428159379,
+      "ci_high": 0.014487995501220248
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.019350198120721595,
+      "ci_low": -0.0005781437134279542,
+      "ci_high": 0.03775653357056277
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.03893766121480664,
+      "ci_low": -0.06127802188596144,
+      "ci_high": -0.017114097678055298
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.149061657771243,
+      "ci_low": 1.1083460624848902,
+      "ci_high": 1.1920458528162572
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.0844153480803078,
+      "ci_low": 1.0349223424479637,
+      "ci_high": 1.1328096025975898
+    },
+    {
+      "contrast": "ablation:far_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.04812330553642598,
+      "ci_low": 0.03824491644036458,
+      "ci_high": 0.05916786078652302
+    },
+    {
+      "contrast": "ablation:near_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.05328800586265895,
+      "ci_low": 0.04112715127438246,
+      "ci_high": 0.0662856841769383
+    },
+    {
+      "contrast": "ablation:short_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.053061724227773374,
+      "ci_low": 0.03987150901235598,
+      "ci_high": 0.06771432417809227
+    },
+    {
+      "contrast": "ablation:far_raw:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.16696247520133664,
+      "ci_low": 0.14500582416959018,
+      "ci_high": 0.18825299683092742
+    },
+    {
+      "contrast": "ablation:far_raw_space:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.04413071199991691,
+      "ci_low": 0.03497464039237595,
+      "ci_high": 0.053920833097122645
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.005164700326232974,
+      "ci_low": -0.012354750134352962,
+      "ci_high": 0.0018720269780243407
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.004938418691347404,
+      "ci_low": -0.015099523662759996,
+      "ci_high": 0.004607699486802725
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.12283176320141971,
+      "ci_low": -0.14408873258460297,
+      "ci_high": -0.10148356907435205
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": -0.11883916966491066,
+      "ci_low": -0.1395865797042382,
+      "ci_high": -0.09552858172549737
+    },
+    {
+      "contrast": "ablation:far_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.10264470733124567,
+      "ci_low": 0.07844271901626453,
+      "ci_high": 0.12872780592929203
+    },
+    {
+      "contrast": "ablation:near_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.12715960577820024,
+      "ci_low": 0.11193893842061342,
+      "ci_high": 0.14265408087197182
+    },
+    {
+      "contrast": "ablation:short_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.06864546480778641,
+      "ci_low": 0.05691181732366934,
+      "ci_high": 0.08165578993023445
+    },
+    {
+      "contrast": "ablation:far_raw:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 1.3058992250764638,
+      "ci_low": 1.2559938719401447,
+      "ci_high": 1.3583314800533073
+    },
+    {
+      "contrast": "ablation:far_raw_space:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_logprob",
+      "n_identities": 40,
+      "mean": 0.03400580410380144,
+      "ci_low": 0.023693693423372967,
+      "ci_high": 0.044026988182490734
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_chat:zero:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:near_chat:zero:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:short_chat:zero:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw:zero:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw_space:zero:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_chat:resample:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.625,
+      "ci_low": -0.75,
+      "ci_high": -0.47500000000000003
+    },
+    {
+      "contrast": "ablation:near_chat:resample:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.5,
+      "ci_low": -0.625,
+      "ci_high": -0.375
+    },
+    {
+      "contrast": "ablation:short_chat:resample:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.675,
+      "ci_low": -0.7750000000000001,
+      "ci_high": -0.55
+    },
+    {
+      "contrast": "ablation:far_raw:resample:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw_space:resample:answer_address_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.125,
+      "ci_low": -0.25,
+      "ci_high": 0.02499999999999998
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.05,
+      "ci_low": -0.07500000000000001,
+      "ci_high": 0.175
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.625,
+      "ci_low": -0.75,
+      "ci_high": -0.47500000000000003
+    },
+    {
+      "contrast": "ablation:far_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.625,
+      "ci_low": -0.75,
+      "ci_high": -0.47500000000000003
+    },
+    {
+      "contrast": "ablation:near_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.5,
+      "ci_low": -0.625,
+      "ci_high": -0.375
+    },
+    {
+      "contrast": "ablation:short_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.675,
+      "ci_low": -0.7750000000000001,
+      "ci_high": -0.55
+    },
+    {
+      "contrast": "ablation:far_raw:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw_space:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.23499999999999996,
+      "ci_low": -0.31999999999999995,
+      "ci_high": -0.14
+    },
+    {
+      "contrast": "ablation:near_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.25,
+      "ci_low": -0.30000000000000004,
+      "ci_high": -0.2
+    },
+    {
+      "contrast": "ablation:short_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw:zero:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw_space:zero:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.014999999999999996,
+      "ci_low": -0.085,
+      "ci_high": 0.12012500000000048
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.23499999999999996,
+      "ci_low": -0.31999999999999995,
+      "ci_high": -0.14
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.23499999999999996,
+      "ci_low": -0.31999999999999995,
+      "ci_high": -0.14
+    },
+    {
+      "contrast": "ablation:far_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.125,
+      "ci_low": 0.09,
+      "ci_high": 0.165
+    },
+    {
+      "contrast": "ablation:near_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.175,
+      "ci_low": 0.135,
+      "ci_high": 0.21500000000000002
+    },
+    {
+      "contrast": "ablation:short_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.15,
+      "ci_low": 0.11000000000000001,
+      "ci_high": 0.195
+    },
+    {
+      "contrast": "ablation:far_raw:resample:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw_space:resample:non_address_core_minus_controls",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.05,
+      "ci_low": -0.08000000000000002,
+      "ci_high": -0.02
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": -0.025,
+      "ci_low": -0.065,
+      "ci_high": 0.010000000000000002
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.125,
+      "ci_low": 0.09,
+      "ci_high": 0.165
+    },
+    {
+      "contrast": "ablation:far_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.36,
+      "ci_low": 0.25,
+      "ci_high": 0.46
+    },
+    {
+      "contrast": "ablation:near_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.425,
+      "ci_low": 0.36499999999999994,
+      "ci_high": 0.49500000000000005
+    },
+    {
+      "contrast": "ablation:short_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.15,
+      "ci_low": 0.11000000000000001,
+      "ci_high": 0.195
+    },
+    {
+      "contrast": "ablation:far_raw:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw_space:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_exact_clean",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_only:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_only:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_and_decode:address_L22H7_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_and_decode:address_L22H7:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:address_L22H7:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:different_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:different_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:different_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_only:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_only:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:prompt_and_decode:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_near_chat:same_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat_minus_short_chat:same_first:prompt_and_decode:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:far_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:near_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "distance:short_chat:same_first:answer_address:combined_minus_prompt:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_chat:zero:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:near_chat:zero:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:short_chat:zero:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw:zero:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.005,
+      "ci_low": -0.015000000000000003,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw_space:zero:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.005,
+      "ci_low": 0.0,
+      "ci_high": 0.015000000000000003
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:zero:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.005,
+      "ci_low": 0.0,
+      "ci_high": 0.015000000000000003
+    },
+    {
+      "contrast": "ablation:far_chat:resample:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.625,
+      "ci_low": -0.75,
+      "ci_high": -0.47500000000000003
+    },
+    {
+      "contrast": "ablation:near_chat:resample:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.5,
+      "ci_low": -0.625,
+      "ci_high": -0.375
+    },
+    {
+      "contrast": "ablation:short_chat:resample:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.675,
+      "ci_low": -0.7750000000000001,
+      "ci_high": -0.55
+    },
+    {
+      "contrast": "ablation:far_raw:resample:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.004999999999999999,
+      "ci_low": -0.06000000000000001,
+      "ci_high": 0.075
+    },
+    {
+      "contrast": "ablation:far_raw_space:resample:answer_address_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.3,
+      "ci_low": -0.425,
+      "ci_high": -0.17500000000000002
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.125,
+      "ci_low": -0.25,
+      "ci_high": 0.02499999999999998
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.05,
+      "ci_low": -0.07500000000000001,
+      "ci_high": 0.175
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.305,
+      "ci_low": -0.425,
+      "ci_high": -0.19487499999999952
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:resample:answer_address:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.63,
+      "ci_low": -0.78,
+      "ci_high": -0.48
+    },
+    {
+      "contrast": "ablation:far_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.625,
+      "ci_low": -0.75,
+      "ci_high": -0.47500000000000003
+    },
+    {
+      "contrast": "ablation:near_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.5,
+      "ci_low": -0.625,
+      "ci_high": -0.375
+    },
+    {
+      "contrast": "ablation:short_chat:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.675,
+      "ci_low": -0.7750000000000001,
+      "ci_high": -0.55
+    },
+    {
+      "contrast": "ablation:far_raw:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.009999999999999998,
+      "ci_low": -0.06000000000000001,
+      "ci_high": 0.09
+    },
+    {
+      "contrast": "ablation:far_raw_space:answer_address:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.3,
+      "ci_low": -0.425,
+      "ci_high": -0.17500000000000002
+    },
+    {
+      "contrast": "ablation:far_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.01,
+      "ci_low": 0.0,
+      "ci_high": 0.025
+    },
+    {
+      "contrast": "ablation:near_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:short_chat:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.0,
+      "ci_low": 0.0,
+      "ci_high": 0.0
+    },
+    {
+      "contrast": "ablation:far_raw:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.10499999999999998,
+      "ci_low": -0.17,
+      "ci_high": -0.045
+    },
+    {
+      "contrast": "ablation:far_raw_space:zero:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.04,
+      "ci_low": 0.005,
+      "ci_high": 0.09
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.01,
+      "ci_low": 0.0,
+      "ci_high": 0.025
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.01,
+      "ci_low": 0.0,
+      "ci_high": 0.025
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.145,
+      "ci_low": 0.060000000000000005,
+      "ci_high": 0.25
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:zero:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.11499999999999999,
+      "ci_low": 0.05499999999999999,
+      "ci_high": 0.18000000000000002
+    },
+    {
+      "contrast": "ablation:far_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.125,
+      "ci_low": 0.09,
+      "ci_high": 0.165
+    },
+    {
+      "contrast": "ablation:near_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.175,
+      "ci_low": 0.135,
+      "ci_high": 0.21500000000000002
+    },
+    {
+      "contrast": "ablation:short_chat:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.15,
+      "ci_low": 0.11000000000000001,
+      "ci_high": 0.195
+    },
+    {
+      "contrast": "ablation:far_raw:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.005,
+      "ci_low": -0.010000000000000002,
+      "ci_high": 0.020000000000000004
+    },
+    {
+      "contrast": "ablation:far_raw_space:resample:non_address_core_minus_controls",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.125,
+      "ci_low": 0.09,
+      "ci_high": 0.165
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_near_chat:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.05,
+      "ci_low": -0.08000000000000002,
+      "ci_high": -0.02
+    },
+    {
+      "contrast": "task_ablation:far_chat_minus_short_chat:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": -0.025,
+      "ci_low": -0.065,
+      "ci_high": 0.010000000000000002
+    },
+    {
+      "contrast": "boundary:far_raw_space_minus_far_raw:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.12000000000000002,
+      "ci_low": 0.085,
+      "ci_high": 0.16
+    },
+    {
+      "contrast": "boundary:far_chat_minus_far_raw:resample:non_address_core:control_adjusted_interaction",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.12,
+      "ci_low": 0.085,
+      "ci_high": 0.16
+    },
+    {
+      "contrast": "ablation:far_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.11499999999999999,
+      "ci_low": 0.08,
+      "ci_high": 0.155
+    },
+    {
+      "contrast": "ablation:near_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.175,
+      "ci_low": 0.135,
+      "ci_high": 0.21500000000000002
+    },
+    {
+      "contrast": "ablation:short_chat:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.15,
+      "ci_low": 0.11000000000000001,
+      "ci_high": 0.195
+    },
+    {
+      "contrast": "ablation:far_raw:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.10999999999999999,
+      "ci_low": 0.049999999999999996,
+      "ci_high": 0.17500000000000002
+    },
+    {
+      "contrast": "ablation:far_raw_space:non_address_core:resample_minus_zero:control_adjusted",
+      "metric": "delta_clean_number_content",
+      "n_identities": 40,
+      "mean": 0.085,
+      "ci_low": 0.015,
+      "ci_high": 0.14
+    }
+  ]
+}

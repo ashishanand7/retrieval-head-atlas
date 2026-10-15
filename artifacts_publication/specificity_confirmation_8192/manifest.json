@@ -1,0 +1,883 @@
+{
+  "status": "complete",
+  "protocol": {
+    "protocol": "retrieval-specificity-v1",
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "tokenizer_and_chat_template_sha256": "60a5b4c18aa81b4018d0ea12fe9e05a5ddd59eb8b6d961ee3e13f91b1ce4f1ad",
+    "confirmation_protocol": "configs/publication_confirmation.json",
+    "num_layers": 28,
+    "num_heads": 12,
+    "distance_groups": [
+      "address_L22H7",
+      "answer_address"
+    ],
+    "ablation_groups": [
+      "answer_address",
+      "non_address_core"
+    ],
+    "random_draws": 5,
+    "target_tokens": 8192,
+    "needle_frac": 0.1,
+    "max_len": 32768,
+    "max_new_tokens": 64,
+    "scopes": [
+      "prompt_only",
+      "prompt_and_decode"
+    ],
+    "reference_seed_offset": 50000,
+    "stages": {
+      "smoke": {
+        "seed_base": 14100000,
+        "n_per_variant": 1
+      },
+      "confirmation": {
+        "seed_base": 13100000,
+        "n_per_variant": 8
+      }
+    }
+  },
+  "original_protocol": {
+    "protocol": "retrieval-confirmation-v1",
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "num_layers": 28,
+    "num_heads": 12,
+    "pilot_seed_base": 9100000,
+    "confirmation_seed_base": 10100000,
+    "random_control_seed": 730021,
+    "groups": {
+      "address_L22H7": [
+        [
+          22,
+          7
+        ]
+      ],
+      "support_L20H7": [
+        [
+          20,
+          7
+        ]
+      ],
+      "answer_address": [
+        [
+          22,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          10
+        ]
+      ],
+      "non_address_core": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ]
+    }
+  },
+  "groups": {
+    "address_L22H7": [
+      [
+        22,
+        7
+      ]
+    ],
+    "answer_address": [
+      [
+        22,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        10
+      ]
+    ],
+    "non_address_core": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "random_address_L22H7_0": [
+      [
+        22,
+        6
+      ]
+    ],
+    "random_address_L22H7_1": [
+      [
+        22,
+        9
+      ]
+    ],
+    "random_address_L22H7_2": [
+      [
+        22,
+        11
+      ]
+    ],
+    "random_address_L22H7_3": [
+      [
+        22,
+        10
+      ]
+    ],
+    "random_address_L22H7_4": [
+      [
+        22,
+        3
+      ]
+    ],
+    "random_answer_address_0": [
+      [
+        21,
+        1
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        8
+      ]
+    ],
+    "random_answer_address_1": [
+      [
+        21,
+        5
+      ],
+      [
+        22,
+        5
+      ],
+      [
+        22,
+        1
+      ]
+    ],
+    "random_answer_address_2": [
+      [
+        21,
+        1
+      ],
+      [
+        22,
+        5
+      ],
+      [
+        22,
+        4
+      ]
+    ],
+    "random_answer_address_3": [
+      [
+        21,
+        10
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        22,
+        11
+      ]
+    ],
+    "random_answer_address_4": [
+      [
+        21,
+        3
+      ],
+      [
+        22,
+        3
+      ],
+      [
+        22,
+        8
+      ]
+    ],
+    "random_non_address_core_0": [
+      [
+        17,
+        8
+      ],
+      [
+        17,
+        0
+      ],
+      [
+        18,
+        7
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        22,
+        2
+      ],
+      [
+        22,
+        9
+      ],
+      [
+        23,
+        11
+      ]
+    ],
+    "random_non_address_core_1": [
+      [
+        17,
+        1
+      ],
+      [
+        17,
+        8
+      ],
+      [
+        18,
+        0
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        22,
+        11
+      ],
+      [
+        23,
+        1
+      ]
+    ],
+    "random_non_address_core_2": [
+      [
+        17,
+        4
+      ],
+      [
+        17,
+        0
+      ],
+      [
+        18,
+        2
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        22,
+        6
+      ],
+      [
+        22,
+        5
+      ],
+      [
+        23,
+        6
+      ]
+    ],
+    "random_non_address_core_3": [
+      [
+        17,
+        1
+      ],
+      [
+        17,
+        5
+      ],
+      [
+        18,
+        2
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        23,
+        2
+      ]
+    ],
+    "random_non_address_core_4": [
+      [
+        17,
+        4
+      ],
+      [
+        17,
+        0
+      ],
+      [
+        18,
+        4
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        6
+      ],
+      [
+        22,
+        2
+      ],
+      [
+        23,
+        2
+      ]
+    ]
+  },
+  "runtime_config": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "precision": "auto",
+    "context_hint_tokens": 8192,
+    "hf_home": null
+  },
+  "source_sha256": {
+    "scripts/run_publication_temporal.py": "25dca5d29a078e01fc4fa1915a969c5a52f8ec7807b177dc04a27167ce2dd479",
+    "scripts/analyze_publication_temporal.py": "231b43b6845d7c48b0c49f737ce7f90f1b7e9a7dc57e53fc04975bcc6b5830cf",
+    "scripts/analyze_publication_confirmation.py": "1bf0163c42950d267036454a24240b0acc4d5f369c3de9914b3e5576d5de292a",
+    "scripts/run_publication_confirmation.py": "2d14237bb497b1525aec738622bb004daf854facf8b25ea16888f14f939d7aa9",
+    "rha/temporal.py": "34480d911dddf47470d8bc9f2fa8c1348d746a5fc6198732b518b3e565ccdce6",
+    "rha/temporal_scoring.py": "b20c43976b9c8656f420753307b35f7e2dd8b9ee33c3574cb15a61c7b52b107b",
+    "rha/confirmation.py": "17a1cc859a39a04a0c4b8d465086a984cc15f6365cfed4b8d09cff5003be9749",
+    "rha/confirmation_scoring.py": "441070f88c960cc5900dc22e794496d999b8a7d666af20a34721d8e294b390d4",
+    "rha/prompts.py": "1d40db23e7caf969f1f439cc0994fe98bde7dda56052f687337d4a07df81adb0",
+    "rha/generation.py": "d2d53fe3810619737d9a85583581255ba16ab4dfab05bc0ed13048e62a737a03",
+    "rha/interventions.py": "ff7b53d382f77646e537f7463dd03fa8a7a300bcd32f8659e881dc776a186a9f",
+    "rha/modeling.py": "ad44d641598270aeabd9254cfce776a4ff0bbe1a38a9bec9169af0ee01a4a4a7",
+    "rha/config.py": "8223edf97e757e37673b1f50d9a3ca561811b3d09e48465e76658697a7371211",
+    "rha/seed.py": "aa7c8bbba3e036417bd54a9e8b67a1a09be156bc4542fa0adf10f62e4563f344",
+    "configs/publication_specificity.json": "25644cd138a535867c74b2a97e73ebcdf99d69ff0ec42fd37ac7fa75114f0bfa",
+    "configs/publication_confirmation.json": "a90abb936b53cff533a703d6ecdaa69aac80b567f47f49c18dc250825a2d467f",
+    "rha/specificity.py": "eac0689340979868123e8c9fd7fd27628fab14ad1aa6af1a065e43a625311b2b",
+    "rha/specificity_scoring.py": "14c31260d08dd3a3bc30bdc41b38be4264d282aff57240a4f5ff9e32cd0c9acc",
+    "scripts/run_publication_specificity.py": "826567d9cba9a233add6551ebc46406e19ea94e741e736f425459c076b1f907f",
+    "scripts/analyze_publication_specificity.py": "1f10c7770fa59056098b9a5167dbcbbd41bdeb8c9566b3ef6aa4c14a91960dcf"
+  },
+  "git_commit": "f584e775c107f9199a9eb04bb49370bacf762115",
+  "git_status": "?? artifacts_publication/specificity_smoke_8192/\n",
+  "arguments": {
+    "config": "config.yaml",
+    "protocol": "configs/publication_specificity.json",
+    "stage": "confirmation",
+    "smoke_dir": "artifacts_publication/specificity_smoke_8192",
+    "chunk_size": 1024,
+    "prepare_only": false,
+    "local_files_only": false,
+    "out_dir": "artifacts_publication/specificity_confirmation_8192"
+  },
+  "python": "3.10.21",
+  "packages": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.57.1",
+    "accelerate": "1.11.0",
+    "numpy": "2.1.2"
+  },
+  "smoke_gate": {
+    "directory": "/home/ec2-user/SageMaker/retrieval-head-atlas/artifacts_publication/specificity_smoke_8192",
+    "rows_sha256": "2f701683ee2f18fa4f70934487392ded7a83d3324f5296237d23e2b100f7365b",
+    "references_sha256": "2f85e496ed360fe7873c23d4abbe20d1b6aa4f11b53673f1ab67c3e3888ec072",
+    "validation": {
+      "status": "passed",
+      "rows": 1580,
+      "independent_identities": 5,
+      "reference_identities_not_analysis_units": 5,
+      "cases": 40,
+      "positive_control_cases": 40,
+      "positive_max_logit_error": 0.0,
+      "positive_max_token_score_error": 0.0,
+      "self_patch_max_token_score_error": 0.0,
+      "prefix_position_scope_hook_checks": "passed",
+      "baseline_counts": [
+        {
+          "view": "far_chat",
+          "corruption": "different_first",
+          "baseline": "clean",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "far_chat",
+          "corruption": "different_first",
+          "baseline": "corrupt",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "far_chat",
+          "corruption": "same_first",
+          "baseline": "clean",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "far_chat",
+          "corruption": "same_first",
+          "baseline": "corrupt",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "near_chat",
+          "corruption": "different_first",
+          "baseline": "clean",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "near_chat",
+          "corruption": "different_first",
+          "baseline": "corrupt",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "near_chat",
+          "corruption": "same_first",
+          "baseline": "clean",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "near_chat",
+          "corruption": "same_first",
+          "baseline": "corrupt",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "short_chat",
+          "corruption": "different_first",
+          "baseline": "clean",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "short_chat",
+          "corruption": "different_first",
+          "baseline": "corrupt",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "short_chat",
+          "corruption": "same_first",
+          "baseline": "clean",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "short_chat",
+          "corruption": "same_first",
+          "baseline": "corrupt",
+          "n": 5,
+          "exact": 5,
+          "token_budget_stops": 0
+        },
+        {
+          "view": "far_raw",
+          "corruption": "different_first",
+          "baseline": "clean",
+          "n": 5,
+          "exact": 0,
+          "token_budget_stops": 1
+        },
+        {
+          "view": "far_raw",
+          "corruption": "different_first",
+          "baseline": "corrupt",
+          "n": 5,
+          "exact": 0,
+          "token_budget_stops": 1
+        },
+        {
+          "view": "far_raw_space",
+          "corruption": "different_first",
+          "baseline": "clean",
+          "n": 5,
+          "exact": 0,
+          "token_budget_stops": 1
+        },
+        {
+          "view": "far_raw_space",
+          "corruption": "different_first",
+          "baseline": "corrupt",
+          "n": 5,
+          "exact": 0,
+          "token_budget_stops": 1
+        }
+      ]
+    }
+  },
+  "n_per_variant": 8,
+  "resolved_seed_base": 13100000,
+  "n_independent_example_ids": 40,
+  "n_reference_identities": 40,
+  "rows_written": 12640,
+  "intervention_note": "No prefill intervention. Dynamic patches share the recipient prefix. Resampling reuses a separate task-matched query state once; it is not an aligned decoding donor.",
+  "positive_control_note": "Full pre-final-norm residual replacement must reproduce current donor logits and donor-baseline generation, not necessarily the known gold answer.",
+  "examples_sha256": "1534b2a3bd5628c77f18386154f18b864d726b658993d40a486530bc974e4068",
+  "references_sha256": "ae93a32da4bae4633a236c20793b3fc6071dff223925733cfb70170f337d2367",
+  "n_example_pairs": 320,
+  "n_reference_prompts": 200,
+  "expected_rows": 12640,
+  "prior_identity_count_checked": 255,
+  "prior_identity_overlap": 0,
+  "tokenizer_revision_requested": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "tokenizer_and_chat_template_sha256": "60a5b4c18aa81b4018d0ea12fe9e05a5ddd59eb8b6d961ee3e13f91b1ce4f1ad",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "device": "NVIDIA A10G",
+  "dtype": "torch.bfloat16",
+  "cuda_version": "12.1",
+  "eos_token_ids": [
+    151645,
+    151643
+  ],
+  "elapsed_seconds_total": 13782.168334062997,
+  "elapsed_seconds_including_model_load": 13670.051548086994,
+  "peak_cuda_memory_bytes": 4519232512,
+  "rows_sha256": "fdeb5bd708ad9fbda3e69216f4edf3a56ef22b5d247c5d2d88dc3bde72ccddfa"
+}
