@@ -1,0 +1,22 @@
+{
+  "protocol": "retrieval-specificity-v1",
+  "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+  "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "tokenizer_and_chat_template_sha256": "60a5b4c18aa81b4018d0ea12fe9e05a5ddd59eb8b6d961ee3e13f91b1ce4f1ad",
+  "confirmation_protocol": "configs/publication_confirmation.json",
+  "num_layers": 28,
+  "num_heads": 12,
+  "distance_groups": ["address_L22H7", "answer_address"],
+  "ablation_groups": ["answer_address", "non_address_core"],
+  "random_draws": 5,
+  "target_tokens": 8192,
+  "needle_frac": 0.1,
+  "max_len": 32768,
+  "max_new_tokens": 64,
+  "scopes": ["prompt_only", "prompt_and_decode"],
+  "reference_seed_offset": 50000,
+  "stages": {
+    "smoke": {"seed_base": 14100000, "n_per_variant": 1},
+    "confirmation": {"seed_base": 13100000, "n_per_variant": 8}
+  }
+}

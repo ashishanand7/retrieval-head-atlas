@@ -142,3 +142,5 @@ This experiment remains limited to the same model, legacy templates, filler, and
 ## Completed Run Follow-Up
 
 Both stages were completed and fetched in results commit `b448d55`. The [temporal analysis](publication_temporal_analysis_2026-10-15.md) reproduces their saved audits and comparisons, inspects per-token scores and generated outputs, and sets the next specificity controls. The experiment protocol above is retained as the pre-outcome record; the original run files are unchanged.
+
+The follow-up is implemented in the [task-specificity and answer-boundary protocol](publication_specificity_protocol.md), including a positive residual-transfer calibration and task-matched resampling control.
