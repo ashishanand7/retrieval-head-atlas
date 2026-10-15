@@ -1,0 +1,718 @@
+{
+  "status": "complete",
+  "protocol": {
+    "protocol": "retrieval-confirmation-v1",
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "num_layers": 28,
+    "num_heads": 12,
+    "pilot_seed_base": 9100000,
+    "confirmation_seed_base": 10100000,
+    "random_control_seed": 730021,
+    "groups": {
+      "address_L22H7": [
+        [
+          22,
+          7
+        ]
+      ],
+      "support_L20H7": [
+        [
+          20,
+          7
+        ]
+      ],
+      "answer_address": [
+        [
+          22,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          10
+        ]
+      ],
+      "non_address_core": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ]
+    }
+  },
+  "groups": {
+    "address_L22H7": [
+      [
+        22,
+        7
+      ]
+    ],
+    "support_L20H7": [
+      [
+        20,
+        7
+      ]
+    ],
+    "answer_address": [
+      [
+        22,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        10
+      ]
+    ],
+    "non_address_core": [
+      [
+        20,
+        7
+      ],
+      [
+        18,
+        3
+      ],
+      [
+        17,
+        10
+      ],
+      [
+        20,
+        8
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        4
+      ],
+      [
+        21,
+        0
+      ],
+      [
+        20,
+        6
+      ],
+      [
+        20,
+        9
+      ],
+      [
+        21,
+        3
+      ],
+      [
+        21,
+        1
+      ],
+      [
+        21,
+        4
+      ],
+      [
+        21,
+        5
+      ],
+      [
+        17,
+        3
+      ],
+      [
+        23,
+        4
+      ],
+      [
+        20,
+        3
+      ]
+    ],
+    "random_address_L22H7_0": [
+      [
+        22,
+        6
+      ]
+    ],
+    "random_address_L22H7_1": [
+      [
+        22,
+        9
+      ]
+    ],
+    "random_address_L22H7_2": [
+      [
+        22,
+        11
+      ]
+    ],
+    "random_address_L22H7_3": [
+      [
+        22,
+        10
+      ]
+    ],
+    "random_address_L22H7_4": [
+      [
+        22,
+        3
+      ]
+    ],
+    "random_support_L20H7_0": [
+      [
+        20,
+        11
+      ]
+    ],
+    "random_support_L20H7_1": [
+      [
+        20,
+        4
+      ]
+    ],
+    "random_support_L20H7_2": [
+      [
+        20,
+        1
+      ]
+    ],
+    "random_support_L20H7_3": [
+      [
+        20,
+        10
+      ]
+    ],
+    "random_support_L20H7_4": [
+      [
+        20,
+        11
+      ]
+    ],
+    "random_answer_address_0": [
+      [
+        21,
+        1
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        8
+      ]
+    ],
+    "random_answer_address_1": [
+      [
+        21,
+        5
+      ],
+      [
+        22,
+        5
+      ],
+      [
+        22,
+        1
+      ]
+    ],
+    "random_answer_address_2": [
+      [
+        21,
+        1
+      ],
+      [
+        22,
+        5
+      ],
+      [
+        22,
+        4
+      ]
+    ],
+    "random_answer_address_3": [
+      [
+        21,
+        10
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        22,
+        11
+      ]
+    ],
+    "random_answer_address_4": [
+      [
+        21,
+        3
+      ],
+      [
+        22,
+        3
+      ],
+      [
+        22,
+        8
+      ]
+    ],
+    "random_non_address_core_0": [
+      [
+        17,
+        8
+      ],
+      [
+        17,
+        0
+      ],
+      [
+        18,
+        7
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        22,
+        2
+      ],
+      [
+        22,
+        9
+      ],
+      [
+        23,
+        11
+      ]
+    ],
+    "random_non_address_core_1": [
+      [
+        17,
+        1
+      ],
+      [
+        17,
+        8
+      ],
+      [
+        18,
+        0
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        22,
+        11
+      ],
+      [
+        23,
+        1
+      ]
+    ],
+    "random_non_address_core_2": [
+      [
+        17,
+        4
+      ],
+      [
+        17,
+        0
+      ],
+      [
+        18,
+        2
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        22,
+        6
+      ],
+      [
+        22,
+        5
+      ],
+      [
+        23,
+        6
+      ]
+    ],
+    "random_non_address_core_3": [
+      [
+        17,
+        1
+      ],
+      [
+        17,
+        5
+      ],
+      [
+        18,
+        2
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        2
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        20,
+        5
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        8
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        9
+      ],
+      [
+        22,
+        7
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        23,
+        2
+      ]
+    ],
+    "random_non_address_core_4": [
+      [
+        17,
+        4
+      ],
+      [
+        17,
+        0
+      ],
+      [
+        18,
+        4
+      ],
+      [
+        20,
+        0
+      ],
+      [
+        20,
+        10
+      ],
+      [
+        20,
+        11
+      ],
+      [
+        20,
+        4
+      ],
+      [
+        20,
+        1
+      ],
+      [
+        21,
+        2
+      ],
+      [
+        21,
+        10
+      ],
+      [
+        21,
+        7
+      ],
+      [
+        21,
+        6
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        6
+      ],
+      [
+        22,
+        2
+      ],
+      [
+        23,
+        2
+      ]
+    ]
+  },
+  "runtime_config": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "precision": "auto",
+    "context_hint_tokens": 8192,
+    "hf_home": null
+  },
+  "arguments": {
+    "config": "config.yaml",
+    "protocol": "configs/publication_confirmation.json",
+    "stage": "confirmation",
+    "n_per_variant": 32,
+    "target_tokens": 8192,
+    "needle_frac": 0.1,
+    "prompt_format": "chat",
+    "max_len": 32768,
+    "chunk_size": 1024,
+    "max_new_tokens": 24,
+    "random_draws": 5,
+    "prepare_only": false,
+    "out_dir": "artifacts_publication/confirmation_8192_chat"
+  },
+  "resolved_seed_base": 10100000,
+  "n_per_variant": 32,
+  "n_example_pairs": 320,
+  "n_independent_example_ids": 160,
+  "prompt_note": "Legacy templates/filler held fixed across marker modes; unmarked prompts are shorter by the marker tokens. This is not new-template validation.",
+  "intervention_scope": "final_prompt_token_only",
+  "score_note": "Float32 log-softmax; legacy scripts use the logits' native dtype. Report exact-match and candidate extraction separately.",
+  "git_commit": "67c5619b554b0f091897bdc64ad2f17ca23b257c",
+  "git_status": "?? artifacts_publication/confirmation_8192_chat/\n",
+  "python": "3.10.21",
+  "packages": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.57.1",
+    "accelerate": "1.11.0",
+    "numpy": "2.1.2"
+  },
+  "source_sha256": {
+    "scripts/run_publication_confirmation.py": "2d14237bb497b1525aec738622bb004daf854facf8b25ea16888f14f939d7aa9",
+    "rha/confirmation.py": "17a1cc859a39a04a0c4b8d465086a984cc15f6365cfed4b8d09cff5003be9749",
+    "rha/confirmation_scoring.py": "441070f88c960cc5900dc22e794496d999b8a7d666af20a34721d8e294b390d4",
+    "rha/prompts.py": "1d40db23e7caf969f1f439cc0994fe98bde7dda56052f687337d4a07df81adb0",
+    "rha/generation.py": "d2d53fe3810619737d9a85583581255ba16ab4dfab05bc0ed13048e62a737a03",
+    "rha/interventions.py": "ff7b53d382f77646e537f7463dd03fa8a7a300bcd32f8659e881dc776a186a9f",
+    "rha/modeling.py": "ad44d641598270aeabd9254cfce776a4ff0bbe1a38a9bec9169af0ee01a4a4a7",
+    "rha/config.py": "8223edf97e757e37673b1f50d9a3ca561811b3d09e48465e76658697a7371211",
+    "configs/publication_confirmation.json": "a90abb936b53cff533a703d6ecdaa69aac80b567f47f49c18dc250825a2d467f"
+  },
+  "examples_sha256": "defa100916b897cd03855fb8861d024ca3639eb396cfc2011824196e0b001754",
+  "tokenizer_revision": null,
+  "tokenizer_and_chat_template_sha256": "60a5b4c18aa81b4018d0ea12fe9e05a5ddd59eb8b6d961ee3e13f91b1ce4f1ad",
+  "device": "NVIDIA A10G",
+  "dtype": "torch.bfloat16",
+  "cuda_version": "12.1",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "rows_written": 16640,
+  "elapsed_seconds_including_model_load": 24122.415088157002,
+  "peak_cuda_memory_bytes": 3959238656
+}
