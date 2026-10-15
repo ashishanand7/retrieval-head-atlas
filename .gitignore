@@ -32,6 +32,9 @@ models/
 *.pkl
 *.joblib
 
+# Lossless archive is tracked; restore this oversized trace for local analysis.
+/artifacts_publication/specificity_confirmation_8192/rows.jsonl
+
 # Logs
 logs/
 *.log
