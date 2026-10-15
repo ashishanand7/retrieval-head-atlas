@@ -1,0 +1,329 @@
+{
+  "status": "complete",
+  "protocol": {
+    "protocol": "retrieval-temporal-v1",
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+    "tokenizer_and_chat_template_sha256": "60a5b4c18aa81b4018d0ea12fe9e05a5ddd59eb8b6d961ee3e13f91b1ce4f1ad",
+    "confirmation_protocol": "configs/publication_confirmation.json",
+    "num_layers": 28,
+    "num_heads": 12,
+    "focal_groups": [
+      "address_L22H7",
+      "answer_address"
+    ],
+    "random_draws": 5,
+    "target_tokens": 8192,
+    "needle_frac": 0.1,
+    "max_len": 32768,
+    "max_new_tokens": 24,
+    "scopes": [
+      "prompt_only",
+      "decode_only",
+      "prompt_and_decode"
+    ],
+    "stages": {
+      "smoke": {
+        "seed_base": 12100000,
+        "n_per_variant": 1
+      },
+      "confirmation": {
+        "seed_base": 11100000,
+        "n_per_variant": 8
+      }
+    }
+  },
+  "original_protocol": {
+    "protocol": "retrieval-confirmation-v1",
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "num_layers": 28,
+    "num_heads": 12,
+    "pilot_seed_base": 9100000,
+    "confirmation_seed_base": 10100000,
+    "random_control_seed": 730021,
+    "groups": {
+      "address_L22H7": [
+        [
+          22,
+          7
+        ]
+      ],
+      "support_L20H7": [
+        [
+          20,
+          7
+        ]
+      ],
+      "answer_address": [
+        [
+          22,
+          7
+        ],
+        [
+          21,
+          11
+        ],
+        [
+          22,
+          10
+        ]
+      ],
+      "non_address_core": [
+        [
+          20,
+          7
+        ],
+        [
+          18,
+          3
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          20,
+          8
+        ],
+        [
+          22,
+          0
+        ],
+        [
+          22,
+          4
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          6
+        ],
+        [
+          20,
+          9
+        ],
+        [
+          21,
+          3
+        ],
+        [
+          21,
+          1
+        ],
+        [
+          21,
+          4
+        ],
+        [
+          21,
+          5
+        ],
+        [
+          17,
+          3
+        ],
+        [
+          23,
+          4
+        ],
+        [
+          20,
+          3
+        ]
+      ]
+    }
+  },
+  "groups": {
+    "address_L22H7": [
+      [
+        22,
+        7
+      ]
+    ],
+    "answer_address": [
+      [
+        22,
+        7
+      ],
+      [
+        21,
+        11
+      ],
+      [
+        22,
+        10
+      ]
+    ],
+    "random_address_L22H7_0": [
+      [
+        22,
+        6
+      ]
+    ],
+    "random_address_L22H7_1": [
+      [
+        22,
+        9
+      ]
+    ],
+    "random_address_L22H7_2": [
+      [
+        22,
+        11
+      ]
+    ],
+    "random_address_L22H7_3": [
+      [
+        22,
+        10
+      ]
+    ],
+    "random_address_L22H7_4": [
+      [
+        22,
+        3
+      ]
+    ],
+    "random_answer_address_0": [
+      [
+        21,
+        1
+      ],
+      [
+        22,
+        0
+      ],
+      [
+        22,
+        8
+      ]
+    ],
+    "random_answer_address_1": [
+      [
+        21,
+        5
+      ],
+      [
+        22,
+        5
+      ],
+      [
+        22,
+        1
+      ]
+    ],
+    "random_answer_address_2": [
+      [
+        21,
+        1
+      ],
+      [
+        22,
+        5
+      ],
+      [
+        22,
+        4
+      ]
+    ],
+    "random_answer_address_3": [
+      [
+        21,
+        10
+      ],
+      [
+        22,
+        1
+      ],
+      [
+        22,
+        11
+      ]
+    ],
+    "random_answer_address_4": [
+      [
+        21,
+        3
+      ],
+      [
+        22,
+        3
+      ],
+      [
+        22,
+        8
+      ]
+    ]
+  },
+  "runtime_config": {
+    "model_id": "Qwen/Qwen2.5-1.5B-Instruct",
+    "precision": "auto",
+    "context_hint_tokens": 8192,
+    "hf_home": null
+  },
+  "source_sha256": {
+    "scripts/run_publication_temporal.py": "25dca5d29a078e01fc4fa1915a969c5a52f8ec7807b177dc04a27167ce2dd479",
+    "scripts/analyze_publication_temporal.py": "231b43b6845d7c48b0c49f737ce7f90f1b7e9a7dc57e53fc04975bcc6b5830cf",
+    "scripts/analyze_publication_confirmation.py": "1bf0163c42950d267036454a24240b0acc4d5f369c3de9914b3e5576d5de292a",
+    "scripts/run_publication_confirmation.py": "2d14237bb497b1525aec738622bb004daf854facf8b25ea16888f14f939d7aa9",
+    "rha/temporal.py": "34480d911dddf47470d8bc9f2fa8c1348d746a5fc6198732b518b3e565ccdce6",
+    "rha/temporal_scoring.py": "b20c43976b9c8656f420753307b35f7e2dd8b9ee33c3574cb15a61c7b52b107b",
+    "rha/confirmation.py": "17a1cc859a39a04a0c4b8d465086a984cc15f6365cfed4b8d09cff5003be9749",
+    "rha/confirmation_scoring.py": "441070f88c960cc5900dc22e794496d999b8a7d666af20a34721d8e294b390d4",
+    "rha/prompts.py": "1d40db23e7caf969f1f439cc0994fe98bde7dda56052f687337d4a07df81adb0",
+    "rha/generation.py": "d2d53fe3810619737d9a85583581255ba16ab4dfab05bc0ed13048e62a737a03",
+    "rha/interventions.py": "ff7b53d382f77646e537f7463dd03fa8a7a300bcd32f8659e881dc776a186a9f",
+    "rha/modeling.py": "ad44d641598270aeabd9254cfce776a4ff0bbe1a38a9bec9169af0ee01a4a4a7",
+    "rha/config.py": "8223edf97e757e37673b1f50d9a3ca561811b3d09e48465e76658697a7371211",
+    "rha/seed.py": "aa7c8bbba3e036417bd54a9e8b67a1a09be156bc4542fa0adf10f62e4563f344",
+    "configs/publication_temporal.json": "dc2bbb59980d21d234ffe563db568e67424eedf4022693c3551b9de5ba5a44d2",
+    "configs/publication_confirmation.json": "a90abb936b53cff533a703d6ecdaa69aac80b567f47f49c18dc250825a2d467f"
+  },
+  "git_commit": "61c5eccf6da9bb4469124f024d207082c04268b7",
+  "git_status": "",
+  "arguments": {
+    "config": "config.yaml",
+    "protocol": "configs/publication_temporal.json",
+    "stage": "smoke",
+    "smoke_dir": null,
+    "chunk_size": 1024,
+    "prepare_only": false,
+    "local_files_only": false,
+    "out_dir": "artifacts_publication/temporal_smoke_8192_chat"
+  },
+  "python": "3.10.21",
+  "packages": {
+    "torch": "2.5.1+cu121",
+    "transformers": "4.57.1",
+    "accelerate": "1.11.0",
+    "numpy": "2.1.2"
+  },
+  "smoke_gate": null,
+  "n_per_variant": 1,
+  "resolved_seed_base": 12100000,
+  "n_independent_example_ids": 5,
+  "rows_written": 440,
+  "intervention_note": "Unpatched donor and recipient consume the same prefix; caches isolated across conditions and branches. No prefill interventions.",
+  "n_example_pairs": 10,
+  "expected_rows": 440,
+  "examples_sha256": "7209df88fe2dea93d90c60f7658c415f2033e98430a3822d93f590aae8064f5d",
+  "prior_identity_count_checked": 210,
+  "prior_identity_overlap": 0,
+  "tokenizer_revision_requested": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "tokenizer_and_chat_template_sha256": "60a5b4c18aa81b4018d0ea12fe9e05a5ddd59eb8b6d961ee3e13f91b1ce4f1ad",
+  "device": "NVIDIA A10G",
+  "dtype": "torch.bfloat16",
+  "model_revision": "989aa7980e4cf806f80c7fef2b1adb7bc71aa306",
+  "cuda_version": "12.1",
+  "eos_token_ids": [
+    151645,
+    151643
+  ],
+  "elapsed_seconds_including_model_load": 540.9879095790093,
+  "elapsed_seconds_total": 546.5766120269982,
+  "peak_cuda_memory_bytes": 4519019520,
+  "rows_sha256": "7293062f160399d2c1da1017d897d6ee945a919bf95635985768621643de9629"
+}

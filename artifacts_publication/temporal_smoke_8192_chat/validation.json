@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "rows": 440,
+  "independent_identities": 5,
+  "prompt_pair_cases": 10,
+  "self_patch_max_token_score_error": 0.0,
+  "prefix_position_scope_hook_trace_checks": "passed",
+  "baseline_exact_counts": {
+    "different_first:clean": 5,
+    "different_first:corrupt": 5,
+    "same_first:clean": 5,
+    "same_first:corrupt": 5
+  }
+}
