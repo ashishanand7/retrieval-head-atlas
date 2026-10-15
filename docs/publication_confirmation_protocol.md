@@ -126,3 +126,11 @@ There is deliberately no automatic resume or silent append: run a failed attempt
 Both pilot runs completed and passed the artifact/self-patch checks. Select **chat** for the reserved 8K confirmation because clean and corrupt baselines follow the requested six-digit response format on every pilot case. Keep the existing heads, marker conditions, 32 examples per variant, and five random draws. This resolves the format choice allowed above; it does not change the frozen intervention or scoring implementation.
 
 Interpret the new batch using the narrower claims and additional diagnostic readouts documented in [Publication Pilot Analysis](publication_pilot_analysis_2026-10-14.md). In particular, a likelihood shift is not complete donor-answer generation, and exact-output failure can reflect formatting while preserving the correct number. The first-token decomposition and repeated-identical-number diagnostic were added after pilot inspection and must be labeled accordingly. Do not launch the broader 16K or second-model studies before reviewing this confirmation.
+
+## Confirmation Decision On 15 October 2026
+
+The 8K chat batch completed with all 160 reserved identities, both marker conditions, five control draws, and 16,640 rows. Integrity checks, self-patches, and saved-analysis recomputation pass. The [confirmation analysis](publication_confirmation_analysis_2026-10-15.md) records the complete assessment and proposed next design.
+
+Donor-likelihood and answer-onset effects replicate, but no patch generates the complete donor answer. Core ablation mostly changes output wording; address-group ablation sometimes selects an unrelated distractor on alias questions. The core's positive patch effect does not exceed its broader matched-control average. Keep the frozen controls, including strong and repeated draws, and retain the original metric definitions.
+
+Prioritize a separately versioned, prefix-aligned temporal-patching diagnostic next, followed by answer-start and local-task specificity. The new temporal runner is not yet implemented. This decision is downstream of confirmation outcomes, not a retroactive change to the confirmation protocol or a license to count its exploratory diagnostics as prespecified endpoints. Continue to defer broad length/model sweeps and public mechanism claims until these controls are resolved.
