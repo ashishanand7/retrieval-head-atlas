@@ -138,3 +138,7 @@ python scripts/analyze_publication_temporal.py \
 ```
 
 This experiment remains limited to the same model, legacy templates, filler, and early answer position. Answer-start/local-task specificity, new prose/templates, competing-fact/query corruption, and a second-model replication remain subsequent controls. No public submission is authorized or performed by these commands.
+
+## Completed Run Follow-Up
+
+Both stages were completed and fetched in results commit `b448d55`. The [temporal analysis](publication_temporal_analysis_2026-10-15.md) reproduces their saved audits and comparisons, inspects per-token scores and generated outputs, and sets the next specificity controls. The experiment protocol above is retained as the pre-outcome record; the original run files are unchanged.
