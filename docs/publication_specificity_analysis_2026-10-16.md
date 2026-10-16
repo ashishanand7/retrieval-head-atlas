@@ -173,6 +173,8 @@ The decision gates are scientific rather than significance hunting:
 
 ### Then: replication and manuscript
 
+Implementation follow-up: the [new-prose multi-fact protocol](publication_multifact_protocol.md) freezes the next runner, its four-candidate positive control, seed schedule and smoke/confirmation commands. It refines value substitution to a two-fact value swap so all four codes remain present in both prompts; this differs from the historical one-span corruption and is not treated as identical to it.
+
 After this bounded task test, run a targeted second-family replication with a separate discovery/confirmation split. Literal head indices must not be transferred across models. Use a small performance/hook smoke before committing A10G time. No particular second model or measured fit/runtime is asserted here.
 
 Start the research manuscript in parallel with these experiments. Use three or four principal figures for measurement/behavior, temporal effects, the present controls and task replication; place historical sweeps and full condition tables in appendices. A clearly scoped single-model arXiv version need not wait indefinitely for every experiment, but the broader journal claim should benefit from the task/model checks. Do not upload the capstone mechanism narrative unchanged.
