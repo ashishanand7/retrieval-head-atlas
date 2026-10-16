@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "rows": 6880,
+  "independent_identities": 40,
+  "reference_identities_not_analysis_units": 40,
+  "cases": 160,
+  "positive_control_cases": 160,
+  "positive_max_logit_error": 0.0,
+  "positive_max_token_score_error": 0.0,
+  "self_patch_max_token_score_error": 0.0,
+  "four_candidate_prefix_position_scope_hook_checks": "passed",
+  "baseline_counts": [
+    {
+      "view": "far_chat",
+      "corruption": "value_swap",
+      "baseline": "clean",
+      "n": 40,
+      "exact": 37,
+      "ranks_correct_fact_first": 37,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "far_chat",
+      "corruption": "value_swap",
+      "baseline": "corrupt",
+      "n": 40,
+      "exact": 39,
+      "ranks_correct_fact_first": 39,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "far_chat",
+      "corruption": "query_selection",
+      "baseline": "clean",
+      "n": 40,
+      "exact": 37,
+      "ranks_correct_fact_first": 37,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "far_chat",
+      "corruption": "query_selection",
+      "baseline": "corrupt",
+      "n": 40,
+      "exact": 39,
+      "ranks_correct_fact_first": 39,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "near_chat",
+      "corruption": "value_swap",
+      "baseline": "clean",
+      "n": 40,
+      "exact": 40,
+      "ranks_correct_fact_first": 40,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "near_chat",
+      "corruption": "value_swap",
+      "baseline": "corrupt",
+      "n": 40,
+      "exact": 40,
+      "ranks_correct_fact_first": 40,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "near_chat",
+      "corruption": "query_selection",
+      "baseline": "clean",
+      "n": 40,
+      "exact": 40,
+      "ranks_correct_fact_first": 40,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "near_chat",
+      "corruption": "query_selection",
+      "baseline": "corrupt",
+      "n": 40,
+      "exact": 39,
+      "ranks_correct_fact_first": 39,
+      "token_budget_stops": 0
+    }
+  ]
+}

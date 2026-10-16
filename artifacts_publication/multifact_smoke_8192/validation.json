@@ -1,0 +1,86 @@
+{
+  "status": "passed",
+  "rows": 1376,
+  "independent_identities": 8,
+  "reference_identities_not_analysis_units": 8,
+  "cases": 32,
+  "positive_control_cases": 32,
+  "positive_max_logit_error": 0.0,
+  "positive_max_token_score_error": 0.0,
+  "self_patch_max_token_score_error": 0.0,
+  "four_candidate_prefix_position_scope_hook_checks": "passed",
+  "baseline_counts": [
+    {
+      "view": "far_chat",
+      "corruption": "value_swap",
+      "baseline": "clean",
+      "n": 8,
+      "exact": 6,
+      "ranks_correct_fact_first": 6,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "far_chat",
+      "corruption": "value_swap",
+      "baseline": "corrupt",
+      "n": 8,
+      "exact": 7,
+      "ranks_correct_fact_first": 7,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "far_chat",
+      "corruption": "query_selection",
+      "baseline": "clean",
+      "n": 8,
+      "exact": 6,
+      "ranks_correct_fact_first": 6,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "far_chat",
+      "corruption": "query_selection",
+      "baseline": "corrupt",
+      "n": 8,
+      "exact": 7,
+      "ranks_correct_fact_first": 7,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "near_chat",
+      "corruption": "value_swap",
+      "baseline": "clean",
+      "n": 8,
+      "exact": 8,
+      "ranks_correct_fact_first": 8,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "near_chat",
+      "corruption": "value_swap",
+      "baseline": "corrupt",
+      "n": 8,
+      "exact": 8,
+      "ranks_correct_fact_first": 8,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "near_chat",
+      "corruption": "query_selection",
+      "baseline": "clean",
+      "n": 8,
+      "exact": 8,
+      "ranks_correct_fact_first": 8,
+      "token_budget_stops": 0
+    },
+    {
+      "view": "near_chat",
+      "corruption": "query_selection",
+      "baseline": "corrupt",
+      "n": 8,
+      "exact": 8,
+      "ranks_correct_fact_first": 8,
+      "token_budget_stops": 0
+    }
+  ]
+}
