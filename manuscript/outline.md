@@ -100,7 +100,9 @@ Primary-source anchors checked for this outline:
 
 Before writing novelty language, complete a methods-level comparison with these papers and the retrieval/support, synthetic-context, and semantic-retrieval work listed in the [publication strategy](../docs/publication_strategy_2026-09-20.md). Add appropriate model, transformer, and position-sensitivity references from the [existing bibliography](../paper/references.bib), verifying metadata and relevance rather than copying the bibliography wholesale. The present anchors are not an exhaustive literature review. No "first" claim is authorized by this outline.
 
-### 3. Experimental Design
+### 3. Methods
+
+Drafted in [methods.md](methods.md) on 17 October 2026, with [implementation traceability](methods_traceability.md). The subsections below remain the planning checklist; the draft expands them into the implemented study designs and equations.
 
 **3.1 Model and frozen head selection.** Qwen/Qwen2.5-1.5B-Instruct at revision `989aa7980e4cf806f80c7fef2b1adb7bc71aa306`; pinned tokenizer/chat template; bfloat16 and SDPA. Distinguish the query/output head slices from grouped key/value heads. Introduce H = {L22H7, L21H11, L22H10}, the single-head L22H7 comparison, and the exploratory 16-head group C. Indices are zero-based. Use "three-head group" and "16-head group" in publication prose; place all indices and discovery selection details in the appendix. The [frozen group configuration](../configs/publication_confirmation.json) is authoritative.
 
@@ -242,7 +244,7 @@ Do not claim that these are the only retrieval heads, a minimal/necessary/suffic
 
 ### Writing And Release Sequence
 
-1. **Draft Methods and Results next.** Follow Sections 3 and 4 above, preserve C1-C4 and F1-F4 mappings, and link numerical claims to the frozen analyses. No further GPU run is required to start this draft.
+1. **Methods drafted; Results next.** Follow Sections 3 and 4 above, preserve C1-C4 and F1-F4 mappings, and link numerical claims to the frozen analyses. No further GPU run is required to start Results.
 2. **Make manuscript-specific figures and tables.** Reuse audited data and plotting logic, add the precise task/timing schematics, and verify every caption against its endpoint and denominator. Keep diagnostic assets and both university reports unchanged.
 3. **Complete the related-work comparison; then write Introduction, Discussion, Conclusion, and Abstract.** Test the proposed contribution against the closest work before making novelty language stronger. Do not let a title imply broader scope than the results.
 4. **Run one targeted second-model-family study alongside drafting if pursuing the stronger journal version.** It needs separate head discovery, a feasibility/hook check, and held-out confirmation, not copied head indices. Model choice, fit, protocol, and job count remain to be specified; no result is assumed or blank results section inserted.

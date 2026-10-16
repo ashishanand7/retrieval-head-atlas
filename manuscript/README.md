@@ -6,6 +6,8 @@ This directory is the authoring workspace for the research paper arising from Re
 
 Read [the manuscript outline](outline.md) for the central argument, four evidence-backed claims, section plan, figure specifications, tables, and limits on interpretation.
 
+The [Methods draft](methods.md) is the first manuscript section. Its [implementation and run audit](methods_traceability.md) maps the prose and equations to the executed code and artifacts; that companion is authoring material, not main-paper prose.
+
 Working title:
 
 **From Answer Likelihood to Answer Selection: Auditing Retrieval-Head Interventions in Qwen2.5**
@@ -15,8 +17,9 @@ The paper centers on complete answer switching under the frozen three-head inter
 ## Status
 
 - Claims-and-evidence outline completed on 16 October 2026.
-- Next writing step: Methods, then Results, using the outline's claim and figure identifiers.
-- Full prose, manuscript-specific figure layouts, bibliography, and LaTeX build are not yet created here.
+- Methods drafted on 17 October 2026, including the study-design table and intervention, measurement, and estimation equations.
+- Next writing step: Results, using the outline's claim and figure identifiers.
+- Other manuscript sections, manuscript-specific figure layouts, bibliography, and LaTeX build are not yet created here.
 - This manuscript has not been submitted or published. No author profile or indexing status is implied.
 
 ## Evidence And Authoring Rules
