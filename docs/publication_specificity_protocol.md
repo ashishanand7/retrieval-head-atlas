@@ -186,3 +186,7 @@ python scripts/analyze_publication_specificity.py \
 ```
 
 The study remains a single-model, legacy-template test. New prose/multiple-fact/query-selection tasks and a second-model replication are subsequent steps, not claims already supported by this runner.
+
+## Completed Run Follow-Up
+
+Both stages were fetched in results commit `781df96`. The [specificity analysis](publication_specificity_analysis_2026-10-16.md) reproduces the audits, checks positive transfer, separates boundary/content effects, and specifies the next task-generality test. The protocol above is retained as the pre-outcome record. The full trace is stored losslessly as `rows.jsonl.gz`; see the run directory's README before re-analysis on a fresh checkout.
